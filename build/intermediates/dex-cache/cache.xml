@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5c9496868b7a3d93f14235bb5b20fcc3a653bedd">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9194b9df4f6e8486c391160b9ef4e21f7a2243bb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_dbe8237707094f632f7ae137baf11ca40e4db85d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_9b399548e47cb414755787eef06b83762350095e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="38971e5712a6b3a1ebb28f921bb06ba31b76e3fe">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_97f621bc9d901dcb81d201a354b3e44d30309f2b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_bc7708f132fe91a845ba0f973f42e831a546329b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_6da6adc83a3c9c3b39fe2f4b7f8c2c7b15770282\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_5763619294d83a308d4a920ff417d8b40154186c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.3.0_16980f5b10079c77f1a48d2b142aa531f088c7c6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.3.0_a4a478288a0618a8f0dafccbc331f979b2a06f22\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_0c7e1af38c6eca586b6d31b1ee533979811018e6\classes.dex" />
+    </item>
+
+</items>
