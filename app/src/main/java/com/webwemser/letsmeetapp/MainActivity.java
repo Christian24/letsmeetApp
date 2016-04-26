@@ -7,8 +7,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+
+    static final String KEY_TITLE = "title";
+    static final String KEY_DESCRIPTION = "description";
+    static final String KEY_DATE = "date";
+    ListView list;
+    MyListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //Temporary for testing
+        showDummyMeets();
     }
 
     @Override
@@ -50,5 +63,31 @@ public class MainActivity extends AppCompatActivity {
     public void addMeet(View v){
         Intent intent = new Intent(this, CreateActivity.class);
         startActivity(intent);
+    }
+
+    private void showDummyMeets(){
+        Dummy dummy = new Dummy();
+        ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
+        Meet[] meets = dummy.getAllMeets();
+        for(int i = 0; i < meets.length; i++){
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put(KEY_TITLE, meets[i].getTitle());
+            map.put(KEY_DESCRIPTION, meets[i].getDescription());
+            map.put(KEY_DATE, meets[i].getDatetime());
+            meetsList.add(map);
+        }
+        list = (ListView)findViewById(R.id.list);
+        // Getting adapter by passing xml data ArrayList
+        adapter = new MyListAdapter(this, meetsList);
+        list.setAdapter(adapter);
+
+        // Click event for single list row
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+            }
+        });
     }
 }

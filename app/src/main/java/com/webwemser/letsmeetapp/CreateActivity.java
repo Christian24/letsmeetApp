@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -43,6 +44,12 @@ public class CreateActivity extends AppCompatActivity {
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
+    }
+
+    //Publishes Meet...
+    public void publishMeet(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public static class DatePickerFragment extends DialogFragment
