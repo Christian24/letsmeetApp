@@ -6,5 +6,7 @@
     <string name="save_credentials">Passwort speichern</string>
     <string name="save_login">Angemeldet bleiben</string>
     <string name="login">Login</string>
+    <string name="logout">Abmelden</string>
     <string name="signup"> Registrieren </string>
+    <string name="new_meet">Erstelle einen neuen Meet</string>
 </resources>

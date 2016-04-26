@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.webwemser.letsmeetapp">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +11,23 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:parentActivityName="com.webwemser.letsmeetapp.MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:label="@string/action_settings"/>
+        <activity
+            android:name=".CreateActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/new_meet"/>
     </application>
+
 </manifest>
