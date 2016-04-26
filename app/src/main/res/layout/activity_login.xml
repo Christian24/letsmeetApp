@@ -54,7 +54,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="@color/black"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="false"
+        android:checked="true"
         android:clickable="true"/>
 
     <CheckedTextView
@@ -81,7 +81,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:text="@string/login"/>
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"
+            android:onClick="login"/>
 
         <View
             android:layout_width="0dp"
@@ -94,7 +97,10 @@
             android:layout_gravity="end"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:text="@string/signup"/>
+            android:text="@string/signup"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"
+            android:onClick="signup"/>
 
     </LinearLayout>
 

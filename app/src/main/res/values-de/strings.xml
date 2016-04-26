@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lets Meet</string>
+    <string name="app_name">letsMeet</string>
     <string name="action_settings">Einstellungen</string>
     <string name="user_hint">Benutzername oder E-Mail</string>
     <string name="pw_hint">Passwort</string>
