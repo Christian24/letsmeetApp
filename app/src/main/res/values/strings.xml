@@ -5,8 +5,8 @@
     <string name="pw_hint">Password</string>
     <string name="save_credentials">Save password</string>
     <string name="save_login">Stay logged in</string>
-    <string name="login"> Login </string>
+    <string name="login">" Login "</string>
     <string name="logout">Logout</string>
-    <string name="signup"> Sign up </string>
+    <string name="signup">" Sign up "</string>
     <string name="new_meet">Create a new Meet</string>
 </resources>

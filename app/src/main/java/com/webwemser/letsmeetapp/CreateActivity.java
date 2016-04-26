@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +23,8 @@ public class CreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
+        //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
         time = (TextView)findViewById(R.id.timepicker);
         SimpleDateFormat curDate = new SimpleDateFormat("dd.MM.yyyy");
@@ -32,11 +33,13 @@ public class CreateActivity extends AppCompatActivity {
         time.setText(curTime.format(new Date()));
     }
 
+    //Starts Datepicker
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
+    //Starts Timepicker
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
@@ -58,7 +61,13 @@ public class CreateActivity extends AppCompatActivity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            date.setText(day+"."+month+"."+year);
+            String m = "0";
+            String d = "0";
+            if (month<10)m = m + month;
+            else m = month+"";
+            if (day<10)d = d + day;
+            else d = day+"";
+            date.setText(d+"."+m+"."+year);
         }
     }
 
@@ -78,9 +87,13 @@ public class CreateActivity extends AppCompatActivity {
         }
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            time.setText(hourOfDay+":"+minute);
+            String hour = "0";
+            String min = "0";
+            if (hourOfDay<10)hour = hour + hourOfDay;
+            else hour = hourOfDay+"";
+            if (minute<10)min = min + minute;
+            else min = minute+"";
+            time.setText(hour+":"+min);
         }
     }
-
-
 }

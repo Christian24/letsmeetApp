@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">letsMeet</string>
     <string name="action_settings">Einstellungen</string>
-    <string name="user_hint">Benutzername oder E-Mail</string>
+    <string name="user_hint">Nickname/E-Mail</string>
     <string name="pw_hint">Passwort</string>
     <string name="save_credentials">Passwort speichern</string>
     <string name="save_login">Angemeldet bleiben</string>
-    <string name="login">Login</string>
+    <string name="login">" Login "</string>
     <string name="logout">Abmelden</string>
-    <string name="signup"> Registrieren </string>
+    <string name="signup">" Registrieren "</string>
     <string name="new_meet">Erstelle einen neuen Meet</string>
 </resources>
