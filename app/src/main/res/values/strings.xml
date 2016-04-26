@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Lets Meet</string>
     <string name="action_settings">Settings</string>
+    <string name="user_hint">Username or email</string>
+    <string name="pw_hint">Password</string>
+    <string name="save_credentials">Save password</string>
+    <string name="save_login">Stay logged in</string>
+    <string name="login"> Login </string>
+    <string name="signup"> Sign up </string>
 </resources>
