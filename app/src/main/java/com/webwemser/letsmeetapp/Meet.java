@@ -1,7 +1,7 @@
 package com.webwemser.letsmeetapp;
 
 /**
- * Created by User on 26.04.2016.
+ * Created by Jannik W. on 26.04.2016.
  */
 public class Meet {
 

@@ -9,4 +9,10 @@
     <string name="logout">Abmelden</string>
     <string name="signup">" Registrieren "</string>
     <string name="new_meet">Erstelle einen neuen Meet</string>
+    <string name="title_hint">Meet Titel</string>
+    <string name="description_hint">Beschreibung</string>
+    <string name="max_guests">Anzahl Gäste</string>
+    <string name="location_hint">Ort</string>
+    <string name="account">Konto</string>
+    <string name="app_ver">App Version</string>
 </resources>

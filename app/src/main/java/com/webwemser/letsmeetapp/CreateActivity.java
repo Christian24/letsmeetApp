@@ -4,12 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import java.text.SimpleDateFormat;
@@ -18,7 +18,8 @@ import java.util.Date;
 
 public class CreateActivity extends AppCompatActivity {
 
-    private static TextView date, time;
+    private static TextView date, time, guests;
+    private static EditText title, location, description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,33 @@ public class CreateActivity extends AppCompatActivity {
         SimpleDateFormat curTime = new SimpleDateFormat("HH:mm");
         date.setText(curDate.format(new Date()));
         time.setText(curTime.format(new Date()));
+
+        //Initialize Textfields and Edittexts
+        guests = (TextView)findViewById(R.id.max_guests);
+        title = (EditText)findViewById(R.id.meet_title);
+        description = (EditText)findViewById(R.id.meet_description);
+        location = (EditText)findViewById(R.id.meet_location);
+    }
+
+    //Publishes Meet...
+    public void publishMeet(View v) {
+        Meet meet = new Meet();
+        meet.setAuthor("Just Created");
+        meet.setDatetime(date.getText().toString() + " - " +time.getText().toString());
+        meet.setTitle(title.getText().toString());
+        meet.setDescription(description.getText().toString());
+        meet.setLocation(location.getText().toString());
+        meet.setMaxGuests(Integer.parseInt(guests.getText().toString()));
+        MainActivity.addMeetfromCreate(meet);
+        this.finish();
+    }
+
+    public void changeMaxGuests(View v){
+        int num = Integer.parseInt(guests.getText().toString());
+        int item = v.getId();
+        if(item == R.id.reduceGuests) num = num - 1;
+        if(item == R.id.addGuests) num = num + 1;
+        guests.setText(num+"");
     }
 
     //Starts Datepicker
@@ -44,12 +72,6 @@ public class CreateActivity extends AppCompatActivity {
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
-    }
-
-    //Publishes Meet...
-    public void publishMeet(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     public static class DatePickerFragment extends DialogFragment

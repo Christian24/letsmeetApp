@@ -6,7 +6,7 @@
         android:drawable="@drawable/gradient_bg" />
 
     <item android:state_pressed="true"
-        android:drawable="@drawable/gradient_bg_hover" />
+        android:drawable="@drawable/gradient_bg_hover"/>
 
     <item android:state_selected="true"
         android:state_pressed="false"
