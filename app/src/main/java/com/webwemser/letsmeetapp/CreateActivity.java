@@ -44,7 +44,7 @@ public class CreateActivity extends AppCompatActivity {
     //Publishes Meet...
     public void publishMeet(View v) {
         Meet meet = new Meet();
-        meet.setAuthor("Just Created");
+        meet.setAuthor("Meet Author");
         meet.setDatetime(date.getText().toString() + " - " +time.getText().toString());
         meet.setTitle(title.getText().toString());
         meet.setDescription(description.getText().toString());

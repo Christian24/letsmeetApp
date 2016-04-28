@@ -31,10 +31,11 @@
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
         android:text="Webwemser Meetup"
+        android:ellipsize="end"
         android:textColor="@drawable/color_selector"
         android:typeface="sans"
         android:textSize="15dip"
-        android:textStyle="bold"/>
+        />
 
     <!-- Meet shortened Description -->
     <TextView
@@ -44,6 +45,7 @@
         android:layout_below="@id/title"
         android:textColor="@drawable/color_selector"
         android:textSize="10dip"
+        android:ellipsize="end"
         android:layout_marginTop="1dip"
         android:layout_toRightOf="@+id/thumbnail"
         android:text="This will be fun..." />

@@ -15,4 +15,5 @@
     <string name="location_hint">Location</string>
     <string name="account">Account</string>
     <string name="app_ver">App version</string>
+    <string name="title_activity_meet">Meet Info</string>
 </resources>

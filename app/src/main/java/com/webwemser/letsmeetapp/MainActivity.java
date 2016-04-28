@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Meet> meets = new ArrayList<>();
     private MyListAdapter adapter;
     private static final String TAG = "LOGGING: ";
+    public static final String KEY_POSITION = "position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                Intent intent = new Intent(MainActivity.this, MeetActivity.class);
+                intent.putExtra(KEY_POSITION, position);
+                startActivity(intent);
             }
         });
     }

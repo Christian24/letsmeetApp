@@ -15,4 +15,5 @@
     <string name="location_hint">Ort</string>
     <string name="account">Konto</string>
     <string name="app_ver">App Version</string>
+    <string name="title_activity_meet">Meet Details</string>
 </resources>
