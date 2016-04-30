@@ -2,6 +2,7 @@ package com.webwemser.letsmeetapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.github.rubensousa.floatingtoolbar.FloatingToolbar;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private MyListAdapter adapter;
     private static final String TAG = "LOGGING: ";
     public static final String KEY_POSITION = "position";
+    private FloatingActionButton fab_main;
+    private FloatingToolbar mFloatingToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fab_main = (FloatingActionButton)findViewById(R.id.fab_main);
+        mFloatingToolbar = (FloatingToolbar)findViewById(R.id.floatingToolbar);
+
+        mFloatingToolbar.attachFab(fab_main);
+        //mFloatingToolbar.attachRecyclerView(recyclerView);
 
         //Temporary for testing
         Dummy dummy = new Dummy();
