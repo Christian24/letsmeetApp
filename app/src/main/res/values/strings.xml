@@ -16,4 +16,6 @@
     <string name="account">Account</string>
     <string name="app_ver">App version</string>
     <string name="title_activity_meet">Meet Info</string>
+    <string name="new_meet2">Add</string>
+    <string name="my_meets">My Meets</string>
 </resources>

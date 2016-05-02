@@ -28,5 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-    compile 'com.github.rubensousa:FloatingToolbar:0.2'
+    compile 'com.github.fafaldo:fab-toolbar:1.2.0'
 }

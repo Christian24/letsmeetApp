@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.github.rubensousa.floatingtoolbar.FloatingToolbar;
+import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private MyListAdapter adapter;
     private static final String TAG = "LOGGING: ";
     public static final String KEY_POSITION = "position";
-    private FloatingActionButton fab_main;
-    private FloatingToolbar mFloatingToolbar;
+    private FABToolbarLayout fab_toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fab_main = (FloatingActionButton)findViewById(R.id.fab_main);
-        mFloatingToolbar = (FloatingToolbar)findViewById(R.id.floatingToolbar);
-
-        mFloatingToolbar.attachFab(fab_main);
-        //mFloatingToolbar.attachRecyclerView(recyclerView);
+        //Initialize FAB_Toolbar
+        fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
 
         //Temporary for testing
         Dummy dummy = new Dummy();
@@ -88,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showFABToolbar(View v){
+        fab_toolbar.show();
+    }
+
+    public void hideFABToolbar(View v){
+        fab_toolbar.hide();
     }
 
     //Starts CreateActivty to create a new Meet

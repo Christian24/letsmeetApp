@@ -23,20 +23,73 @@
 
     <include layout="@layout/content_main" />
 
-    <com.github.rubensousa.floatingtoolbar.FloatingToolbar
-        android:id="@+id/floatingToolbar"
+    <com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout
+        android:id="@+id/fabtoolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom"
-        app:floatingMenu="@menu/menu_ftb" />
+        android:layout_height="match_parent"
+        app:showDuration="600"
+        app:hideDuration="200"
+        app:horizontalMargin="30dp"
+        app:verticalMargin="30dp"
+        app:fadeInFraction="0.2"
+        app:fabId="@+id/fabtoolbar_fab"
+        app:containerId="@+id/fabtoolbar_container"
+        app:fabToolbarId="@+id/fabtoolbar_toolbar">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_add_white_24dp"
-        android:onClick="showCreateActivtiy"/>
+        ...
+
+        <RelativeLayout
+            android:id="@+id/fabtoolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabtoolbar_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="normal"
+                android:src="@drawable/ic_keyboard_arrow_up_white_48dp"
+                android:onClick="showFABToolbar"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/fabtoolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_account_circle_white_48dp"
+                android:onClick="hideFABToolbar"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_add_white_24dp"
+                android:onClick="showCreateActivtiy"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_clear_white_24dp"
+                android:onClick="hideFABToolbar"/>
+
+        </LinearLayout>
+
+    </com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>
