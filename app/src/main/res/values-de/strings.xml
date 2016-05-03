@@ -18,4 +18,8 @@
     <string name="title_activity_meet">Meet Details</string>
     <string name="new_meet2">Neu</string>
     <string name="my_meets">Meine Events</string>
+    <string name="min_guests">Muss mindestens 2 sein</string>
+    <string name="enter_description">Beschreibung zu lang oder kurz</string>
+    <string name="enter_title">Titel zu lang oder kurz</string>
+    <string name="enter_location">Ort zu lang oder kurz</string>
 </resources>

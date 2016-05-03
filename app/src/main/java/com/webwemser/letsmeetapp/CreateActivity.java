@@ -12,6 +12,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,21 +45,42 @@ public class CreateActivity extends AppCompatActivity {
 
     //Publishes Meet...
     public void publishMeet(View v) {
-        Meet meet = new Meet();
-        meet.setAuthor("Meet Author");
-        meet.setDatetime(date.getText().toString() + " - " +time.getText().toString());
-        meet.setTitle(title.getText().toString());
-        meet.setDescription(description.getText().toString());
-        meet.setLocation(location.getText().toString());
-        meet.setMaxGuests(Integer.parseInt(guests.getText().toString()));
-        MainActivity.addMeetfromCreate(meet);
-        this.finish();
+        if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
+            if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
+                if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
+                    Meet meet = new Meet();
+                    meet.setAuthor("Meet Author");
+                    meet.setDatetime(date.getText().toString() + " - " +time.getText().toString());
+                    meet.setTitle(title.getText().toString());
+                    meet.setDescription(description.getText().toString());
+                    meet.setLocation(location.getText().toString());
+                    meet.setMaxGuests(Integer.parseInt(guests.getText().toString()));
+                    MainActivity.addMeetfromCreate(meet);
+                    this.finish();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.enter_description), Toast.LENGTH_SHORT).show();
+                }
+            }
+            else{
+                Toast.makeText(getApplicationContext(), getString(R.string.enter_location), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            Toast.makeText(getApplicationContext(), getString(R.string.enter_title), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void changeMaxGuests(View v){
         int num = Integer.parseInt(guests.getText().toString());
         int item = v.getId();
-        if(item == R.id.reduceGuests) num = num - 1;
+        if(num>2){
+            if(item == R.id.reduceGuests) num = num - 1;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), getString(R.string.min_guests), Toast.LENGTH_SHORT).show();
+        }
         if(item == R.id.addGuests) num = num + 1;
         guests.setText(num+"");
     }
