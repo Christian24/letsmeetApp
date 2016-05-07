@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         showDummyMeets();
+        fab_toolbar.hide();
     }
 
     @Override
