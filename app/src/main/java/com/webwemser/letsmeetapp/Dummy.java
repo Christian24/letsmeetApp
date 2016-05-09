@@ -10,7 +10,7 @@ public class Dummy {
     private ArrayList<Meet> meets = new ArrayList<>();
     
     public ArrayList<Meet> getAllMeets(){
-        for(int i = 0; i<18; i++) {
+        for(int i = 1; i<=12; i++) {
             Meet meet = new Meet();
             meet.setAuthor("Jannik Wortmann");
             meet.setDatetime("01.05.2016 - 22:22");
