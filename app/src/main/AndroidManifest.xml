@@ -36,12 +36,7 @@
         <activity
             android:name=".MeetActivity"
             android:label="@string/title_activity_meet"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.webwemser.letsmeetapp.MainActivity" />
-        </activity>
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

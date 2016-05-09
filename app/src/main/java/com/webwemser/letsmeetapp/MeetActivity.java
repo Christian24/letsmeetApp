@@ -8,16 +8,15 @@ import android.widget.TextView;
 
 public class MeetActivity extends AppCompatActivity {
 
-    private TextView title, author, descripton, date;
+    private TextView title, author, descripton, date, max_guests;
     private static final int KEY_POSITION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meet);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+        //Get Meet ID
         int position = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
 
         //Initialize Textviews;
@@ -25,13 +24,14 @@ public class MeetActivity extends AppCompatActivity {
         author = (TextView)findViewById(R.id.display_author);
         descripton = (TextView)findViewById(R.id.display_description);
         date = (TextView)findViewById(R.id.display_datetime);
+        max_guests = (TextView)findViewById(R.id.display_max_guests);
 
         //Set values
         title.setText(MainActivity.meets.get(position).getTitle());
         author.setText(MainActivity.meets.get(position).getAuthor());
         descripton.setText(MainActivity.meets.get(position).getDescription());
         date.setText(MainActivity.meets.get(position).getDatetime());
-
+        max_guests.setText(MainActivity.meets.get(position).getMaxGuests()+"");
     }
 
     public void getBack(View v){
