@@ -32,32 +32,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4"
                 android:id="@+id/accounnt_name"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender"
-                android:textSize="32sp"
-                android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-                android:id="@+id/accounnt_gender"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Age"
-                android:textSize="32sp"
-                android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-                android:id="@+id/accounnt_age"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="etc."
-                android:textSize="32sp"
-                android:textColor="@color/black"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
-
         </LinearLayout>
 
     </LinearLayout>
