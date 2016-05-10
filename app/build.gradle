@@ -16,6 +16,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        repositories {
+            maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases' }
+        }
     }
 }
 
@@ -25,4 +28,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
+    compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.0'
 }
