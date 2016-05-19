@@ -22,4 +22,9 @@
     <string name="enter_title">Title to long or to short</string>
     <string name="enter_description">Description to long or to short</string>
     <string name="enter_location">Location to long or to short</string>
+    <string name="github">https://github.com/Christian24/letsmeetApp</string>
+    <string name="find_us">Find us on GitHub</string>
+    <string name="title">Title</string>
+    <string name="date_time">Date</string>
+    <string name="author">Author</string>
 </resources>

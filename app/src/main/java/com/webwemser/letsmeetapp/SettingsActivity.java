@@ -1,9 +1,12 @@
 package com.webwemser.letsmeetapp;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -26,6 +29,12 @@ public class SettingsActivity extends AppCompatActivity {
         catch (PackageManager.NameNotFoundException e){
             verinfo.setText("n/a");
         }
+    }
 
+    public void openURL(View v){
+        String url = getString(R.string.github);
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
