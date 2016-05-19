@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
         //Needed to use the same fonts for username and password edittext
         EditText password = (EditText) findViewById(R.id.password_text);
@@ -49,15 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    //Login method
-    public void login(View v){
+    //Signup method
+    public void signup(View v){
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    //Signup method for starting the signup Activty
-    public void signupActivty(View v){
-        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 }

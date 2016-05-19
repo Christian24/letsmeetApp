@@ -27,4 +27,6 @@
     <string name="title">Titel</string>
     <string name="date_time">Datum</string>
     <string name="author">Ersteller</string>
+    <string name="search">Suchen</string>
+    <string name="filter">Filter</string>
 </resources>

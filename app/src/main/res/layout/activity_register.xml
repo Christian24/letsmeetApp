@@ -8,7 +8,7 @@
     android:paddingLeft="64dp"
     android:paddingRight="64dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.webwemser.letsmeetapp.LoginActivity">
+    tools:context="com.webwemser.letsmeetapp.RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,39 +69,14 @@
         android:checked="true"
         android:clickable="true"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="@string/login"
-            android:textColor="@color/white"
-            android:background="@drawable/mybutton"
-            android:onClick="login"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:text="@string/signup"
-            android:textColor="@color/white"
-            android:background="@drawable/mybutton"
-            android:onClick="signupActivty"/>
-
-    </LinearLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="@string/signup"
+        android:textColor="@color/white"
+        android:background="@drawable/mybutton"
+        android:onClick="signup"/>
 
 </LinearLayout>

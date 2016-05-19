@@ -9,10 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "LOGGING: ";
     public static final String KEY_POSITION = "position";
     private FABToolbarLayout fab_toolbar;
+    private Spinner searchSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize FAB_Toolbar
         fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
+
+        //Prepares search spinner
+        addItemsOnSpinner();
 
         //Temporary for testing
         Dummy dummy = new Dummy();
@@ -84,10 +91,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Adds categories to spinner
+    public void addItemsOnSpinner() {
+        searchSpinner = (Spinner) findViewById(R.id.search_spinner);
+        List<String> list = new ArrayList<String>();
+        list.add("All Categories");
+        list.add("Category 1");
+        list.add("Category 2");
+        list.add("Category 3");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        searchSpinner.setAdapter(dataAdapter);
+    }
+
+    //Shows FAB Toolbar
     public void showFABToolbar(View v){
         fab_toolbar.show();
     }
 
+    //Hides FAB Toolbar
     public void hideFABToolbar(View v){
         fab_toolbar.hide();
     }
