@@ -36,14 +36,13 @@
         app:containerId="@+id/fabtoolbar_container"
         app:fabToolbarId="@+id/fabtoolbar_toolbar">
 
-        ...
-
         <RelativeLayout
             android:id="@+id/fabtoolbar_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabtoolbar_fab"
@@ -89,7 +88,5 @@
         </LinearLayout>
 
     </com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout>
-
-
 
 </android.support.design.widget.CoordinatorLayout>
