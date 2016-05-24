@@ -30,4 +30,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.fafaldo:fab-toolbar:1.2.0'
     compile 'com.google.code.ksoap2-android:ksoap2-android:3.6.0'
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12'
 }

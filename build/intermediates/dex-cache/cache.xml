@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e46b3166a318ed463a9a774379df25144d418841">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9194b9df4f6e8486c391160b9ef4e21f7a2243bb\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.github.fafaldo\fab-toolbar\1.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="914655ea8bbd3367dd5cebf2282e636cd3d95389">
+        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.fafaldo-fab-toolbar-1.2.0_82e4f74d97dcd5ca1320964c435f1d808f6c3a2e\classes.dex" />
+    </item>
+
+</items>

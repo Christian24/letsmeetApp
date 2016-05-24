@@ -26,7 +26,7 @@ public class MeetActivity extends AppCompatActivity {
         date = (TextView)findViewById(R.id.display_datetime);
         max_guests = (TextView)findViewById(R.id.display_max_guests);
 
-        //Set values
+        //Set values to Textviews
         title.setText(MainActivity.meets.get(position).getTitle());
         author.setText(MainActivity.meets.get(position).getAuthor());
         descripton.setText(MainActivity.meets.get(position).getDescription());
