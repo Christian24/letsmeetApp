@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für category complex type.
+ * <p>Java-Klasse für getMeetsByUser complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="category"&gt;
+ * &lt;complexType name="getMeetsByUser"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "category", propOrder = {
-    "title"
+@XmlType(name = "getMeetsByUser", propOrder = {
+    "arg0"
 })
-public class Category {
+public class GetMeetsByUser {
 
-    protected String title;
+    protected String arg0;
 
     /**
-     * Ruft den Wert der title-Eigenschaft ab.
+     * Ruft den Wert der arg0-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTitle() {
-        return title;
+    public String getArg0() {
+        return arg0;
     }
 
     /**
-     * Legt den Wert der title-Eigenschaft fest.
+     * Legt den Wert der arg0-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTitle(String value) {
-        this.title = value;
+    public void setArg0(String value) {
+        this.arg0 = value;
     }
 
 }

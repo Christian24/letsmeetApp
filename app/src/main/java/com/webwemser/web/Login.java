@@ -7,17 +7,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für userData complex type.
+ * <p>Java-Klasse für login complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="userData"&gt;
+ * &lt;complexType name="login"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,61 +27,61 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "userData", propOrder = {
-    "description",
-    "userName"
+@XmlType(name = "login", propOrder = {
+    "arg0",
+    "arg1"
 })
-public class UserData {
+public class Login {
 
-    protected String description;
-    protected String userName;
+    protected String arg0;
+    protected String arg1;
 
     /**
-     * Ruft den Wert der description-Eigenschaft ab.
+     * Ruft den Wert der arg0-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDescription() {
-        return description;
+    public String getArg0() {
+        return arg0;
     }
 
     /**
-     * Legt den Wert der description-Eigenschaft fest.
+     * Legt den Wert der arg0-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDescription(String value) {
-        this.description = value;
+    public void setArg0(String value) {
+        this.arg0 = value;
     }
 
     /**
-     * Ruft den Wert der userName-Eigenschaft ab.
+     * Ruft den Wert der arg1-Eigenschaft ab.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getUserName() {
-        return userName;
+    public String getArg1() {
+        return arg1;
     }
 
     /**
-     * Legt den Wert der userName-Eigenschaft fest.
+     * Legt den Wert der arg1-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setUserName(String value) {
-        this.userName = value;
+    public void setArg1(String value) {
+        this.arg1 = value;
     }
 
 }

@@ -3,17 +3,16 @@ package com.webwemser.web;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für dataTransferObject complex type.
+ * <p>Java-Klasse für initResponse complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="dataTransferObject"&gt;
+ * &lt;complexType name="initResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -26,11 +25,8 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataTransferObject")
-@XmlSeeAlso({
-    ReturnCodeResponse.class
-})
-public abstract class DataTransferObject {
+@XmlType(name = "initResponse")
+public class InitResponse {
 
 
 }
