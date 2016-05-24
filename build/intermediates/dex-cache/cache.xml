@@ -2,116 +2,116 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_6dc672c6e53de6791ca7b8a6adc3661c405328fd\classes.dex" />
+        sha1="4c61cd4fce67b77aa9354a052f597e4d31c52f18">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_8388f5ba40eafb3fd7ae91e8120d30dda7a4025d\classes.dex" />
     </item>
     <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.4.0_11e2fc4e16c1a6377050bbfec45b9e92e99c98a0\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.github.fafaldo\fab-toolbar\1.2.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="914655ea8bbd3367dd5cebf2282e636cd3d95389">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.fafaldo-fab-toolbar-1.2.0_82e4f74d97dcd5ca1320964c435f1d808f6c3a2e\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\net.sourceforge.kxml\kxml\2.2.4\1642506e490548d96984b8370e44257c156097f7\kxml-2.2.4.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="1642506e490548d96984b8370e44257c156097f7">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\kxml-2.2.4_0dc0d5fea6ba45e10bde96f6d9d57c4bc123ee31\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="e46b3166a318ed463a9a774379df25144d418841">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_9194b9df4f6e8486c391160b9ef4e21f7a2243bb\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_7f939f1d1da667615d8cdd09484c28f0fdb1d877\classes.dex" />
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_c0419bf2f1db6b6a5b69068c527646440c1180d0\classes.dex" />
     </item>
     <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_ef1a19d86f9aec9642245e91121b196aadaaafb1\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-base\3.6.0\290baebc90b7b320ccb2adb2ed38d7838bc805a1\ksoap2-base-3.6.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="290baebc90b7b320ccb2adb2ed38d7838bc805a1">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\ksoap2-base-3.6.0_ebe42b4d2e872f08e7a58e47ce06335949a5bc4a\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_8b571364c1229a5ecc4fef863acb773b0c466b91\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="b46f6fc4dc3b0813aca3fbeb54e875b628097201">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_97f621bc9d901dcb81d201a354b3e44d30309f2b\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_6b8ba420604259fd01b8335479df1f363206d0f4\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\net.sourceforge.kobjects\kobjects-j2me\0.0-SNAPSHOT-20040926-2\9246ca92b16c65114a7fb80b906801e06be95305\kobjects-j2me-0.0-SNAPSHOT-20040926-2.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="9246ca92b16c65114a7fb80b906801e06be95305">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\kobjects-j2me-0.0-SNAPSHOT-20040926-2_32f37208a8cdd503fcb649d6eaa3d81c043f3cb8\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_5b2ecc654a1a20cb54f43af82f96481e9aac2077\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\org.xmlpull\xmlpull\1.1.3.3\9b62254da05ce6399a09164362da7b2419de63ca\xmlpull-1.1.3.3.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="9b62254da05ce6399a09164362da7b2419de63ca">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\xmlpull-1.1.3.3_3816fcf949f7a3005b85d34015c6b0683468c0aa\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-j2se\3.6.0\e4733a185d549446527620772469361756457052\ksoap2-j2se-3.6.0.jar"
+        jar="C:\Users\Chris\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-j2se\3.6.0\e4733a185d549446527620772469361756457052\ksoap2-j2se-3.6.0.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="e4733a185d549446527620772469361756457052">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\ksoap2-j2se-3.6.0_fd507955e1e704412eeed8a8e257790f779d195c\classes.dex" />
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\ksoap2-j2se-3.6.0_c72b8e4b9554b1982f7bd2250b6e0ecdf0629d2a\classes.dex" />
     </item>
     <item
-        jar="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
         jumboMode="true"
         revision="23.0.3"
         sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
-        <dex dex="C:\Users\User\AndroidStudioProjects\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_4593a074312124c9cd4dd78343e8e40f06e79fac\classes.dex" />
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.4.0_d7d35546ac2aa61841788e89076bcd47e41ae524\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.github.fafaldo\fab-toolbar\1.2.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="914655ea8bbd3367dd5cebf2282e636cd3d95389">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.fafaldo-fab-toolbar-1.2.0_492abbc00b664e42e4b49d84d70cfd020beeba25\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_20812755f186c2a226db94f8fca46177e556a5b1\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_75459e65d2dc4b9d8e1641d89803f6fc8ce0f8b5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b2ec7487fddcaae48e0696c457bd33e096de8ac9">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_433dbba1190566021d5b9195f14dda3284bfdc2d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_b49914937ad7f537e4576c600c0e75ce7be3591c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\.gradle\caches\modules-2\files-2.1\org.xmlpull\xmlpull\1.1.3.3\9b62254da05ce6399a09164362da7b2419de63ca\xmlpull-1.1.3.3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9b62254da05ce6399a09164362da7b2419de63ca">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\xmlpull-1.1.3.3_fb144f410194bada64b2be95fb231ae037719481\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\.gradle\caches\modules-2\files-2.1\com.google.code.ksoap2-android\ksoap2-base\3.6.0\290baebc90b7b320ccb2adb2ed38d7838bc805a1\ksoap2-base-3.6.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="290baebc90b7b320ccb2adb2ed38d7838bc805a1">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\ksoap2-base-3.6.0_454f6e5e66b9860c3386ead46e85d05d95df842c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_246147b1cd8fc69532ceb076be8c66510b9ce7b1\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_f4dd2ffb082484d364746280a673590ba8baa63f\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\.gradle\caches\modules-2\files-2.1\net.sourceforge.kxml\kxml\2.2.4\1642506e490548d96984b8370e44257c156097f7\kxml-2.2.4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1642506e490548d96984b8370e44257c156097f7">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\kxml-2.2.4_7e5e79e2e1e6a90f2dfe7f46766b655689792114\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.4.0_d079e3e9e02cab7df5407056a6567018225c8cb6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Chris\.gradle\caches\modules-2\files-2.1\net.sourceforge.kobjects\kobjects-j2me\0.0-SNAPSHOT-20040926-2\9246ca92b16c65114a7fb80b906801e06be95305\kobjects-j2me-0.0-SNAPSHOT-20040926-2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9246ca92b16c65114a7fb80b906801e06be95305">
+        <dex dex="C:\Users\Chris\Documents\letsmeetApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\kobjects-j2me-0.0-SNAPSHOT-20040926-2_82dfa97af15210142f31372d5283e62fafc64270\classes.dex" />
     </item>
 
 </items>

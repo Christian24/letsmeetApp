@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 
+
+
 public class LoginActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
