@@ -1,9 +1,11 @@
 package com.webwemser.letsmeetapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
@@ -18,8 +20,12 @@ public class LoginActivity extends AppCompatActivity {
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
     private EditText username, password;
-    public static OnlineIntegrationService webservice;
+    private OnlineIntegrationService webservice;
     public static sessionResponse session;
+    public static user user;
+    public static sessionData sessionData;
+    private final String TAG = "Webwemser Log";
+    private String userString, pwString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize Webservice
         webservice = new OnlineIntegrationService();
+        user = new user();
+        sessionData = new sessionData();
+        session = new sessionResponse();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_text);
@@ -63,13 +72,15 @@ public class LoginActivity extends AppCompatActivity {
 
     //Login method
     public void login(View v){
-        session = new sessionResponse();
+        userString = username.getText().toString();
+        pwString = password.getText().toString();
         if(username.getText().toString().length()>3){
             if(username.getText().toString().length()>5){
-                session = webservice.login(username.getText().toString(), password.getText().toString());
+                new LoginAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);
-                Toast.makeText(this, ""+session.getProperty(1), Toast.LENGTH_SHORT).show();
+                if(session==null)Log.i(TAG, "SessionResponse = null");
+                else Log.i(TAG, "SessionResponse not null");
             }
             else{
                 Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();
@@ -78,13 +89,24 @@ public class LoginActivity extends AppCompatActivity {
         else{
             Toast.makeText(this, getString(R.string.short_username), Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     //Signup method for starting the signup Activty
     public void signupActivty(View v){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    class LoginAsync extends AsyncTask<String, Integer, String>{
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            session = webservice.login(userString, pwString);
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+
+        }
     }
 }

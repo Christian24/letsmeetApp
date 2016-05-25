@@ -32,7 +32,7 @@ public class OnlineIntegrationService {
     public int timeOut = 180;
     public IWsdl2CodeEvents eventHandler;
     public WS_Enums.SoapProtocolVersion soapVersion;
-    
+
     public OnlineIntegrationService(){}
     
     public OnlineIntegrationService(IWsdl2CodeEvents eventHandler)
@@ -63,7 +63,6 @@ public class OnlineIntegrationService {
     }
     
     public void loginAsync(final String arg0,final String arg1,final List<HeaderProperty> headers) throws Exception{
-        
         new AsyncTask<Void, Void, sessionResponse>(){
             @Override
             protected void onPreExecute() {
