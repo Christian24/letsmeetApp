@@ -17,50 +17,43 @@ import org.ksoap2.serialization.PropertyInfo;
 import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
+import java.util.Vector;
 
-public class returnCodeResponse implements KvmSerializable {
+public class VectorString extends Vector<String> implements KvmSerializable {
     
-    public int returnCodeField;
     
-    public returnCodeResponse(){}
+    public VectorString(){}
     
-    public returnCodeResponse(SoapObject soapObject)
+    public VectorString(SoapObject soapObject)
     {
         if (soapObject == null)
             return;
-        if (soapObject.hasProperty("returnCode"))
-        {
-            Object obj = soapObject.getProperty("returnCode");
-            if (obj != null && obj.getClass().equals(SoapPrimitive.class)){
-                SoapPrimitive j =(SoapPrimitive) obj;
-                returnCodeField = Integer.parseInt(j.toString());
-            }else if (obj!= null && obj instanceof Number){
-                returnCodeField = (Integer) obj;
+        if (soapObject != null){
+            int size = soapObject.getPropertyCount();
+            for (int i0=0;i0<size;i0++){
+                Object obj = soapObject.getProperty(i0);
+                if (obj !=null && obj.getClass().equals(SoapPrimitive.class)){
+                    SoapPrimitive j0 =(SoapPrimitive) soapObject.getProperty(i0);
+                    String j1=j0.toString();
+                    add(j1);
+                }
             }
         }
     }
     @Override
     public Object getProperty(int arg0) {
-        switch(arg0){
-            case 0:
-                return returnCodeField;
-        }
-        return null;
+        return this.get(arg0);
     }
     
     @Override
     public int getPropertyCount() {
-        return 1;
+        return this.size();
     }
     
     @Override
     public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
-        switch(index){
-            case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "returnCode";
-                break;
-        }
+        info.name = "String";
+        info.type = String.class;
     }
     
 
