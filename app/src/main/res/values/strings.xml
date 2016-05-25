@@ -29,4 +29,6 @@
     <string name="author">Author</string>
     <string name="search">Search</string>
     <string name="filter">Filter</string>
+    <string name="short_username">Username to short</string>
+    <string name="short_password">Password to short</string>
 </resources>

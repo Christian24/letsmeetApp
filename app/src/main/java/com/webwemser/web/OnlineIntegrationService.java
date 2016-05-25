@@ -28,7 +28,7 @@ import org.ksoap2.serialization.MarshalFloat;
 public class OnlineIntegrationService {
     
     public String NAMESPACE ="http://web/";
-    public String url="";
+    public String url="http://10.0.2.2:8080/software-engeneering-wildfly-archetype-ejb/OnlineIntegration";
     public int timeOut = 180;
     public IWsdl2CodeEvents eventHandler;
     public WS_Enums.SoapProtocolVersion soapVersion;
