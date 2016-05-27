@@ -19,11 +19,9 @@ import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.ksoap2.HeaderProperty;
-import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
+
 import android.os.AsyncTask;
-import org.ksoap2.serialization.MarshalFloat;
 
 public class OnlineIntegrationService {
     
@@ -63,17 +61,17 @@ public class OnlineIntegrationService {
     }
     
     public void loginAsync(final String arg0,final String arg1,final List<HeaderProperty> headers) throws Exception{
-        new AsyncTask<Void, Void, sessionResponse>(){
+        new AsyncTask<Void, Void, SessionResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected sessionResponse doInBackground(Void... params) {
+            protected SessionResponse doInBackground(Void... params) {
                 return login(arg0, arg1, headers);
             }
             @Override
-            protected void onPostExecute(sessionResponse result)
+            protected void onPostExecute(SessionResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -83,11 +81,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public sessionResponse login(String arg0,String arg1){
+    public SessionResponse login(String arg0, String arg1){
         return login(arg0, arg1, null);
     }
     
-    public sessionResponse login(String arg0,String arg1,List<HeaderProperty> headers){
+    public SessionResponse login(String arg0, String arg1, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -113,7 +111,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    sessionResponse resultVariable =  new sessionResponse (j);
+                    SessionResponse resultVariable =  new SessionResponse(j);
                     return resultVariable;
                     
                 }
@@ -134,17 +132,17 @@ public class OnlineIntegrationService {
     
     public void getMeetsByUserAsync(final String arg0,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetsResponse>(){
+        new AsyncTask<Void, Void, MeetsResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetsResponse doInBackground(Void... params) {
+            protected MeetsResponse doInBackground(Void... params) {
                 return getMeetsByUser(arg0, headers);
             }
             @Override
-            protected void onPostExecute(meetsResponse result)
+            protected void onPostExecute(MeetsResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -154,11 +152,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetsResponse getMeetsByUser(String arg0){
+    public MeetsResponse getMeetsByUser(String arg0){
         return getMeetsByUser(arg0, null);
     }
     
-    public meetsResponse getMeetsByUser(String arg0,List<HeaderProperty> headers){
+    public MeetsResponse getMeetsByUser(String arg0, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -183,7 +181,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetsResponse resultVariable =  new meetsResponse (j);
+                    MeetsResponse resultVariable =  new MeetsResponse(j);
                     return resultVariable;
                     
                 }
@@ -204,17 +202,17 @@ public class OnlineIntegrationService {
     
     public void getMeetsByCategoryAsync(final String arg0,final String arg1,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetsResponse>(){
+        new AsyncTask<Void, Void, MeetsResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetsResponse doInBackground(Void... params) {
+            protected MeetsResponse doInBackground(Void... params) {
                 return getMeetsByCategory(arg0, arg1, headers);
             }
             @Override
-            protected void onPostExecute(meetsResponse result)
+            protected void onPostExecute(MeetsResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -224,11 +222,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetsResponse getMeetsByCategory(String arg0,String arg1){
+    public MeetsResponse getMeetsByCategory(String arg0, String arg1){
         return getMeetsByCategory(arg0, arg1, null);
     }
     
-    public meetsResponse getMeetsByCategory(String arg0,String arg1,List<HeaderProperty> headers){
+    public MeetsResponse getMeetsByCategory(String arg0, String arg1, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -254,7 +252,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetsResponse resultVariable =  new meetsResponse (j);
+                    MeetsResponse resultVariable =  new MeetsResponse(j);
                     return resultVariable;
                     
                 }
@@ -328,17 +326,17 @@ public class OnlineIntegrationService {
     
     public void getMeetAsync(final String arg0,final int arg1,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetResponse>(){
+        new AsyncTask<Void, Void, MeetResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetResponse doInBackground(Void... params) {
+            protected MeetResponse doInBackground(Void... params) {
                 return getMeet(arg0, arg1, headers);
             }
             @Override
-            protected void onPostExecute(meetResponse result)
+            protected void onPostExecute(MeetResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -348,11 +346,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetResponse getMeet(String arg0,int arg1){
+    public MeetResponse getMeet(String arg0, int arg1){
         return getMeet(arg0, arg1, null);
     }
     
-    public meetResponse getMeet(String arg0,int arg1,List<HeaderProperty> headers){
+    public MeetResponse getMeet(String arg0, int arg1, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -378,7 +376,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetResponse resultVariable =  new meetResponse (j);
+                    MeetResponse resultVariable =  new MeetResponse(j);
                     return resultVariable;
                     
                 }
@@ -399,17 +397,17 @@ public class OnlineIntegrationService {
     
     public void leaveMeetAsync(final String arg0,final int arg1,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetResponse>(){
+        new AsyncTask<Void, Void, MeetResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetResponse doInBackground(Void... params) {
+            protected MeetResponse doInBackground(Void... params) {
                 return leaveMeet(arg0, arg1, headers);
             }
             @Override
-            protected void onPostExecute(meetResponse result)
+            protected void onPostExecute(MeetResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -419,11 +417,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetResponse leaveMeet(String arg0,int arg1){
+    public MeetResponse leaveMeet(String arg0, int arg1){
         return leaveMeet(arg0, arg1, null);
     }
     
-    public meetResponse leaveMeet(String arg0,int arg1,List<HeaderProperty> headers){
+    public MeetResponse leaveMeet(String arg0, int arg1, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -449,7 +447,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetResponse resultVariable =  new meetResponse (j);
+                    MeetResponse resultVariable =  new MeetResponse(j);
                     return resultVariable;
                     
                 }
@@ -470,17 +468,17 @@ public class OnlineIntegrationService {
     
     public void registerAsync(final String arg0,final String arg1,final String arg2,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, sessionResponse>(){
+        new AsyncTask<Void, Void, SessionResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected sessionResponse doInBackground(Void... params) {
+            protected SessionResponse doInBackground(Void... params) {
                 return register(arg0, arg1, arg2, headers);
             }
             @Override
-            protected void onPostExecute(sessionResponse result)
+            protected void onPostExecute(SessionResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -490,11 +488,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public sessionResponse register(String arg0,String arg1,String arg2){
+    public SessionResponse register(String arg0, String arg1, String arg2){
         return register(arg0, arg1, arg2, null);
     }
     
-    public sessionResponse register(String arg0,String arg1,String arg2,List<HeaderProperty> headers){
+    public SessionResponse register(String arg0, String arg1, String arg2, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -521,7 +519,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    sessionResponse resultVariable =  new sessionResponse (j);
+                    SessionResponse resultVariable =  new SessionResponse(j);
                     return resultVariable;
                     
                 }
@@ -542,17 +540,17 @@ public class OnlineIntegrationService {
     
     public void joinMeetAsync(final String arg0,final int arg1,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetResponse>(){
+        new AsyncTask<Void, Void, MeetResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetResponse doInBackground(Void... params) {
+            protected MeetResponse doInBackground(Void... params) {
                 return joinMeet(arg0, arg1, headers);
             }
             @Override
-            protected void onPostExecute(meetResponse result)
+            protected void onPostExecute(MeetResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -562,11 +560,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetResponse joinMeet(String arg0,int arg1){
+    public MeetResponse joinMeet(String arg0, int arg1){
         return joinMeet(arg0, arg1, null);
     }
     
-    public meetResponse joinMeet(String arg0,int arg1,List<HeaderProperty> headers){
+    public MeetResponse joinMeet(String arg0, int arg1, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -592,7 +590,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetResponse resultVariable =  new meetResponse (j);
+                    MeetResponse resultVariable =  new MeetResponse(j);
                     return resultVariable;
                     
                 }
@@ -613,17 +611,17 @@ public class OnlineIntegrationService {
     
     public void getMeetsAsync(final String arg0,final String arg1,final boolean arg1Specified,final String arg2,final boolean arg2Specified,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetsResponse>(){
+        new AsyncTask<Void, Void, MeetsResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetsResponse doInBackground(Void... params) {
+            protected MeetsResponse doInBackground(Void... params) {
                 return getMeets(arg0, arg1, arg1Specified, arg2, arg2Specified, headers);
             }
             @Override
-            protected void onPostExecute(meetsResponse result)
+            protected void onPostExecute(MeetsResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -633,11 +631,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetsResponse getMeets(String arg0,String arg1,boolean arg1Specified,String arg2,boolean arg2Specified){
+    public MeetsResponse getMeets(String arg0, String arg1, boolean arg1Specified, String arg2, boolean arg2Specified){
         return getMeets(arg0, arg1, arg1Specified, arg2, arg2Specified, null);
     }
     
-    public meetsResponse getMeets(String arg0,String arg1,boolean arg1Specified,String arg2,boolean arg2Specified,List<HeaderProperty> headers){
+    public MeetsResponse getMeets(String arg0, String arg1, boolean arg1Specified, String arg2, boolean arg2Specified, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -666,7 +664,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetsResponse resultVariable =  new meetsResponse (j);
+                    MeetsResponse resultVariable =  new MeetsResponse(j);
                     return resultVariable;
                     
                 }
@@ -687,17 +685,17 @@ public class OnlineIntegrationService {
     
     public void createMeetAsync(final String arg0,final String arg1,final String arg2,final String arg3,final String arg4,final String arg5,final boolean arg5Specified,final int arg6,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, meetResponse>(){
+        new AsyncTask<Void, Void, MeetResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected meetResponse doInBackground(Void... params) {
+            protected MeetResponse doInBackground(Void... params) {
                 return createMeet(arg0, arg1, arg2, arg3, arg4, arg5, arg5Specified, arg6, headers);
             }
             @Override
-            protected void onPostExecute(meetResponse result)
+            protected void onPostExecute(MeetResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -707,11 +705,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public meetResponse createMeet(String arg0,String arg1,String arg2,String arg3,String arg4,String arg5,boolean arg5Specified,int arg6){
+    public MeetResponse createMeet(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, boolean arg5Specified, int arg6){
         return createMeet(arg0, arg1, arg2, arg3, arg4, arg5, arg5Specified, arg6, null);
     }
     
-    public meetResponse createMeet(String arg0,String arg1,String arg2,String arg3,String arg4,String arg5,boolean arg5Specified,int arg6,List<HeaderProperty> headers){
+    public MeetResponse createMeet(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, boolean arg5Specified, int arg6, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -743,7 +741,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    meetResponse resultVariable =  new meetResponse (j);
+                    MeetResponse resultVariable =  new MeetResponse(j);
                     return resultVariable;
                     
                 }
@@ -764,17 +762,17 @@ public class OnlineIntegrationService {
     
     public void getCategoriesAsync(final String arg0,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, categoriesResponse>(){
+        new AsyncTask<Void, Void, CategoriesResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected categoriesResponse doInBackground(Void... params) {
+            protected CategoriesResponse doInBackground(Void... params) {
                 return getCategories(arg0, headers);
             }
             @Override
-            protected void onPostExecute(categoriesResponse result)
+            protected void onPostExecute(CategoriesResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -784,11 +782,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public categoriesResponse getCategories(String arg0){
+    public CategoriesResponse getCategories(String arg0){
         return getCategories(arg0, null);
     }
     
-    public categoriesResponse getCategories(String arg0,List<HeaderProperty> headers){
+    public CategoriesResponse getCategories(String arg0, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -813,7 +811,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    categoriesResponse resultVariable =  new categoriesResponse (j);
+                    CategoriesResponse resultVariable =  new CategoriesResponse(j);
                     return resultVariable;
                     
                 }
@@ -834,17 +832,17 @@ public class OnlineIntegrationService {
     
     public void logoutAsync(final String arg0,final List<HeaderProperty> headers) throws Exception{
         
-        new AsyncTask<Void, Void, returnCodeResponse>(){
+        new AsyncTask<Void, Void, ReturnCodeResponse>(){
             @Override
             protected void onPreExecute() {
                 eventHandler.Wsdl2CodeStartedRequest();
             };
             @Override
-            protected returnCodeResponse doInBackground(Void... params) {
+            protected ReturnCodeResponse doInBackground(Void... params) {
                 return logout(arg0, headers);
             }
             @Override
-            protected void onPostExecute(returnCodeResponse result)
+            protected void onPostExecute(ReturnCodeResponse result)
             {
                 eventHandler.Wsdl2CodeEndedRequest();
                 if (result != null){
@@ -854,11 +852,11 @@ public class OnlineIntegrationService {
         }.execute();
     }
     
-    public returnCodeResponse logout(String arg0){
+    public ReturnCodeResponse logout(String arg0){
         return logout(arg0, null);
     }
     
-    public returnCodeResponse logout(String arg0,List<HeaderProperty> headers){
+    public ReturnCodeResponse logout(String arg0, List<HeaderProperty> headers){
         SoapSerializationEnvelope soapEnvelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         soapEnvelope.implicitTypes = true;
         soapEnvelope.dotNet = true;
@@ -883,7 +881,7 @@ public class OnlineIntegrationService {
                 if (result.getPropertyCount() > 0){
                     Object obj = result.getProperty(0);
                     SoapObject j = (SoapObject)obj;
-                    returnCodeResponse resultVariable =  new returnCodeResponse (j);
+                    ReturnCodeResponse resultVariable =  new ReturnCodeResponse(j);
                     return resultVariable;
                     
                 }

@@ -18,13 +18,13 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class returnCodeResponse implements KvmSerializable {
+public class ReturnCodeResponse implements KvmSerializable {
     
     public int returnCodeField;
     
-    public returnCodeResponse(){}
+    public ReturnCodeResponse(){}
     
-    public returnCodeResponse(SoapObject soapObject)
+    public ReturnCodeResponse(SoapObject soapObject)
     {
         if (soapObject == null)
             return;

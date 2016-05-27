@@ -11,9 +11,9 @@ import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.webwemser.web.OnlineIntegrationService;
-import com.webwemser.web.sessionData;
-import com.webwemser.web.sessionResponse;
-import com.webwemser.web.user;
+import com.webwemser.web.SessionData;
+import com.webwemser.web.SessionResponse;
+import com.webwemser.web.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -21,9 +21,9 @@ public class LoginActivity extends AppCompatActivity {
     private boolean savePassword, stayLoggedIn = true;
     private EditText username, password;
     private OnlineIntegrationService webservice;
-    public static sessionResponse session;
-    public static user user;
-    public static sessionData sessionData;
+    public static SessionResponse session;
+    public static User user;
+    public static SessionData sessionData;
     private final String TAG = "Webwemser Log";
     private String userString, pwString;
 
@@ -34,9 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize Webservice
         webservice = new OnlineIntegrationService();
-        user = new user();
-        sessionData = new sessionData();
-        session = new sessionResponse();
+        user = new User();
+        sessionData = new SessionData();
+        session = new SessionResponse();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_text);

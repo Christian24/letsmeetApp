@@ -19,15 +19,15 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class categoriesResponse implements KvmSerializable {
+public class CategoriesResponse implements KvmSerializable {
     
     public VectorString categories;
-    public sessionData session;
+    public SessionData session;
     public int returnCodeField;
     
-    public categoriesResponse(){}
+    public CategoriesResponse(){}
     
-    public categoriesResponse(SoapObject soapObject)
+    public CategoriesResponse(SoapObject soapObject)
     {
         if (soapObject == null)
             return;
@@ -39,7 +39,7 @@ public class categoriesResponse implements KvmSerializable {
         if (soapObject.hasProperty("session"))
         {
             SoapObject j = (SoapObject)soapObject.getProperty("session");
-            session =  new sessionData (j);
+            session =  new SessionData(j);
             
         }
         if (soapObject.hasProperty("returnCode"))
@@ -79,7 +79,7 @@ public class categoriesResponse implements KvmSerializable {
                 info.name = "categories";
                 break;
             case 1:
-                info.type = sessionData.class;
+                info.type = SessionData.class;
                 info.name = "session";
                 break;
             case 2:

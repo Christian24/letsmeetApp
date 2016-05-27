@@ -18,13 +18,13 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class category implements KvmSerializable {
+public class Category implements KvmSerializable {
     
     public String title;
     
-    public category(){}
+    public Category(){}
     
-    public category(SoapObject soapObject)
+    public Category(SoapObject soapObject)
     {
         if (soapObject == null)
             return;
