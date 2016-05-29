@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         userString = username.getText().toString();
         pwString = password.getText().toString();
         if(username.getText().toString().length()>3){
-            if(username.getText().toString().length()>5){
+            if(password.getText().toString().length()>5){
                 new LoginAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);

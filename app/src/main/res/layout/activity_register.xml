@@ -30,12 +30,27 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:maxLength="20"
         android:id="@+id/username_reg"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/pw_hint"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
+        android:lines="1"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:maxLength="20"
+        android:id="@+id/password_reg"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description_hint"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:lines="1"
@@ -43,7 +58,8 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:id="@+id/password_reg"/>
+        android:maxLength="120"
+        android:id="@+id/description_reg"/>
 
     <CheckedTextView
         android:layout_width="match_parent"

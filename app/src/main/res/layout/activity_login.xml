@@ -30,7 +30,8 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:maxLength="20"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+        android:maxLength="20"
         android:id="@+id/password_text"/>
 
     <CheckedTextView

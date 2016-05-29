@@ -19,8 +19,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
-    private EditText username, password;
-    private String userString, pwString;
+    private EditText username, password, description;
+    private String userString, pwString, descriptionString;
     private final String TAG = "Webwemser Log";
     private OnlineIntegrationService webservice;
 
@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_reg);
+        description = (EditText)findViewById(R.id.description_reg);
         password = (EditText) findViewById(R.id.password_reg);
         password.setTransformationMethod(new PasswordTransformationMethod());
 
@@ -68,8 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
     public void signup(View v){
         userString = username.getText().toString();
         pwString = password.getText().toString();
+        descriptionString = description.getText().toString();
         if(username.getText().toString().length()>3){
-            if(username.getText().toString().length()>5){
+            if(password.getText().toString().length()>5){
                 new RegisterAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);
@@ -90,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String ... strings) {
-            LoginActivity.session = webservice.register(userString, pwString, "Ich bin Klaus");
+            LoginActivity.session = webservice.register(userString, pwString, descriptionString);
             return "";
         }
 
