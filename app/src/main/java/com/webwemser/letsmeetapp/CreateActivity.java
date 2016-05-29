@@ -48,14 +48,7 @@ public class CreateActivity extends AppCompatActivity {
         if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
             if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
                 if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                    Meet meet = new Meet();
-                    meet.setAuthor("Meet Author");
-                    meet.setDatetime(date.getText().toString() + " - " +time.getText().toString());
-                    meet.setTitle(title.getText().toString());
-                    meet.setDescription(description.getText().toString());
-                    meet.setLocation(location.getText().toString());
-                    meet.setMaxGuests(Integer.parseInt(guests.getText().toString()));
-                    MainActivity.addMeetfromCreate(meet);
+                    //to do
                     this.finish();
                 }
                 else {

@@ -18,7 +18,6 @@ import org.ksoap2.serialization.PropertyInfo;
 public class KILcategoriesResponse extends KILsessionResponse implements KvmSerializable
 {
 
-    
     public ArrayList< String> categories =new ArrayList<String >();
 
     public KILcategoriesResponse ()
@@ -67,6 +66,10 @@ public class KILcategoriesResponse extends KILsessionResponse implements KvmSeri
 
 
 
+    }
+
+    public ArrayList<String> getCategories(){
+        return categories;
     }
 
     @Override

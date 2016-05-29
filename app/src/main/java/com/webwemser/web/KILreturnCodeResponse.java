@@ -63,9 +63,10 @@ public class KILreturnCodeResponse extends KILdataTransferObject implements KvmS
             }
 
         }
+    }
 
-
-
+    public int getReturnCode(){
+        return returnCode;
     }
 
     @Override

@@ -100,6 +100,14 @@ public class KILsessionData extends AttributeContainer implements KvmSerializabl
 
     }
 
+    public KILuserData getUserData(){
+        return user;
+    }
+
+    public String getSessionID(){
+        return identifier;
+    }
+
     @Override
     public java.lang.Object getProperty(int propertyIndex) {
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.

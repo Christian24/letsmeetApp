@@ -1,6 +1,7 @@
 package com.webwemser.letsmeetapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
+import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.KILreturnCodeResponse;
+import com.webwemser.web.Meet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,14 +29,13 @@ public class MainActivity extends AppCompatActivity {
     static final String KEY_DESCRIPTION = "description";
     static final String KEY_DATE = "date";
     private ListView list;
-    public static ArrayList<Meet> meets = new ArrayList<>();
     private MyListAdapter adapter;
     private static final String TAG = "LOGGING: ";
     public static final String KEY_POSITION = "position";
     private FABToolbarLayout fab_toolbar;
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;
-
+    private KILOnlineIntegrationServiceSoapBinding webservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,27 +44,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Initialize Webservice components
+        webservice = new KILOnlineIntegrationServiceSoapBinding();
+
         //Initialize FAB_Toolbar
         fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
 
         //Prepares search spinner
-        addItemsOnSpinner();
+        new CategoryAsync().execute();
 
         //Initialize swipe down to refresh feature
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         createSwipeLayout();
-
-        //Temporary for testing
-        Dummy dummy = new Dummy();
-        meets = dummy.getAllMeets();
-        showDummyMeets();
     }
 
     //Updates screen after switching back to MainActivty
     @Override
     protected void onResume() {
         super.onResume();
-        showDummyMeets();
+        showMeets();
         fab_toolbar.hide();
     }
 
@@ -91,25 +93,10 @@ public class MainActivity extends AppCompatActivity {
         }
         //Logout button
         if (id == R.id.action_logout) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            new LogoutAsync().execute();
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    //Adds categories to spinner
-    public void addItemsOnSpinner() {
-        searchSpinner = (Spinner) findViewById(R.id.search_spinner);
-        List<String> list = new ArrayList<String>();
-        list.add("All Categories");
-        list.add("Category 1");
-        list.add("Category 2");
-        list.add("Category 3");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        searchSpinner.setAdapter(dataAdapter);
     }
 
     //Shows FAB Toolbar
@@ -130,23 +117,13 @@ public class MainActivity extends AppCompatActivity {
 
     //Called by CreateActivity for adding a new Meet
     public static void addMeetfromCreate(Meet m){
-        meets.add(m);
-        for(int i = 0; i<meets.size(); i++){
-            Log.i(TAG, meets.get(i).getTitle());
-        }
+
     }
 
     //Displays Dummy Meets
-    private void showDummyMeets(){
+    private void showMeets(){
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
-        for(int i = 0; i < meets.size(); i++){
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put(KEY_TITLE, meets.get(i).getTitle());
-            map.put(KEY_DESCRIPTION, meets.get(i).getDescription());
-            map.put(KEY_DATE, meets.get(i).getDatetime());
-            meetsList.add(map);
-            Log.i(TAG, meets.get(i).getTitle());
-        }
+
         list = (ListView)findViewById(R.id.list);
         // Getting adapter by passing xml data ArrayList
         adapter = new MyListAdapter(this, meetsList);
@@ -172,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.;
-                showDummyMeets();
+                showMeets();
             }
         });
         // Configure the refreshing colors
@@ -182,4 +159,70 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
+    //Called by onCreate method
+    class LoadMeetsAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                //webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), );
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+
+        }
+    }
+
+    //Called on logout
+    class LogoutAsync extends AsyncTask<String, Integer, KILreturnCodeResponse> {
+
+        @Override
+        protected KILreturnCodeResponse doInBackground(String ... strings) {
+            try {
+                return webservice.logout(LoginActivity.session.getSessionData().getSessionID());
+            }
+            catch (Exception e){
+                return new KILreturnCodeResponse();
+            }
+        }
+
+        protected void onPostExecute(KILreturnCodeResponse response) {
+            Log.i(TAG, ""+response.getReturnCode());
+            if(response.getReturnCode()==200){
+                Log.i(TAG, "Logout successful");
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Log.i(TAG, "Logout failed");
+                Toast.makeText(MainActivity.this, getString(R.string.failed_logout), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    //Fetch Categories
+    class CategoryAsync extends AsyncTask<String, Integer, ArrayList<String>> {
+
+        @Override
+        protected ArrayList<String> doInBackground(String ... strings) {
+            try {
+                return webservice.getCategories(LoginActivity.session.getSessionData().getSessionID()).getCategories();
+            }
+            catch (Exception e){
+                return new ArrayList<>();
+            }
+        }
+
+        protected void onPostExecute(ArrayList<String> response) {
+            searchSpinner = (Spinner) findViewById(R.id.search_spinner);
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            searchSpinner.setAdapter(dataAdapter);
+        }
+    }
 }

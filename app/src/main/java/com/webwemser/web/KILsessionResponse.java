@@ -58,6 +58,10 @@ public class KILsessionResponse extends KILreturnCodeResponse implements KvmSeri
 
     }
 
+    public KILsessionData getSessionData(){
+        return session;
+    }
+
     @Override
     public java.lang.Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();

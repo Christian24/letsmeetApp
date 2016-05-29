@@ -89,6 +89,14 @@ public class KILuserData extends AttributeContainer implements KvmSerializable
 
     }
 
+    public String getUserName(){
+        return userName;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
     @Override
     public java.lang.Object getProperty(int propertyIndex) {
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.

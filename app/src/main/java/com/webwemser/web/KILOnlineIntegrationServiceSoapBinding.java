@@ -435,19 +435,42 @@ public class KILOnlineIntegrationServiceSoapBinding
         });
     }
     
-    public String getMeets(final String arg0,final String arg1,final String arg2 ) throws java.lang.Exception
+    public KILmeetsResponse getMeets(final String arg0,final String arg1,final String arg2 ) throws java.lang.Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, KILOperationResult< String>> getMeetsAsync(final String arg0,final String arg1,final String arg2)
-    {
-        return executeAsync(new KILFunctions.IFunc< String>() {
-            public String Func() throws java.lang.Exception {
-                return getMeets( arg0,arg1,arg2);
+        return (KILmeetsResponse)execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "getMeets");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg1!=null?arg1:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
             }
-        });
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILmeetsResponse)getResult(KILmeetsResponse.class,__result,"return",__envelope);
+            }
+        },"");
     }
     
     public String createMeet(final String arg0,final String arg1,final String arg2,final String arg3,final String arg4,final String arg5,final String arg6 ) throws java.lang.Exception
@@ -465,37 +488,58 @@ public class KILOnlineIntegrationServiceSoapBinding
         });
     }
     
-    public String getCategories(final String arg0 ) throws java.lang.Exception
+    public KILcategoriesResponse getCategories(final String arg0 ) throws java.lang.Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, KILOperationResult< String>> getCategoriesAsync(final String arg0)
-    {
-        return executeAsync(new KILFunctions.IFunc< String>() {
-            public String Func() throws java.lang.Exception {
-                return getCategories( arg0);
+        return (KILcategoriesResponse)execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "leaveMeet");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
             }
-        });
-    }
-    
-    public String logout(final String arg0 ) throws java.lang.Exception
-    {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, KILOperationResult< String>> logoutAsync(final String arg0)
-    {
-        return executeAsync(new KILFunctions.IFunc< String>() {
-            public String Func() throws java.lang.Exception {
-                return logout( arg0);
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILcategoriesResponse)getResult(KILcategoriesResponse.class,__result,"return",__envelope);
             }
-        });
+        },"");
     }
 
-    
+    public KILreturnCodeResponse logout(final String arg0 ) throws java.lang.Exception
+    {
+        return (KILreturnCodeResponse) execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "logout");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILreturnCodeResponse)getResult(KILreturnCodeResponse.class,__result,"return",__envelope);
+            }
+        },"");
+    }
+
     protected java.lang.Object execute(KILIWcfMethod wcfMethod,String methodName) throws java.lang.Exception
     {
         org.ksoap2.transport.Transport __httpTransport=createTransport();

@@ -1,6 +1,9 @@
 package com.webwemser.letsmeetapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,27 +67,35 @@ public class RegisterActivity extends AppCompatActivity {
 
     //Signup method
     public void signup(View v){
-        userString = username.getText().toString();
-        pwString = password.getText().toString();
-        descriptionString = description.getText().toString();
-        if(username.getText().toString().length()>3){
-            if(password.getText().toString().length()>5){
-                new RegisterAsync().execute();
-                Log.i(TAG, LoginActivity.session.getProperty(0)+"");
-                if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==201){
-                    Intent intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
+        if(isOnline()){
+            userString = username.getText().toString();
+            pwString = password.getText().toString();
+            descriptionString = description.getText().toString();
+            if(username.getText().toString().length()>3){
+                if(password.getText().toString().length()>5){
+                    new RegisterAsync().execute();
+                }
+                else{
+                    Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();
                 }
             }
             else{
-                Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.short_username), Toast.LENGTH_SHORT).show();
             }
         }
-        else{
-            Toast.makeText(this, getString(R.string.short_username), Toast.LENGTH_SHORT).show();
+        else {
+            Toast.makeText(this, getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
         }
     }
 
+    //Check for internet connection
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    //Called by register method
     class RegisterAsync extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -99,7 +110,14 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-
+            Log.i(TAG, LoginActivity.session.getProperty(0)+"");
+            if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(RegisterActivity.this, getString(R.string.taken_username), Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

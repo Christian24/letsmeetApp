@@ -31,4 +31,12 @@
     <string name="filter">Filter</string>
     <string name="short_username">Username to short</string>
     <string name="short_password">Password to short</string>
+    <string name="wrong_credentials">Wrong username or password</string>
+    <string name="taken_username">Username already taken</string>
+    <string name="delete_account">" Delete account "</string>
+    <string name="are_u_sure">Are you sure?</string>
+    <string name="delete_account_long">Do you want to delete your account?</string>
+    <string name="delete_account_successful">Your account was successfully deleted</string>
+    <string name="failed_logout">Logout failed</string>
+    <string name="check_connection">Check your internet connection</string>
 </resources>

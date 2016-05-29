@@ -31,4 +31,12 @@
     <string name="filter">Filter</string>
     <string name="short_username">Der Benutzername ist zu kurz</string>
     <string name="short_password">Das Passwort ist zu kurz</string>
+    <string name="wrong_credentials">Falscher Benutzername oder Passwort</string>
+    <string name="taken_username">Benutzername bereits vergeben</string>
+    <string name="delete_account">" Profil löschen "</string>
+    <string name="are_u_sure">Sind sie sicher?</string>
+    <string name="delete_account_long">Möchten sie ihr Profil wirklich löschen?</string>
+    <string name="delete_account_successful">Ihr Profil wurde erfolgreich gelöscht</string>
+    <string name="failed_logout">Abmelden fehlgeschlagen</string>
+    <string name="check_connection">Prüfen sie ihre Internetverbinung</string>
 </resources>
