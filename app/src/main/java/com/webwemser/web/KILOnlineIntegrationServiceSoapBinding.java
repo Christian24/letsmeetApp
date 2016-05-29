@@ -369,20 +369,56 @@ public class KILOnlineIntegrationServiceSoapBinding
         });
     }
     
-    public String register(final String arg0,final String arg1,final String arg2 ) throws java.lang.Exception
+    public KILsessionResponse register(final String arg0,final String arg1,final String arg2 ) throws java.lang.Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
+        return (KILsessionResponse)execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "register");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg1!=null?arg1:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILsessionResponse)getResult(KILsessionResponse.class,__result,"return",__envelope);
+            }
+        },"");
     }
-    
+     /*
     public android.os.AsyncTask< Void, Void, KILOperationResult< String>> registerAsync(final String arg0,final String arg1,final String arg2)
     {
+
         return executeAsync(new KILFunctions.IFunc< String>() {
             public String Func() throws java.lang.Exception {
                 return register( arg0,arg1,arg2);
             }
         });
+
     }
+
+    */
     
     public String joinMeet(final String arg0,final String arg1 ) throws java.lang.Exception
     {

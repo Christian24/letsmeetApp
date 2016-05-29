@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 new RegisterAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);
-                LoginActivity.sessionData = (KILsessionData)LoginActivity.session.getProperty(0);
+                //LoginActivity.sessionData = (KILsessionData)LoginActivity.session.getProperty(0);
                 //LoginActivity.user = (user)LoginActivity.sessionData.getProperty(2);
                 Toast.makeText(this, ""+LoginActivity.session.getProperty(1), Toast.LENGTH_SHORT).show();
             }
@@ -88,7 +88,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String ... strings) {
-            //LoginActivity.session = webservice.register(userString, pwString, descriptionString);
+            try {
+                LoginActivity.session = webservice.register(userString, pwString, descriptionString);
+            }
+            catch (Exception e){
+
+            }
             return "";
         }
 
