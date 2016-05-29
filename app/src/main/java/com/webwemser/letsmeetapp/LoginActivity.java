@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.KILsessionData;
 import com.webwemser.web.KILsessionResponse;
@@ -78,10 +77,11 @@ public class LoginActivity extends AppCompatActivity {
         if(username.getText().toString().length()>3){
             if(password.getText().toString().length()>5){
                 new LoginAsync().execute();
-                //Intent intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
-                if(session==null)Log.i(TAG, "SessionResponse = null");
-                else Log.i(TAG, "SessionResponse not null");
+                Log.i(TAG, session.getProperty(0)+"");
+                if(Integer.parseInt(session.getProperty(0).toString())==201){
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
             else{
                 Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();

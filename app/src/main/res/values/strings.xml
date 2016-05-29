@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">letsMeet</string>
     <string name="action_settings">Settings</string>
-    <string name="user_hint">Username or email</string>
+    <string name="user_hint">Username</string>
     <string name="pw_hint">Password</string>
     <string name="title_hint">Meet title</string>
     <string name="save_credentials">Save password</string>

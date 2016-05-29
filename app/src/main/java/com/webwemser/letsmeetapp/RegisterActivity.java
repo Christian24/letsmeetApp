@@ -1,15 +1,16 @@
 package com.webwemser.letsmeetapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILsessionData;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -69,11 +70,11 @@ public class RegisterActivity extends AppCompatActivity {
         if(username.getText().toString().length()>3){
             if(password.getText().toString().length()>5){
                 new RegisterAsync().execute();
-                //Intent intent = new Intent(this, MainActivity.class);
-                //startActivity(intent);
-                //LoginActivity.sessionData = (KILsessionData)LoginActivity.session.getProperty(0);
-                //LoginActivity.user = (user)LoginActivity.sessionData.getProperty(2);
-                Toast.makeText(this, ""+LoginActivity.session.getProperty(1), Toast.LENGTH_SHORT).show();
+                Log.i(TAG, LoginActivity.session.getProperty(0)+"");
+                if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==201){
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
             else{
                 Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();
