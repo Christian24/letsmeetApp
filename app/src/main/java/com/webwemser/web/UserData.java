@@ -18,14 +18,14 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class userData implements KvmSerializable {
+public class UserData implements KvmSerializable {
     
     public String description;
     public String userName;
     
-    public userData(){}
+    public UserData(){}
     
-    public userData(SoapObject soapObject)
+    public UserData(SoapObject soapObject)
     {
         if (soapObject == null)
             return;

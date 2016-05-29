@@ -1,18 +1,15 @@
 package com.webwemser.letsmeetapp;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.webwemser.web.OnlineIntegrationService;
-import com.webwemser.web.sessionData;
-import com.webwemser.web.user;
+import com.webwemser.web.SessionData;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -75,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 new RegisterAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);
-                LoginActivity.sessionData = (sessionData)LoginActivity.session.getProperty(0);
+                LoginActivity.sessionData = (SessionData)LoginActivity.session.getProperty(0);
                 //LoginActivity.user = (user)LoginActivity.sessionData.getProperty(2);
                 Toast.makeText(this, ""+LoginActivity.session.getProperty(1), Toast.LENGTH_SHORT).show();
             }

@@ -15,10 +15,10 @@ import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
+
 import java.util.Vector;
 
-public class Vectoruser extends Vector<user> implements KvmSerializable {
+public class Vectoruser extends Vector<User> implements KvmSerializable {
     
     
     public Vectoruser(){}
@@ -33,7 +33,7 @@ public class Vectoruser extends Vector<user> implements KvmSerializable {
                 Object obj = soapObject.getProperty(i0);
                 if (obj!=null && obj.getClass().equals(SoapObject.class)){
                     SoapObject j0 =(SoapObject) soapObject.getProperty(i0);
-                    user j1= new user(j0);
+                    User j1= new User(j0);
                     add(j1);
                 }
             }
@@ -52,7 +52,7 @@ public class Vectoruser extends Vector<user> implements KvmSerializable {
     @Override
     public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
         info.name = "user";
-        info.type = user.class;
+        info.type = User.class;
     }
     
 

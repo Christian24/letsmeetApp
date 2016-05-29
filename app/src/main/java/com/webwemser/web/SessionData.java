@@ -19,15 +19,15 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class sessionData implements KvmSerializable {
+public class SessionData implements KvmSerializable {
     
     public boolean hasEnded;
     public String identifier;
-    public userData user;
+    public UserData user;
     
-    public sessionData(){}
+    public SessionData(){}
     
-    public sessionData(SoapObject soapObject)
+    public SessionData(SoapObject soapObject)
     {
         if (soapObject == null)
             return;
@@ -54,7 +54,7 @@ public class sessionData implements KvmSerializable {
         if (soapObject.hasProperty("user"))
         {
             SoapObject j = (SoapObject)soapObject.getProperty("user");
-            user =  new userData (j);
+            user =  new UserData(j);
             
         }
     }
@@ -88,7 +88,7 @@ public class sessionData implements KvmSerializable {
                 info.name = "identifier";
                 break;
             case 2:
-                info.type = userData.class;
+                info.type = UserData.class;
                 info.name = "user";
                 break;
         }

@@ -19,16 +19,16 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class user implements KvmSerializable {
+public class User implements KvmSerializable {
     
     public String description;
     public Vectormeet meetsCreated;
     public String password;
     public String userName;
     
-    public user(){}
+    public User(){}
     
-    public user(SoapObject soapObject)
+    public User(SoapObject soapObject)
     {
         if (soapObject == null)
             return;

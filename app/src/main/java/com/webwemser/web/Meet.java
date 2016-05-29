@@ -19,10 +19,10 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class meet implements KvmSerializable {
+public class Meet implements KvmSerializable {
     
-    public user admin;
-    public category category;
+    public User admin;
+    public Category category;
     public String dateTime;
     public boolean dateTimeSpecified;
     public String description;
@@ -31,22 +31,22 @@ public class meet implements KvmSerializable {
     public String title;
     public Vectoruser visitors;
     
-    public meet(){}
+    public Meet(){}
     
-    public meet(SoapObject soapObject)
+    public Meet(SoapObject soapObject)
     {
         if (soapObject == null)
             return;
         if (soapObject.hasProperty("admin"))
         {
             SoapObject j = (SoapObject)soapObject.getProperty("admin");
-            admin =  new user (j);
+            admin =  new User(j);
             
         }
         if (soapObject.hasProperty("category"))
         {
             SoapObject j = (SoapObject)soapObject.getProperty("category");
-            category =  new category (j);
+            category =  new Category (j);
             
         }
         if (soapObject.hasProperty("dateTime"))
@@ -149,11 +149,11 @@ public class meet implements KvmSerializable {
     public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
         switch(index){
             case 0:
-                info.type = user.class;
+                info.type = User.class;
                 info.name = "admin";
                 break;
             case 1:
-                info.type = category.class;
+                info.type = Category.class;
                 info.name = "category";
                 break;
             case 2:

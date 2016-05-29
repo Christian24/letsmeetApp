@@ -18,12 +18,12 @@ import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 
-public class dataTransferObject implements KvmSerializable {
+public class DataTransferObject implements KvmSerializable {
     
     
-    public dataTransferObject(){}
+    public DataTransferObject(){}
     
-    public dataTransferObject(SoapObject soapObject)
+    public DataTransferObject(SoapObject soapObject)
     {
         if (soapObject == null)
             return;

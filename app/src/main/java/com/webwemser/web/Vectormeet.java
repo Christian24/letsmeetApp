@@ -16,11 +16,11 @@ import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 import java.util.Hashtable;
 import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapPrimitive;
+
 import java.util.Vector;
 
 
-public class Vectormeet extends Vector<meet> implements KvmSerializable {
+public class Vectormeet extends Vector<Meet> implements KvmSerializable {
     
     
     public Vectormeet(){}
@@ -35,7 +35,7 @@ public class Vectormeet extends Vector<meet> implements KvmSerializable {
                 Object obj = soapObject.getProperty(i0);
                 if (obj!=null && obj.getClass().equals(SoapObject.class)){
                     SoapObject j0 =(SoapObject) soapObject.getProperty(i0);
-                    meet j1= new meet(j0);
+                    Meet j1= new Meet(j0);
                     add(j1);
                 }
             }
@@ -54,7 +54,7 @@ public class Vectormeet extends Vector<meet> implements KvmSerializable {
     @Override
     public void getPropertyInfo(int index, @SuppressWarnings("rawtypes") Hashtable arg1, PropertyInfo info) {
         info.name = "meet";
-        info.type = meet.class;
+        info.type = Meet.class;
     }
     
 
