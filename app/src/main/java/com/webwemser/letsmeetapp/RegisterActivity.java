@@ -8,9 +8,8 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.webwemser.web.OnlineIntegrationService;
-import com.webwemser.web.SessionData;
-
+import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.KILsessionData;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -19,7 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText username, password, description;
     private String userString, pwString, descriptionString;
     private final String TAG = "Webwemser Log";
-    private OnlineIntegrationService webservice;
+    private KILOnlineIntegrationServiceSoapBinding webservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //Initialize Webservice
-        webservice = new OnlineIntegrationService();
+        webservice = new KILOnlineIntegrationServiceSoapBinding();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_reg);
@@ -72,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 new RegisterAsync().execute();
                 //Intent intent = new Intent(this, MainActivity.class);
                 //startActivity(intent);
-                LoginActivity.sessionData = (SessionData)LoginActivity.session.getProperty(0);
+                LoginActivity.sessionData = (KILsessionData)LoginActivity.session.getProperty(0);
                 //LoginActivity.user = (user)LoginActivity.sessionData.getProperty(2);
                 Toast.makeText(this, ""+LoginActivity.session.getProperty(1), Toast.LENGTH_SHORT).show();
             }
@@ -89,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String ... strings) {
-            LoginActivity.session = webservice.register(userString, pwString, descriptionString);
+            //LoginActivity.session = webservice.register(userString, pwString, descriptionString);
             return "";
         }
 

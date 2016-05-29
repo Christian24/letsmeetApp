@@ -10,20 +10,21 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.webwemser.web.OnlineIntegrationService;
-import com.webwemser.web.SessionData;
-import com.webwemser.web.SessionResponse;
-import com.webwemser.web.User;
+
+import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.KILsessionData;
+import com.webwemser.web.KILsessionResponse;
+import com.webwemser.web.KILuser;
 
 public class LoginActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
     private EditText username, password;
-    private OnlineIntegrationService webservice;
-    public static SessionResponse session;
-    public static User user;
-    public static SessionData sessionData;
+    private KILOnlineIntegrationServiceSoapBinding webservice;
+    public static KILsessionResponse session;
+    public static KILuser user;
+    public static KILsessionData sessionData;
     private final String TAG = "Webwemser Log";
     private String userString, pwString;
 
@@ -33,10 +34,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Initialize Webservice
-        webservice = new OnlineIntegrationService();
-        user = new User();
-        sessionData = new SessionData();
-        session = new SessionResponse();
+        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        user = new KILuser();
+        sessionData = new KILsessionData();
+        session = new KILsessionResponse();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_text);
@@ -101,7 +102,13 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String ... strings) {
-            session = webservice.login(userString, pwString);
+            try{
+                session = webservice.login(userString, pwString);
+            }
+            catch (Exception e){
+
+            }
+
             return "";
         }
 
