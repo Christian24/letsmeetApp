@@ -17,11 +17,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.KILmeet;
 import com.webwemser.web.KILreturnCodeResponse;
-import com.webwemser.web.Meet;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
         //Initialize swipe down to refresh feature
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         createSwipeLayout();
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        new LogoutAsync().execute();
     }
 
     //Updates screen after switching back to MainActivty
@@ -116,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Called by CreateActivity for adding a new Meet
-    public static void addMeetfromCreate(Meet m){
+    public static void addMeetfromCreate(KILmeet m){
 
     }
 
@@ -199,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                Log.i(TAG, "Logout failed");
+                Log.i(TAG, LoginActivity.session.getSessionData().getSessionID());
                 Toast.makeText(MainActivity.this, getString(R.string.failed_logout), Toast.LENGTH_SHORT).show();
             }
         }
@@ -219,10 +224,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(ArrayList<String> response) {
-            searchSpinner = (Spinner) findViewById(R.id.search_spinner);
-            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            searchSpinner.setAdapter(dataAdapter);
+            if(response.size()==0){
+                //TODO: Display that there are no meets to display
+            }
+            else{
+                searchSpinner = (Spinner) findViewById(R.id.search_spinner);
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                searchSpinner.setAdapter(dataAdapter);
+            }
         }
     }
 }

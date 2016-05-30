@@ -57,7 +57,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="@color/black"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="true"
         android:clickable="true"/>
 
     <CheckedTextView
@@ -69,7 +68,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="@color/black"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="true"
         android:clickable="true"/>
 
     <LinearLayout
