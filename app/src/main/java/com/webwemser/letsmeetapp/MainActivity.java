@@ -225,14 +225,12 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(ArrayList<String> response) {
             if(response.size()==0){
-                //TODO: Display that there are no meets to display
+                response.add(getString(R.string.load_categories));
             }
-            else{
-                searchSpinner = (Spinner) findViewById(R.id.search_spinner);
-                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
-                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                searchSpinner.setAdapter(dataAdapter);
-            }
+            searchSpinner = (Spinner) findViewById(R.id.search_spinner);
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            searchSpinner.setAdapter(dataAdapter);
         }
     }
 }

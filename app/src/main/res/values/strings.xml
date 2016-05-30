@@ -39,4 +39,5 @@
     <string name="delete_account_successful">Your account was successfully deleted</string>
     <string name="failed_logout">Logout failed</string>
     <string name="check_connection">Check your internet connection</string>
+    <string name="load_categories">Unable to load categories</string>
 </resources>

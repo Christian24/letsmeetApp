@@ -39,4 +39,5 @@
     <string name="delete_account_successful">Ihr Profil wurde erfolgreich gelöscht</string>
     <string name="failed_logout">Abmelden fehlgeschlagen</string>
     <string name="check_connection">Prüfen sie ihre Internetverbinung</string>
+    <string name="load_categories">Kategorien konnten nicht geladen werden</string>
 </resources>
