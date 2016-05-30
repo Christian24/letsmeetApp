@@ -495,7 +495,7 @@ public class KILOnlineIntegrationServiceSoapBinding
             @Override
             public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
                 KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                SoapObject __soapReq = new SoapObject("http://web/", "leaveMeet");
+                SoapObject __soapReq = new SoapObject("http://web/", "getCategories");
                 __envelope.setOutputSoapObject(__soapReq);
                 PropertyInfo __info=null;
                 __info = new PropertyInfo();
