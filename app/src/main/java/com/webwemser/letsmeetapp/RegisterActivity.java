@@ -110,7 +110,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            Log.i(TAG, LoginActivity.session.getProperty(0)+"");
             if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                 startActivity(intent);
