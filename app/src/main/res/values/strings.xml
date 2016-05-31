@@ -43,4 +43,8 @@
     <string name="error">An error occurred</string>
     <string name="wrong_password">Wrong password</string>
     <string name="enter_password">Please enter your password</string>
+    <string name="change_password">" Change password "</string>
+    <string name="change_password_new">Enter a new password</string>
+    <string name="password_success">Password changed successfully</string>
+    <string name="password_wasnt_changed">Password has not been changed, it doesnt met the rules</string>
 </resources>

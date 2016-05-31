@@ -607,13 +607,13 @@ public class KILOnlineIntegrationServiceSoapBinding
         return new java.lang.Exception(fault.faultstring);
     }
 
-    public KILsessionResponse updateUser(final String arg0, final String arg1, final String arg2) throws java.lang.Exception {
+    public KILsessionResponse updateUserDescription(final String arg0, final String arg1) throws java.lang.Exception {
         return (KILsessionResponse) execute(new KILIWcfMethod()
         {
             @Override
             public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
                 KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                SoapObject __soapReq = new SoapObject("http://web/", "updateUser");
+                SoapObject __soapReq = new SoapObject("http://web/", "updateUserDescription");
                 __envelope.setOutputSoapObject(__soapReq);
                 PropertyInfo __info=null;
                 __info = new PropertyInfo();
@@ -622,15 +622,42 @@ public class KILOnlineIntegrationServiceSoapBinding
                 __info.type=PropertyInfo.STRING_CLASS;
                 __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg1";
                 __info.type=PropertyInfo.STRING_CLASS;
                 __info.setValue(arg1!=null?arg1:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILsessionResponse)getResult(KILsessionResponse.class,__result,"return",__envelope);
+            }
+        },"");
+    }
+
+    public KILsessionResponse updateUserPassword(final String arg0, final String arg1) throws java.lang.Exception {
+        return (KILsessionResponse) execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "updateUserPassword");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
                 __info.namespace="";
-                __info.name="arg2";
+                __info.name="arg0";
                 __info.type=PropertyInfo.STRING_CLASS;
-                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg1!=null?arg1:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 return __envelope;
             }

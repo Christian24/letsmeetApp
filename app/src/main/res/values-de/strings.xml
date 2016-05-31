@@ -43,4 +43,8 @@
     <string name="error">Es ist ein Fehler aufgetreten</string>
     <string name="wrong_password">Falsches Passwort</string>
     <string name="enter_password">Bitte geben sie ihr Passwort ein</string>
+    <string name="change_password">" Passwort ändern "</string>
+    <string name="change_password_new">Bitte ein neues Passwort eingeben</string>
+    <string name="password_success">Passwort wurde erfolgreich geändert</string>
+    <string name="password_wasnt_changed">Das Passwort wurde nicht geändert (zu kurz)</string>
 </resources>

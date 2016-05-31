@@ -15,8 +15,8 @@ import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 
 public class AccountActivity extends AppCompatActivity {
 
-    private TextView username;
-    private EditText description;
+    private TextView username, label;
+    private EditText description, password;
     private String pw, desc = "";
     private KILOnlineIntegrationServiceSoapBinding webservice;
 
@@ -31,6 +31,8 @@ public class AccountActivity extends AppCompatActivity {
         //Initialize Views
         username = (TextView)findViewById(R.id.accounnt_name);
         description = (EditText)findViewById(R.id.account_description);
+        label = (TextView)findViewById(R.id.account_password_label);
+        password = (EditText)findViewById(R.id.account_password);
 
         //Insert user info
         try{
@@ -45,33 +47,8 @@ public class AccountActivity extends AppCompatActivity {
 
     //Just closes the Activity at the moment, should later save account details
     public void saveAccount(View v){
-        final EditText edt = new EditText(getApplicationContext());
-        edt.setTextColor(getResources().getColor(R.color.black));
-        edt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        edt.setHint("Enter password");
-        new AlertDialog.Builder(AccountActivity.this)
-                .setTitle(getString(R.string.enter_password))
-                .setView(edt)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(edt.getText().toString().length()>5){
-                            pw = edt.getText().toString();
-                            desc = description.getText().toString();
-                            new UpdateUserAsync().execute();
-                        }
-                        else {
-                            Toast.makeText(AccountActivity.this, getString(R.string.wrong_password), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-
+        desc = description.getText().toString();
+        new UpdateDescriptionAsync().execute();
     }
 
     //Deletes account and launches LoginActivty
@@ -95,13 +72,20 @@ public class AccountActivity extends AppCompatActivity {
                 .show();
     }
 
+    //Makes password views visible for user
+    public void changePassword(View v){
+        label.setVisibility(View.VISIBLE);
+        password.setVisibility(View.VISIBLE);
+    }
+
     //Called on save user
-    class UpdateUserAsync extends AsyncTask<String, String, String> {
+    class UpdateDescriptionAsync extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String ... strings) {
             try {
-                LoginActivity.session = webservice.updateUser(LoginActivity.session.getSessionData().getSessionID(), pw, desc);
+                Log.i("Session ID ", LoginActivity.session.getSessionData().getSessionID());
+                LoginActivity.session = webservice.updateUserDescription(LoginActivity.session.getSessionData().getSessionID(), desc);
                 return LoginActivity.session.getSessionData().getSessionID();
             }
             catch (Exception e){
@@ -112,8 +96,43 @@ public class AccountActivity extends AppCompatActivity {
         protected void onPostExecute(String response) {
             Log.i("LOG", response);
             if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
+                if(password.length()>5){
+                    new UpdatePasswordAsync().execute();
+                    AccountActivity.this.finish();
+                }
+                else{
+                    if(password.getVisibility() == View.VISIBLE){
+                        Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
+                    }
+                    AccountActivity.this.finish();
+                }
+            }
+            else Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Called on change password
+    class UpdatePasswordAsync extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                Log.i("Session ID ", LoginActivity.session.getSessionData().getSessionID());
+                LoginActivity.session = webservice.updateUserPassword(LoginActivity.session.getSessionData().getSessionID(), pw);
+                return LoginActivity.session.getSessionData().getSessionID();
+            }
+            catch (Exception e){
+                return "";
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            Log.i("LOG", response);
+            if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
+                Toast.makeText(AccountActivity.this, getString(R.string.password_success), Toast.LENGTH_LONG).show();
                 AccountActivity.this.finish();
             }
+            else Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
         }
     }
 }
