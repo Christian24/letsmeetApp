@@ -31,8 +31,14 @@ public class AccountActivity extends AppCompatActivity {
         description = (EditText)findViewById(R.id.account_description);
 
         //Insert user info
-        username.setText(LoginActivity.session.getSessionData().getUserData().getUserName());
-        description.setText(LoginActivity.session.getSessionData().getUserData().getDescription());
+        try{
+            username.setText(LoginActivity.session.getSessionData().getUserData().getUserName());
+            description.setText(LoginActivity.session.getSessionData().getUserData().getDescription());
+        }
+        catch (NullPointerException e){
+            username.setText(getString(R.string.error));
+            description.setText(getString(R.string.error));
+        }
     }
 
     //Just closes the Activity at the moment, should later save account details

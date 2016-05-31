@@ -40,4 +40,5 @@
     <string name="failed_logout">Abmelden fehlgeschlagen</string>
     <string name="check_connection">Prüfen sie ihre Internetverbinung</string>
     <string name="load_categories">Kategorien konnten nicht geladen werden</string>
+    <string name="error">Es ist ein Fehler aufgetreten</string>
 </resources>

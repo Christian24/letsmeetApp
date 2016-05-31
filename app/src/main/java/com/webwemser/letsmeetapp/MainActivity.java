@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop(){
-        super.onStop();
+    public void onBackPressed(){
         new LogoutAsync().execute();
     }
 
