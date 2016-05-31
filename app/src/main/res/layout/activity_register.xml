@@ -58,7 +58,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:maxLength="120"
+        android:maxLength="80"
         android:id="@+id/description_reg"/>
 
     <CheckedTextView

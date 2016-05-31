@@ -41,4 +41,6 @@
     <string name="check_connection">Check your internet connection</string>
     <string name="load_categories">Unable to load categories</string>
     <string name="error">An error occurred</string>
+    <string name="wrong_password">Wrong password</string>
+    <string name="enter_password">Please enter your password</string>
 </resources>

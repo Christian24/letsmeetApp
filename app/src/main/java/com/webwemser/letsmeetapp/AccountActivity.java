@@ -3,19 +3,21 @@ package com.webwemser.letsmeetapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 
 public class AccountActivity extends AppCompatActivity {
 
     private TextView username;
     private EditText description;
+    private String pw, desc = "";
     private KILOnlineIntegrationServiceSoapBinding webservice;
 
     @Override
@@ -43,7 +45,33 @@ public class AccountActivity extends AppCompatActivity {
 
     //Just closes the Activity at the moment, should later save account details
     public void saveAccount(View v){
-        this.finish();
+        final EditText edt = new EditText(getApplicationContext());
+        edt.setTextColor(getResources().getColor(R.color.black));
+        edt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        edt.setHint("Enter password");
+        new AlertDialog.Builder(AccountActivity.this)
+                .setTitle(getString(R.string.enter_password))
+                .setView(edt)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(edt.getText().toString().length()>5){
+                            pw = edt.getText().toString();
+                            desc = description.getText().toString();
+                            new UpdateUserAsync().execute();
+                        }
+                        else {
+                            Toast.makeText(AccountActivity.this, getString(R.string.wrong_password), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+
     }
 
     //Deletes account and launches LoginActivty
@@ -65,5 +93,27 @@ public class AccountActivity extends AppCompatActivity {
                 })
                 .setIcon(android.R.drawable.ic_menu_delete)
                 .show();
+    }
+
+    //Called on save user
+    class UpdateUserAsync extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                LoginActivity.session = webservice.updateUser(LoginActivity.session.getSessionData().getSessionID(), pw, desc);
+                return LoginActivity.session.getSessionData().getSessionID();
+            }
+            catch (Exception e){
+                return "";
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            Log.i("LOG", response);
+            if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
+                AccountActivity.this.finish();
+            }
+        }
     }
 }

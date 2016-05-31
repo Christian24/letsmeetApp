@@ -41,4 +41,6 @@
     <string name="check_connection">Prüfen sie ihre Internetverbinung</string>
     <string name="load_categories">Kategorien konnten nicht geladen werden</string>
     <string name="error">Es ist ein Fehler aufgetreten</string>
+    <string name="wrong_password">Falsches Passwort</string>
+    <string name="enter_password">Bitte geben sie ihr Passwort ein</string>
 </resources>
