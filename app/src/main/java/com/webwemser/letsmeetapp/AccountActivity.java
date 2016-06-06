@@ -58,7 +58,7 @@ public class AccountActivity extends AppCompatActivity {
                 .setMessage(getString(R.string.delete_account_long))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(AccountActivity.this, getString(R.string.delete_account_successful), Toast.LENGTH_LONG).show();
+                        new DeleteUserAsync().execute();
                         Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
@@ -137,6 +137,29 @@ public class AccountActivity extends AppCompatActivity {
             Log.i("LOG", response);
             if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
                 Toast.makeText(AccountActivity.this, getString(R.string.password_success), Toast.LENGTH_LONG).show();
+                AccountActivity.this.finish();
+            }
+            else Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //Called on deleteUser
+    class DeleteUserAsync extends AsyncTask<String, String, Integer> {
+
+        @Override
+        protected Integer doInBackground(String ... strings) {
+            try {
+                return webservice.deleteUser(LoginActivity.session.getSessionData().getSessionID()).getReturnCode();
+            }
+            catch (Exception e){
+                return 0;
+            }
+        }
+
+        protected void onPostExecute(Integer response) {
+            Log.i("LOG", "Delete Response: " +response);
+            if(response==200){
+                Toast.makeText(AccountActivity.this, getString(R.string.delete_account_successful), Toast.LENGTH_LONG).show();
                 AccountActivity.this.finish();
             }
             else Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();

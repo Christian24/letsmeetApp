@@ -668,6 +668,32 @@ public class KILOnlineIntegrationServiceSoapBinding
             }
         },"");
     }
+
+    public KILreturnCodeResponse deleteUser(final String arg0 ) throws java.lang.Exception
+    {
+        return (KILreturnCodeResponse) execute(new KILIWcfMethod()
+        {
+            @Override
+            public KILExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                KILExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web/", "deleteUser");
+                __envelope.setOutputSoapObject(__soapReq);
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
+                return (KILreturnCodeResponse)getResult(KILreturnCodeResponse.class,__result,"return",__envelope);
+            }
+        },"");
+    }
 }
 
 
