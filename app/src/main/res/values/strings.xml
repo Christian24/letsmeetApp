@@ -47,4 +47,6 @@
     <string name="change_password_new">Enter a new password</string>
     <string name="password_success">Password changed successfully</string>
     <string name="password_wasnt_changed">Password has not been changed, it doesnt met the rules</string>
+    <string name="server_not_accessible">Server is not accessible</string>
+    <string name="no_meets">No meets to display</string>
 </resources>

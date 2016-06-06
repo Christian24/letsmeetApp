@@ -435,7 +435,7 @@ public class KILOnlineIntegrationServiceSoapBinding
         });
     }
     
-    public KILmeetsResponse getMeets(final String arg0,final String arg1,final String arg2 ) throws java.lang.Exception
+    public KILmeetsResponse getMeets(final String arg0,final long arg1,final long arg2 ) throws java.lang.Exception
     {
         return (KILmeetsResponse)execute(new KILIWcfMethod()
         {
@@ -454,14 +454,14 @@ public class KILOnlineIntegrationServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg1";
-                __info.type=PropertyInfo.STRING_CLASS;
-                __info.setValue(arg1!=null?arg1:SoapPrimitive.NullSkip);
+                __info.type=PropertyInfo.LONG_CLASS;
+                __info.setValue(arg1>0?arg1:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg2";
-                __info.type=PropertyInfo.STRING_CLASS;
-                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __info.type=PropertyInfo.LONG_CLASS;
+                __info.setValue(arg2>0?arg2:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 return __envelope;
             }

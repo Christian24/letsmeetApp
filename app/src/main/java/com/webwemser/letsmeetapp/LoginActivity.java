@@ -169,20 +169,26 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            Log.i(TAG, session.getReturnCode()+"");
-            if(Integer.parseInt(session.getProperty(0).toString())==200){
-                SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(USERNAME, username.getText().toString());
-                if(savePassword) editor.putString(PASSWORD, password.getText().toString());
-                else editor.putString(PASSWORD, "");
-                editor.apply();
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+            if(session!=null){
+                Log.i(TAG, session.getReturnCode()+"");
+                if(Integer.parseInt(session.getProperty(0).toString())==200){
+                    SharedPreferences sharedPref = LoginActivity.this.getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString(USERNAME, username.getText().toString());
+                    if(savePassword) editor.putString(PASSWORD, password.getText().toString());
+                    else editor.putString(PASSWORD, "");
+                    editor.apply();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, getString(R.string.wrong_credentials), Toast.LENGTH_LONG).show();
+                }
             }
             else {
-                Toast.makeText(LoginActivity.this, getString(R.string.wrong_credentials), Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, getString(R.string.server_not_accessible), Toast.LENGTH_LONG).show();
             }
+
         }
     }
 }

@@ -105,4 +105,8 @@ public class KILmeetsResponse extends KILsessionResponse implements KvmSerializa
     {
     }
 
+    public ArrayList<KILmeet> getMeets(){
+        return meets;
+    }
+
 }

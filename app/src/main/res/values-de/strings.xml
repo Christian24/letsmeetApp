@@ -47,4 +47,6 @@
     <string name="change_password_new">Bitte ein neues Passwort eingeben</string>
     <string name="password_success">Passwort wurde erfolgreich geändert</string>
     <string name="password_wasnt_changed">Das Passwort wurde nicht geändert (zu kurz)</string>
+    <string name="server_not_accessible">Der Server ist nicht erreichbar</string>
+    <string name="no_meets">Keine Meets vorhanden</string>
 </resources>

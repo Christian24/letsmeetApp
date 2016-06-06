@@ -23,7 +23,7 @@ public class KILmeet extends AttributeContainer implements KvmSerializable
     
     public KILcategory category;
     
-    public java.util.Date dateTime;
+    public long dateTime;
     
     public String description;
     
@@ -84,11 +84,11 @@ public class KILmeet extends AttributeContainer implements KvmSerializable
                             SoapPrimitive j =(SoapPrimitive) obj;
                             if(j.toString()!=null)
                             {
-                                this.dateTime = KILHelper.ConvertFromWebService(j.toString());
+                                //this.dateTime = KILHelper.ConvertFromWebService(j.toString());
                             }
                         }
                         else if (obj instanceof java.util.Date){
-                            this.dateTime = (java.util.Date)obj;
+                            this.dateTime = (long)obj;
                         }
                     }
                     continue;
@@ -210,7 +210,7 @@ public class KILmeet extends AttributeContainer implements KvmSerializable
         }
         if(propertyIndex==2)
         {
-            return this.dateTime!=null?KILHelper.getDateTimeFormat().format(this.dateTime):SoapPrimitive.NullSkip;
+            return this.dateTime>0?KILHelper.getDateTimeFormat().format(this.dateTime):SoapPrimitive.NullSkip;
         }
         if(propertyIndex==3)
         {
@@ -299,4 +299,15 @@ public class KILmeet extends AttributeContainer implements KvmSerializable
     {
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public long getDatetime() {
+        return dateTime;
+    }
 }

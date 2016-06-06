@@ -74,8 +74,14 @@ public class AccountActivity extends AppCompatActivity {
 
     //Makes password views visible for user
     public void changePassword(View v){
-        label.setVisibility(View.VISIBLE);
-        password.setVisibility(View.VISIBLE);
+        if(password.getVisibility() == View.INVISIBLE){
+            label.setVisibility(View.VISIBLE);
+            password.setVisibility(View.VISIBLE);
+        }
+        else {
+            label.setVisibility(View.INVISIBLE);
+            password.setVisibility(View.INVISIBLE);
+        }
     }
 
     //Called on save user
@@ -97,12 +103,13 @@ public class AccountActivity extends AppCompatActivity {
             Log.i("LOG", response);
             if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
                 if(password.length()>5){
+                    pw = password.getText().toString();
                     new UpdatePasswordAsync().execute();
                     AccountActivity.this.finish();
                 }
                 else{
                     if(password.getVisibility() == View.VISIBLE){
-                        Toast.makeText(AccountActivity.this, getString(R.string.error), Toast.LENGTH_LONG).show();
+                        Toast.makeText(AccountActivity.this, getString(R.string.password_wasnt_changed), Toast.LENGTH_LONG).show();
                     }
                     AccountActivity.this.finish();
                 }

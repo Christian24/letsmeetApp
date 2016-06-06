@@ -110,12 +110,17 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            if(Integer.parseInt(LoginActivity.session.getProperty(0).toString())==200){
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                startActivity(intent);
+            if(LoginActivity.session!=null){
+                if(LoginActivity.session.getReturnCode()==200){
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(RegisterActivity.this, getString(R.string.taken_username), Toast.LENGTH_LONG).show();
+                }
             }
             else {
-                Toast.makeText(RegisterActivity.this, getString(R.string.taken_username), Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, getString(R.string.server_not_accessible), Toast.LENGTH_LONG).show();
             }
         }
     }

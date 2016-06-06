@@ -74,24 +74,33 @@
         android:textColor="@color/black"
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="@string/change_password"
-        android:textColor="@color/white"
-        android:background="@drawable/mybutton"
-        android:onClick="changePassword"/>
+        android:layout_marginTop="45dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:text="@string/delete_account"
-        android:textColor="@color/white"
-        android:background="@drawable/mybutton"
-        android:onClick="deleteAccount"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="25dp"
+            android:layout_marginEnd="25dp"
+            android:text="@string/change_password"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"
+            android:onClick="changePassword"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_account"
+            android:textColor="@color/white"
+            android:background="@drawable/mybutton"
+            android:onClick="deleteAccount"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

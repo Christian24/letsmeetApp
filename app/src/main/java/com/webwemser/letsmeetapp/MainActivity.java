@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.KILmeet;
+import com.webwemser.web.KILmeetsResponse;
 import com.webwemser.web.KILreturnCodeResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;
     private KILOnlineIntegrationServiceSoapBinding webservice;
+    private KILmeetsResponse meets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize Webservice components
         webservice = new KILOnlineIntegrationServiceSoapBinding();
+        meets = new KILmeetsResponse();
+        new LoadMeetsAsync().execute();
 
         //Initialize FAB_Toolbar
         fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
@@ -66,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        showMeets();
         fab_toolbar.hide();
     }
 
@@ -124,10 +127,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Displays Dummy Meets
-    private void showMeets(){
+    //Displays Meets
+    private void showMeets(ArrayList<KILmeet> meets){
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
-
+        for(int i = 0; i < meets.size(); i++){
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put(KEY_TITLE, meets.get(i).getTitle());
+            map.put(KEY_DESCRIPTION, meets.get(i).getDescription());
+            String strLong = Long.toString(meets.get(i).getDatetime());
+            map.put(KEY_DATE, strLong);
+            meetsList.add(map);
+            Log.i(TAG, meets.get(i).getTitle());
+        }
         list = (ListView)findViewById(R.id.list);
         // Getting adapter by passing xml data ArrayList
         adapter = new MyListAdapter(this, meetsList);
@@ -153,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.;
-                showMeets();
+                new LoadMeetsAsync().execute();
             }
         });
         // Configure the refreshing colors
@@ -169,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String ... strings) {
             try {
-                //webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), );
+                meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 100000000000L);
             }
             catch (Exception e){
 
@@ -178,7 +189,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-
+            if(meets.getMeets().size()>0){
+                showMeets(meets.getMeets());
+            }
+            else {
+                Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+            }
+            swipeContainer.setRefreshing(false);
         }
     }
 
@@ -205,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Log.i(TAG, LoginActivity.session.getSessionData().getSessionID());
                 Toast.makeText(MainActivity.this, getString(R.string.failed_logout), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         }
     }
