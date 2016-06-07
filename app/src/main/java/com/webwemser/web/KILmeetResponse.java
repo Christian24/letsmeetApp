@@ -23,8 +23,8 @@ public class KILmeetResponse extends KILsessionResponse implements KvmSerializab
 
     public KILmeetResponse (java.lang.Object paramObj,KILExtendedSoapSerializationEnvelope __envelope)
     {
-	    super(paramObj, __envelope);
-	    if (paramObj == null)
+        super(paramObj, __envelope);
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -56,10 +56,11 @@ public class KILmeetResponse extends KILsessionResponse implements KvmSerializab
         int count = super.getPropertyCount();
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-    
+
     @Override
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
 
 }
+
