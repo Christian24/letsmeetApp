@@ -516,13 +516,13 @@ public class KILOnlineIntegrationServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg5";
-                __info.type=PropertyInfo.STRING_CLASS;
+                __info.type=PropertyInfo.LONG_CLASS;
                 __info.setValue(arg5>0?arg5:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg6";
-                __info.type=PropertyInfo.STRING_CLASS;
+                __info.type=PropertyInfo.INTEGER_CLASS;
                 __info.setValue(arg6>0?arg6:SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 return __envelope;

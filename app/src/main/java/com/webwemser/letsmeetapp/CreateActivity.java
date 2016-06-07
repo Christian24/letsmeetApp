@@ -53,7 +53,7 @@ public class CreateActivity extends AppCompatActivity {
         year = Calendar.YEAR;
         month = Calendar.MONTH;
         day = Calendar.DAY_OF_MONTH;
-        hour = Calendar.HOUR + 1;
+        hour = Calendar.HOUR;
         min = Calendar.MINUTE;
 
         //Initialize Views
@@ -78,7 +78,7 @@ public class CreateActivity extends AppCompatActivity {
                     c.set(Calendar.DAY_OF_MONTH, day);
                     c.set(Calendar.HOUR, hour);
                     c.set(Calendar.MINUTE, min);
-                    if((c.getTimeInMillis() / 1000L) - (System.currentTimeMillis() / 1000L) < 0){
+                    if((c.getTimeInMillis() / 1000L) - (System.currentTimeMillis() / 1000L) > 0){
                         unixTime = c.getTimeInMillis() / 1000L;
                         titleString = title.getText().toString();
                         descriptionString = description.getText().toString();
