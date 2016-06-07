@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.KILmeet;
+import com.webwemser.web.KILmeetData;
+import com.webwemser.web.KILmeetsResponse;
 import com.webwemser.web.KILreturnCodeResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -137,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Displays Meets
-    private void showMeets(ArrayList<KILmeet> meets){
+    private void showMeets(ArrayList<KILmeetData> meets){
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
         for(int i = 0; i < meets.size(); i++){
             HashMap<String, String> map = new HashMap<String, String>();

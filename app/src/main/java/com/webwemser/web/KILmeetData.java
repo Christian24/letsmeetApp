@@ -309,4 +309,15 @@ public class KILmeetData extends AttributeContainer implements KvmSerializable
     {
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public long getDatetime() {
+        return dateTime;
+    }
 }
