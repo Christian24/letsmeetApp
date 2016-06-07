@@ -29,7 +29,8 @@
             android:layout_weight="0.3"
             android:text="@string/search"
             android:textColor="@color/white"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent"
+            android:onClick="searchByCategory"/>
 
     </LinearLayout>
 

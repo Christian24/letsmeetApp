@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeContainer;
     private KILOnlineIntegrationServiceSoapBinding webservice;
     private KILmeetsResponse meets;
+    private String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,9 +123,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Called by CreateActivity for adding a new Meet
-    public static void addMeetfromCreate(KILmeet m){
+    //Called by search button to search for meets by category
+    public void searchByCategory(View v){
+        category = searchSpinner.getSelectedItem().toString();
+        if(category!=null){
+            new SearchByCategoryAsync().execute();
+        }
+    }
 
+    //Called by search button to search for meets by category
+    public void searchByUser(View v){
+        new SearchByUserAsync().execute();
+        hideFABToolbar(new View(getApplicationContext()));
     }
 
     //Displays Meets
@@ -249,6 +259,56 @@ public class MainActivity extends AppCompatActivity {
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             searchSpinner.setAdapter(dataAdapter);
+        }
+    }
+
+    //Called by searchByCategory()
+    class SearchByCategoryAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                meets = webservice.getMeetsByCategory(LoginActivity.session.getSessionData().getSessionID(), category);
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+            if(meets.getMeets().size()>0){
+                showMeets(meets.getMeets());
+            }
+            else {
+                Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+            }
+            swipeContainer.setRefreshing(false);
+        }
+    }
+
+    //Called to load user meets
+    class SearchByUserAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                meets = webservice.getMeetsByUser(LoginActivity.session.getSessionData().getSessionID());
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+            if(meets.getMeets().size()>0){
+                showMeets(meets.getMeets());
+            }
+            else {
+                Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+            }
+            swipeContainer.setRefreshing(false);
         }
     }
 }

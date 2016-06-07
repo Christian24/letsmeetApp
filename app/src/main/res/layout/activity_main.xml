@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_account_circle_white_48dp"
-                android:onClick="hideFABToolbar"/>
+                android:onClick="searchByUser"/>
 
             <ImageView
                 android:layout_width="0dp"
