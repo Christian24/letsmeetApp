@@ -17,7 +17,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILmeet;
 import com.webwemser.web.KILmeetData;
 import com.webwemser.web.KILmeetsResponse;
 import com.webwemser.web.KILreturnCodeResponse;
