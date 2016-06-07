@@ -53,7 +53,7 @@ public class CreateActivity extends AppCompatActivity {
         year = Calendar.YEAR;
         month = Calendar.MONTH;
         day = Calendar.DAY_OF_MONTH;
-        hour = Calendar.HOUR_OF_DAY + 1;
+        hour = Calendar.HOUR + 1;
         min = Calendar.MINUTE;
 
         //Initialize Views
@@ -72,9 +72,14 @@ public class CreateActivity extends AppCompatActivity {
         if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
             if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
                 if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                    Calendar calendar = new GregorianCalendar(year, month, day, hour, min);
-                    if((calendar.getTimeInMillis() / 1000) - (System.currentTimeMillis() / 1000) < 100){
-                        unixTime = calendar.getTimeInMillis() / 1000;
+                    Calendar c = Calendar.getInstance();
+                    c.set(Calendar.YEAR, year);
+                    c.set(Calendar.MONTH, month);
+                    c.set(Calendar.DAY_OF_MONTH, day);
+                    c.set(Calendar.HOUR, hour);
+                    c.set(Calendar.MINUTE, min);
+                    if((c.getTimeInMillis() / 1000L) - (System.currentTimeMillis() / 1000L) < 0){
+                        unixTime = c.getTimeInMillis() / 1000L;
                         titleString = title.getText().toString();
                         descriptionString = description.getText().toString();
                         locationString = location.getText().toString();
