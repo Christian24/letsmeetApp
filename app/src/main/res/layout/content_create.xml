@@ -74,6 +74,18 @@
         android:layout_height="1dp"
         android:background="@color/black"/>
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/category_spinner">
+    </Spinner>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
     <EditText
         android:id="@+id/meet_title"
         android:layout_width="match_parent"
