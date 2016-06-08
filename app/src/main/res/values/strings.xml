@@ -50,4 +50,6 @@
     <string name="server_not_accessible">Server is not accessible</string>
     <string name="no_meets">No meets to display</string>
     <string name="future_meet">Meet has to be in the future</string>
+    <string name="password_retype">Retype passoword</string>
+    <string name="password_retype_error">Passwords dont match</string>
 </resources>

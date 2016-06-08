@@ -3,6 +3,7 @@ package com.webwemser.letsmeetapp;
 /**
  * Created by Jannik W. on 26.04.2016.
  */
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import android.app.Activity;
@@ -53,7 +54,8 @@ public class MyListAdapter extends BaseAdapter {
         // Setting all values in listview
         title.setText(meet.get(MainActivity.KEY_TITLE));
         description.setText(meet.get(MainActivity.KEY_DESCRIPTION));
-        date.setText(meet.get(MainActivity.KEY_DATE));
+        long x = Long.parseLong(meet.get(MainActivity.KEY_DATE));
+        date.setText(new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(new java.util.Date(x)));
         return vi;
     }
 }

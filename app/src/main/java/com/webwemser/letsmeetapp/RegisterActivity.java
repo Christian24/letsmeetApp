@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;
     private boolean savePassword, stayLoggedIn = true;
-    private EditText username, password, description;
+    private EditText username, password, passwordRetype, description;
     private String userString, pwString, descriptionString;
     private final String TAG = "Webwemser Log";
     private KILOnlineIntegrationServiceSoapBinding webservice;
@@ -36,7 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
         username = (EditText)findViewById(R.id.username_reg);
         description = (EditText)findViewById(R.id.description_reg);
         password = (EditText) findViewById(R.id.password_reg);
+        passwordRetype = (EditText) findViewById(R.id.password_reg_retype);
         password.setTransformationMethod(new PasswordTransformationMethod());
+        passwordRetype.setTransformationMethod(new PasswordTransformationMethod());
 
         //Prepare Checked Text Views with Onclicklisteners
         check1 = (CheckedTextView)findViewById(R.id.check1);
@@ -73,7 +75,12 @@ public class RegisterActivity extends AppCompatActivity {
             descriptionString = description.getText().toString();
             if(username.getText().toString().length()>3){
                 if(password.getText().toString().length()>5){
-                    new RegisterAsync().execute();
+                    if(password.getText().toString().equals(passwordRetype.getText().toString())){
+                        new RegisterAsync().execute();
+                    }
+                    else {
+                        Toast.makeText(this, getString(R.string.password_retype_error), Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(this, getString(R.string.short_password), Toast.LENGTH_SHORT).show();

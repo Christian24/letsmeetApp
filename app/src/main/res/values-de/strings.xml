@@ -50,4 +50,6 @@
     <string name="server_not_accessible">Der Server ist nicht erreichbar</string>
     <string name="no_meets">Keine Meets vorhanden</string>
     <string name="future_meet">Meet muss in der Zukunft stattfinden</string>
+    <string name="password_retype">Passwort wiederholen</string>
+    <string name="password_retype_error">Passwörter stimmten nicht überein</string>
 </resources>
