@@ -49,17 +49,22 @@ public class MainActivity extends AppCompatActivity {
         //Initialize Webservice components
         webservice = new KILOnlineIntegrationServiceSoapBinding();
         meets = new KILmeetsResponse();
-        new LoadMeetsAsync().execute();
+        category = getString(R.string.all_categories);
+        new CategoryAsync().execute();
 
         //Initialize FAB_Toolbar
         fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
 
-        //Prepares search spinner
-        new CategoryAsync().execute();
-
         //Initialize swipe down to refresh feature
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
         createSwipeLayout();
+    }
+
+    //Gets meets after onCreate finished
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+        new LoadMeetsAsync().execute();
     }
 
     @Override
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Called by search button to search for meets by category
     public void searchByCategory(View v){
-        category = searchSpinner.getSelectedItem().toString();
+        searchSpinner.getSelectedItem().toString();
         if(category!=null){
             new SearchByCategoryAsync().execute();
         }
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Displays Meets
     private void showMeets(ArrayList<KILmeetData> meets){
+        Log.i(TAG, "showMeets is called");
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
         for(int i = 0; i < meets.size(); i++){
             HashMap<String, String> map = new HashMap<String, String>();
@@ -174,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.;
+                category = searchSpinner.getSelectedItem().toString();
                 new LoadMeetsAsync().execute();
             }
         });
@@ -184,26 +191,40 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
-    //Called by onCreate method
+    //Called by onPostCreate method
     class LoadMeetsAsync extends AsyncTask<String, Integer, String> {
 
         @Override
         protected String doInBackground(String ... strings) {
-            try {
-                meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 100000000000L);
-            }
-            catch (Exception e){
+            Log.i(TAG, "LoadMeets: "+category);
+            if(category.equals(getString(R.string.all_categories))){
+                try {
+                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 100000000000L);
+                }
+                catch (Exception e){
 
+                }
+            }
+            else{
+                runOnUiThread (new Thread(new Runnable() {
+                    public void run(){
+                        new SearchByCategoryAsync().execute();
+                    }
+                }));
+                return "STOP";
             }
             return "";
         }
 
         protected void onPostExecute(String result) {
-            if(meets.getMeets().size()>0){
-                showMeets(meets.getMeets());
-            }
-            else {
-                Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "LoadMeets PostExec: "+result);
+            if(!result.equals("STOP")){
+                if(meets.getMeets().size()>0){
+                    showMeets(meets.getMeets());
+                }
+                else {
+                    Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                }
             }
             swipeContainer.setRefreshing(false);
         }
@@ -255,6 +276,9 @@ public class MainActivity extends AppCompatActivity {
             if(response.size()==0){
                 response.add(getString(R.string.load_categories));
             }
+            else {
+                response.add(0, getString(R.string.all_categories));
+            }
             searchSpinner = (Spinner) findViewById(R.id.search_spinner);
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, response);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -267,21 +291,34 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String ... strings) {
-            try {
-                meets = webservice.getMeetsByCategory(LoginActivity.session.getSessionData().getSessionID(), category);
+            Log.i(TAG, "SearchByCategory: "+category);
+            if(category.equals(getString(R.string.all_categories))){
+                runOnUiThread (new Thread(new Runnable() {
+                    public void run(){
+                        new LoadMeetsAsync().execute();
+                    }
+                }));
+                return "STOP";
             }
-            catch (Exception e){
+            else {
+                try {
+                    meets = webservice.getMeetsByCategory(LoginActivity.session.getSessionData().getSessionID(), category);
+                }
+                catch (Exception e){
 
+                }
             }
             return "";
         }
 
         protected void onPostExecute(String result) {
-            if(meets.getMeets().size()>0){
-                showMeets(meets.getMeets());
-            }
-            else {
-                Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+            if(!result.equals("STOP")){
+                if(meets.getMeets().size()>0){
+                    showMeets(meets.getMeets());
+                }
+                else {
+                    Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                }
             }
             swipeContainer.setRefreshing(false);
         }
