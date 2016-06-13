@@ -1,11 +1,16 @@
 package com.webwemser.letsmeetapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 
@@ -85,6 +90,64 @@ public class MeetActivity extends AppCompatActivity {
     //Called by fab_delete to delete meet by admin
     public void delete(View v){
 
+    }
+
+    public void comment(View v){
+
+    }
+
+    class JoinAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+                //webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets(meetPosition).g)
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+
+        }
+    }
+
+    class DeleteAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+
+        }
+    }
+
+    class LeaveAsync extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String ... strings) {
+            try {
+
+            }
+            catch (Exception e){
+
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+
+        }
     }
 
 

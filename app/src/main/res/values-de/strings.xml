@@ -53,4 +53,5 @@
     <string name="password_retype">Passwort wiederholen</string>
     <string name="password_retype_error">Passwörter stimmten nicht überein</string>
     <string name="all_categories">Alle Kategorien</string>
+    <string name="comment">Kommentieren</string>
 </resources>
