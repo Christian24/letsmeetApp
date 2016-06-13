@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;
     private KILOnlineIntegrationServiceSoapBinding webservice;
-    private KILmeetsResponse meets;
+    public static KILmeetsResponse meets;
     private String category;
 
     @Override

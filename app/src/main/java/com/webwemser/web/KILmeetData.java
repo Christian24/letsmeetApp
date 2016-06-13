@@ -317,7 +317,65 @@ public class KILmeetData extends AttributeContainer implements KvmSerializable
         return description;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public Long getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(Long dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getMaxGuests() {
+        return maxGuests;
+    }
+
+    public void setMaxGuests(Integer maxGuests) {
+        this.maxGuests = maxGuests;
+    }
+
+    public ArrayList<KILuserData> getVisitors() {
+        return visitors;
+    }
+
+    public void setVisitors(ArrayList<KILuserData> visitors) {
+        this.visitors = visitors;
+    }
+
     public long getDatetime() {
         return dateTime;
+
+    }
+
+    public String getAdminUserName(){
+        return admin.userName;
+    }
+
+    public boolean hasJoined(String username){
+        for (int i = 0; i<visitors.size(); i++){
+            if (visitors.get(i).getUserName().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getFreeSpace(){
+        return visitors.size() + 1;
     }
 }
