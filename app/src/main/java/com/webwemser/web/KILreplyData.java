@@ -12,27 +12,23 @@ package com.webwemser.web;
 
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
-import java.util.ArrayList;
-import org.ksoap2.serialization.PropertyInfo;
 
-public class KILconversationData extends KILuserContentData implements KvmSerializable
+public class KILreplyData extends KILuserContentData implements KvmSerializable
 {
 
-
+    
     public Integer id=0;
+    
+    public Integer parent=0;
 
-    public Integer origin=0;
-
-    public ArrayList<KILreplyData> replies =new ArrayList<KILreplyData>();
-
-    public KILconversationData ()
+    public KILreplyData()
     {
     }
 
-    public KILconversationData (java.lang.Object paramObj,KILExtendedSoapSerializationEnvelope __envelope)
+    public KILreplyData(Object paramObj, KILExtendedSoapSerializationEnvelope __envelope)
     {
-        super(paramObj, __envelope);
-        if (paramObj == null)
+	    super(paramObj, __envelope);
+	    if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -45,12 +41,12 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
             {
                 //if you have compilation error here, please use a ksoap2.jar and ExKsoap2.jar from libs folder (in the generated zip file)
                 PropertyInfo info=soapObject.getPropertyInfo(i0);
-                java.lang.Object obj = info.getValue();
+                Object obj = info.getValue();
                 if (info.name.equals("id"))
                 {
                     if(obj!=null)
                     {
-
+        
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -65,40 +61,22 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
                     }
                     continue;
                 }
-                if (info.name.equals("origin"))
+                if (info.name.equals("parent"))
                 {
                     if(obj!=null)
                     {
-
+        
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
                             if(j.toString()!=null)
                             {
-                                this.origin = Integer.parseInt(j.toString());
+                                this.parent = Integer.parseInt(j.toString());
                             }
                         }
                         else if (obj instanceof Integer){
-                            this.origin = (Integer)obj;
+                            this.parent = (Integer)obj;
                         }
-                    }
-                    continue;
-                }
-                if (info.name.equals("replies"))
-                {
-                    if(obj!=null)
-                    {
-
-
-                        if(this.replies==null)
-                        {
-                            this.replies = new ArrayList<KILreplyData>();
-                        }
-                        java.lang.Object j =obj;
-                        KILreplyData j1= (KILreplyData)__envelope.get(j,KILreplyData.class);
-                        this.replies.add(j1);
-
-
                     }
                     continue;
                 }
@@ -112,7 +90,7 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
     }
 
     @Override
-    public java.lang.Object getProperty(int propertyIndex) {
+    public Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
@@ -122,11 +100,7 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
         }
         if(propertyIndex==count+1)
         {
-            return origin;
-        }
-        if(propertyIndex>=count+2 && propertyIndex< count+ 2+this.replies.size())
-        {
-            return this.replies.get(propertyIndex-(count+2));
+            return parent;
         }
         return super.getProperty(propertyIndex);
     }
@@ -134,7 +108,7 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
 
     @Override
     public int getPropertyCount() {
-        return super.getPropertyCount()+2+replies.size();
+        return super.getPropertyCount()+2;
     }
 
     @Override
@@ -150,20 +124,14 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
         if(propertyIndex==count+1)
         {
             info.type = PropertyInfo.INTEGER_CLASS;
-            info.name = "origin";
-            info.namespace= "";
-        }
-        if(propertyIndex>=count+2 && propertyIndex <= count+2+this.replies.size())
-        {
-            info.type = KILreplyData.class;
-            info.name = "replies";
+            info.name = "parent";
             info.namespace= "";
         }
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-
+    
     @Override
-    public void setProperty(int arg0, java.lang.Object arg1)
+    public void setProperty(int arg0, Object arg1)
     {
     }
 
