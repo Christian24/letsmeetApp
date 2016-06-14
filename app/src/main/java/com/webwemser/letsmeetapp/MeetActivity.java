@@ -12,7 +12,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.KILmeetResponse;
 import com.webwemser.web.KILmeetsResponse;
@@ -106,7 +105,6 @@ public class MeetActivity extends AppCompatActivity {
 
                     }
                 })
-                .setIcon(android.R.drawable.ic_menu_delete)
                 .show();
     }
 
@@ -122,7 +120,7 @@ public class MeetActivity extends AppCompatActivity {
 
     //Called by fab_delete to delete meet by admin
     public void delete(View v){
-        new DeleteAsync().execute();
+        new LeaveAsync().execute();
     }
 
     public void comment(View v){
@@ -135,28 +133,6 @@ public class MeetActivity extends AppCompatActivity {
         protected KILmeetResponse doInBackground(String ... strings) {
             try {
                 return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
-            }
-            catch (Exception e){
-                return new KILmeetResponse();
-            }
-        }
-
-        protected void onPostExecute(KILmeetResponse response) {
-            if(response!=null){
-                MeetActivity.this.finish();
-            }
-            else {
-                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    class DeleteAsync extends AsyncTask<String, Integer, KILmeetResponse> {
-
-        @Override
-        protected KILmeetResponse doInBackground(String ... strings) {
-            try {
-                return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
             }
             catch (Exception e){
                 return new KILmeetResponse();
