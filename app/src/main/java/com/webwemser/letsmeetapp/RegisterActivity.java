@@ -17,8 +17,6 @@ import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private CheckedTextView check1, check2;
-    private boolean savePassword, stayLoggedIn = true;
     private EditText username, password, passwordRetype, description;
     private String userString, pwString, descriptionString;
     private final String TAG = "Webwemser Log";
@@ -39,32 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
         passwordRetype = (EditText) findViewById(R.id.password_reg_retype);
         password.setTransformationMethod(new PasswordTransformationMethod());
         passwordRetype.setTransformationMethod(new PasswordTransformationMethod());
-
-        //Prepare Checked Text Views with Onclicklisteners
-        check1 = (CheckedTextView)findViewById(R.id.check1);
-        check2 = (CheckedTextView)findViewById(R.id.check2);
-        check1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (check1.isChecked()){
-                    check1.setChecked(false);
-                    savePassword = false;}
-                else{
-                    check1.setChecked(true);
-                    savePassword = true;}
-            }
-        });
-        check2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (check2.isChecked()){
-                    check2.setChecked(false);
-                    stayLoggedIn = false;}
-                else{
-                    check2.setChecked(true);
-                    stayLoggedIn = true;}
-            }
-        });
     }
 
     //Signup method

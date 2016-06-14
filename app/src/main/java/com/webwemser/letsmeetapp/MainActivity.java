@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;
     private KILOnlineIntegrationServiceSoapBinding webservice;
-    private KILmeetsResponse meets;
+    public static KILmeetsResponse meets;
     private String category;
 
     @Override
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        new LoadMeetsAsync().execute();
         fab_toolbar.hide();
     }
 
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Called by search button to search for meets by category
     public void searchByCategory(View v){
-        searchSpinner.getSelectedItem().toString();
+        category = searchSpinner.getSelectedItem().toString();
         if(category!=null){
             new SearchByCategoryAsync().execute();
         }
@@ -199,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "LoadMeets: "+category);
             if(category.equals(getString(R.string.all_categories))){
                 try {
-                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 100000000000L);
+                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 1000000000L);
                 }
                 catch (Exception e){
 

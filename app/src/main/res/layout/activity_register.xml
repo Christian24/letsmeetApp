@@ -75,31 +75,6 @@
         android:maxLength="80"
         android:id="@+id/description_reg"/>
 
-    <CheckedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/save_credentials"
-        android:textSize="20sp"
-        android:id="@+id/check1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textColor="@color/black"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="true"
-        android:clickable="true"/>
-
-    <CheckedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/save_login"
-        android:textSize="20sp"
-        android:id="@+id/check2"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-        android:textColor="@color/black"
-        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:checked="true"
-        android:clickable="true"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

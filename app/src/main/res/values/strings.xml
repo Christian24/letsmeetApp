@@ -53,4 +53,8 @@
     <string name="password_retype">Retype passoword</string>
     <string name="password_retype_error">Passwords dont match</string>
     <string name="all_categories">All categories</string>
+    <string name="comment">Comment</string>
+    <string name="category">Category</string>
+    <string name="commen_hint">Comment...</string>
+    <string name="participants">"  Show participants  "</string>
 </resources>
