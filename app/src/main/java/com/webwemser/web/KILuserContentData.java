@@ -13,7 +13,7 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
-public class FBCuserContentData extends FBCdataTransferObject implements KvmSerializable
+public class KILuserContentData extends KILdataTransferObject implements KvmSerializable
 {
 
     
@@ -23,11 +23,11 @@ public class FBCuserContentData extends FBCdataTransferObject implements KvmSeri
     
     public Long timestamp=0L;
 
-    public FBCuserContentData ()
+    public KILuserContentData()
     {
     }
 
-    public FBCuserContentData (Object paramObj,FBCExtendedSoapSerializationEnvelope __envelope)
+    public KILuserContentData(Object paramObj, KILExtendedSoapSerializationEnvelope __envelope)
     {
 	    super(paramObj, __envelope);
 	    if (paramObj == null)
