@@ -41,6 +41,10 @@ public class KILExtendedSoapSerializationEnvelope extends SoapSerializationEnvel
       /*  classNames.put("http://web/^^user",KILuser.class);
         classNames.put("http://web/^^category",KILcategory.class);*/
         classNames.put("http://web/^^meetResponse",KILmeetResponse.class);
+        classNames.put("http://web/^^conversationData",KILconversationData.class);
+        classNames.put("http://web/^^userContentData",KILuserContentData.class);
+        classNames.put("http://web/^^replyData",KILreplyData.class);
+        classNames.put("http://web/^^userPersistenceData",KILuserPersistenceData.class);
         classNames.put("http://web/^^categoriesResponse",KILcategoriesResponse.class);
     }   
 
