@@ -13,17 +13,17 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
-public class FBCuserPersistenceData extends AttributeContainer implements KvmSerializable
+public class KILuserPersistenceData extends AttributeContainer implements KvmSerializable
 {
 
     
-    public FBCuserData userData;
+    public KILuserData userData;
 
-    public FBCuserPersistenceData ()
+    public KILuserPersistenceData()
     {
     }
 
-    public FBCuserPersistenceData (Object paramObj,FBCExtendedSoapSerializationEnvelope __envelope)
+    public KILuserPersistenceData(Object paramObj, KILExtendedSoapSerializationEnvelope __envelope)
     {
 	    
 	    if (paramObj == null)
@@ -45,7 +45,7 @@ public class FBCuserPersistenceData extends AttributeContainer implements KvmSer
                     if(obj!=null)
                     {
                         Object j = obj;
-                        this.userData = (FBCuserData)__envelope.get(j,FBCuserData.class);
+                        this.userData = (KILuserData)__envelope.get(j,KILuserData.class);
                     }
                     continue;
                 }
@@ -80,7 +80,7 @@ public class FBCuserPersistenceData extends AttributeContainer implements KvmSer
     {
         if(propertyIndex==0)
         {
-            info.type = FBCuserData.class;
+            info.type = KILuserData.class;
             info.name = "userData";
             info.namespace= "";
         }

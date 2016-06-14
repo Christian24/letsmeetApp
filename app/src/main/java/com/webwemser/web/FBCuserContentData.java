@@ -17,7 +17,7 @@ public class FBCuserContentData extends FBCdataTransferObject implements KvmSeri
 {
 
     
-    public FBCuserPersistenceData poster;
+    public KILuserPersistenceData poster;
     
     public String text;
     
@@ -49,7 +49,7 @@ public class FBCuserContentData extends FBCdataTransferObject implements KvmSeri
                     if(obj!=null)
                     {
                         Object j = obj;
-                        this.poster = (FBCuserPersistenceData)__envelope.get(j,FBCuserPersistenceData.class);
+                        this.poster = (KILuserPersistenceData)__envelope.get(j,KILuserPersistenceData.class);
                     }
                     continue;
                 }
@@ -132,7 +132,7 @@ public class FBCuserContentData extends FBCdataTransferObject implements KvmSeri
         int count = super.getPropertyCount();
         if(propertyIndex==count+0)
         {
-            info.type = FBCuserPersistenceData.class;
+            info.type = KILuserPersistenceData.class;
             info.name = "poster";
             info.namespace= "";
         }
