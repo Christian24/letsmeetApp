@@ -18,7 +18,8 @@ import org.ksoap2.serialization.PropertyInfo;
 public class KILmeetData extends AttributeContainer implements KvmSerializable
 {
 
-    
+    public Integer id;
+
     public KILuserData admin;
     
     public String category;
@@ -360,6 +361,10 @@ public class KILmeetData extends AttributeContainer implements KvmSerializable
     public long getDatetime() {
         return dateTime;
 
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getAdminUserName(){

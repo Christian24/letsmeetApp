@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        new LoadMeetsAsync().execute();
         fab_toolbar.hide();
     }
 
