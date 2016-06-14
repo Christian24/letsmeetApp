@@ -7,18 +7,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
 
 import java.text.SimpleDateFormat;
 
+
 public class MeetActivity extends AppCompatActivity {
 
-    private TextView title, author, descripton, date, max_guests;
+    private TextView title, author, descripton, date, max_guests, category;
     private static final int KEY_POSITION = 1;
     private int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
@@ -41,11 +39,13 @@ public class MeetActivity extends AppCompatActivity {
         descripton = (TextView)findViewById(R.id.display_description);
         date = (TextView)findViewById(R.id.display_datetime);
         max_guests = (TextView)findViewById(R.id.display_max_guests);
+        category = (TextView)findViewById(R.id.display_category);
         setButtons();
 
         //Set values to Textviews
         long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
         date.setText(new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new java.util.Date(x)));
+        category.setText(MainActivity.meets.getMeets().get(meetPosition).getCategory());
         title.setText(MainActivity.meets.getMeets().get(meetPosition).getTitle());
         descripton.setText(MainActivity.meets.getMeets().get(meetPosition).getDescription());
         author.setText(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName());
@@ -75,6 +75,19 @@ public class MeetActivity extends AppCompatActivity {
                 fab_join.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    public void showParticipants(View v){
+        new AlertDialog.Builder(MeetActivity.this)
+                .setTitle(getString(R.string.participants))
+                
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_menu_delete)
+                .show();
     }
 
     //Called by fab_join to join a meet
