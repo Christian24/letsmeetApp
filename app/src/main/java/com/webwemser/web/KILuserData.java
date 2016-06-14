@@ -134,5 +134,11 @@ public class KILuserData extends KILdataTransferObject implements KvmSerializabl
     public void setProperty(int arg0, Object arg1)
     {
     }
+    public String getDescription() {
+        return description;
+    }
+    public String getUserName() {
+        return userName;
+    }
 
 }

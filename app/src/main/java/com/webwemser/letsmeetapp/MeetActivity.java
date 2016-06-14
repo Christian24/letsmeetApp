@@ -56,7 +56,7 @@ public class MeetActivity extends AppCompatActivity {
         title.setText(MainActivity.meets.getMeets().get(meetPosition).getTitle());
         descripton.setText(MainActivity.meets.getMeets().get(meetPosition).getDescription());
         author.setText(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName());
-        max_guests.setText(MainActivity.meets.getMeets().get(meetPosition).getFreeSpace()+" / "+MainActivity.meets.getMeets().get(meetPosition).getMaxGuests().toString());
+        max_guests.setText(MainActivity.meets.getMeets().get(meetPosition).getFreeSpace()+" / "+MainActivity.meets.getMeets().get(meetPosition).getMaxGuests());
 
         //Initialize some variables
         //meetID = MainActivity.meets.getMeets().get(meetPosition).getId();
@@ -78,7 +78,7 @@ public class MeetActivity extends AppCompatActivity {
         if(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName().equals(LoginActivity.session.getSessionData().getUserData().getUserName())){
             fab_delete.setVisibility(View.VISIBLE);
         }
-        else if (MainActivity.meets.getMeets().get(meetPosition).hasJoined(LoginActivity.session.getSessionData().getUserData().getUserName())){
+        else if (MainActivity.meets.getMeets().get(meetPosition).hasJoined(LoginActivity.session.getSessionData().getUserData())){
             fab_leave.setVisibility(View.VISIBLE);
         }
         else {

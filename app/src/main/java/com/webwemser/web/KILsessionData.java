@@ -13,7 +13,7 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
-public class KILsessionData extends AttributeContainer implements KvmSerializable
+public class KILsessionData extends KILdataTransferObject implements KvmSerializable
 {
 
     

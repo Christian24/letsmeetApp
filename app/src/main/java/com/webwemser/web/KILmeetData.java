@@ -10,6 +10,7 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
+import java.lang.ref.SoftReference;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 import java.util.ArrayList;
@@ -371,6 +372,33 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
     @Override
     public void setProperty(int arg0, Object arg1)
     {
+    }
+    public String getTitle() {
+        return title;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public String getCategory() {
+        return category;
+    }
+    public Long getDateTime() {
+        return dateTime;
+    }
+    public ArrayList<KILuserData> getVisitors() {
+        return visitors;
+    }
+    public int getFreeSpace() {
+        return maxGuests- visitors.size();
+    }
+    public int getMaxGuests() {
+        return maxGuests;
+    }
+    public String getAdminUserName() {
+        return admin.getUserName();
+    }
+    public boolean hasJoined(KILuserData user) {
+        return admin.equals(user) || getVisitors().contains(user);
     }
 
 }
