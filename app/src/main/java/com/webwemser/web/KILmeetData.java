@@ -19,11 +19,11 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
 {
 
     
-    public FBCuserData admin;
+    public KILuserData admin;
     
     public String category;
     
-    public ArrayList< FBCconversationData> conversations =new ArrayList<FBCconversationData >();
+    public ArrayList< KILconversationData> conversations =new ArrayList<KILconversationData >();
     
     public Long dateTime=0L;
     
@@ -37,7 +37,7 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
     
     public String title;
     
-    public ArrayList< FBCuserData> visitors =new ArrayList<FBCuserData >();
+    public ArrayList< KILuserData> visitors =new ArrayList<KILuserData >();
 
     public KILmeetData()
     {
@@ -65,7 +65,7 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
                     if(obj!=null)
                     {
                         Object j = obj;
-                        this.admin = (FBCuserData)__envelope.get(j,FBCuserData.class);
+                        this.admin = (KILuserData)__envelope.get(j,KILuserData.class);
                     }
                     continue;
                 }
@@ -96,10 +96,10 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
                     
                         if(this.conversations==null)
                         {
-                            this.conversations = new ArrayList<FBCconversationData>();
+                            this.conversations = new ArrayList<KILconversationData>();
                         }
                         Object j =obj;
-                        FBCconversationData j1= (FBCconversationData)__envelope.get(j,FBCconversationData.class);
+                        KILconversationData j1= (KILconversationData)__envelope.get(j,KILconversationData.class);
                         this.conversations.add(j1);
                    
         
@@ -228,10 +228,10 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
                     
                         if(this.visitors==null)
                         {
-                            this.visitors = new ArrayList<FBCuserData>();
+                            this.visitors = new ArrayList<KILuserData>();
                         }
                         Object j =obj;
-                        FBCuserData j1= (FBCuserData)__envelope.get(j,FBCuserData.class);
+                        KILuserData j1= (KILuserData)__envelope.get(j,KILuserData.class);
                         this.visitors.add(j1);
                    
         
@@ -307,7 +307,7 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
         int count = super.getPropertyCount();
         if(propertyIndex==count+0)
         {
-            info.type = FBCuserData.class;
+            info.type = KILuserData.class;
             info.name = "admin";
             info.namespace= "";
         }
@@ -355,13 +355,13 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
         }
         if(propertyIndex>=count+8 && propertyIndex <= count+8+this.conversations.size())
         {
-            info.type = FBCconversationData.class;
+            info.type = KILconversationData.class;
             info.name = "conversations";
             info.namespace= "";
         }
         if(propertyIndex>=count+8+this.conversations.size() && propertyIndex <= count+8+this.conversations.size()+this.visitors.size())
         {
-            info.type = FBCuserData.class;
+            info.type = KILuserData.class;
             info.name = "visitors";
             info.namespace= "";
         }
