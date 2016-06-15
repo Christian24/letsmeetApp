@@ -58,8 +58,8 @@ public class MeetActivity extends AppCompatActivity {
         setComments(new HashMap<String, String>());
 
         //Set values to Textviews
-        long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
-        date.setText(new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new java.util.Date(x)));
+        //long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
+        date.setText(MainActivity.meets.getMeets().get(meetPosition).getDateTime());
         category.setText(MainActivity.meets.getMeets().get(meetPosition).getCategory());
         title.setText(MainActivity.meets.getMeets().get(meetPosition).getTitle());
         descripton.setText(MainActivity.meets.getMeets().get(meetPosition).getDescription());

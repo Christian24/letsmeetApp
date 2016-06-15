@@ -21,6 +21,7 @@ import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetsResponse;
 import com.webwemser.web.ReturnCodeResponse;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             HashMap<String, String> map = new HashMap<String, String>();
             map.put(KEY_TITLE, meets.get(i).getTitle());
             map.put(KEY_DESCRIPTION, meets.get(i).getDescription());
-            String strLong = Long.toString(meets.get(i).getDateTime());
+            String strLong = meets.get(i).getDateTime();
             map.put(KEY_DATE, strLong);
             meetsList.add(map);
             Log.i(TAG, meets.get(i).getTitle());
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "LoadMeets: "+category);
             if(category.equals(getString(R.string.all_categories))){
                 try {
-                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), System.currentTimeMillis()/1000, System.currentTimeMillis()/1000 + 1000000000L);
+                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), new Date(),new Date( System.currentTimeMillis() + 1000000000L));
                 }
                 catch (Exception e){
 

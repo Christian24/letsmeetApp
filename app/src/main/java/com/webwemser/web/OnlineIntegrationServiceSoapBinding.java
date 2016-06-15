@@ -19,6 +19,7 @@ import org.ksoap2.HeaderProperty;
 import org.ksoap2.serialization.*;
 import org.ksoap2.transport.*;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -206,7 +207,7 @@ public class OnlineIntegrationServiceSoapBinding
         });
     }
     
-    public MeetsResponse getMeets(final String arg0, final Long arg1, final Long arg2 ) throws Exception
+    public MeetsResponse getMeets(final String arg0, final Date arg1, final Date arg2 ) throws Exception
     {
         return (MeetsResponse)execute(new IWcfMethod()
         {
@@ -245,14 +246,7 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetsResponse>> getMeetsAsync(final String arg0, final Long arg1, final Long arg2)
-    {
-        return executeAsync(new Functions.IFunc<MeetsResponse>() {
-            public MeetsResponse Func() throws Exception {
-                return getMeets( arg0,arg1,arg2);
-            }
-        });
-    }
+
     
     public MeetResponse deleteReply(final String arg0, final Integer arg1 ) throws Exception
     {
