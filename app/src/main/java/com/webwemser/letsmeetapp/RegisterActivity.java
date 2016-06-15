@@ -13,14 +13,14 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText username, password, passwordRetype, description;
     private String userString, pwString, descriptionString;
     private final String TAG = "Webwemser Log";
-    private KILOnlineIntegrationServiceSoapBinding webservice;
+    private OnlineIntegrationServiceSoapBinding webservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //Initialize Webservice
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        webservice = new OnlineIntegrationServiceSoapBinding();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_reg);

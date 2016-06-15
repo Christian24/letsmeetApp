@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILsessionResponse;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.SessionResponse;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,8 +23,8 @@ public class LoginActivity extends AppCompatActivity {
     private boolean savePassword, stayLoggedIn;
     private static boolean firstRun = true;
     private EditText username, password;
-    private KILOnlineIntegrationServiceSoapBinding webservice;
-    public static KILsessionResponse session;
+    private OnlineIntegrationServiceSoapBinding webservice;
+    public static SessionResponse session;
     private final String TAG = "Webwemser Log";
     private final String SAVE_PW = "SAVE_PW";
     private final String STAY_LOGGED_IN = "STAY_LOGGED_IN";
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Initialize Webservice
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        webservice = new OnlineIntegrationServiceSoapBinding();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_text);

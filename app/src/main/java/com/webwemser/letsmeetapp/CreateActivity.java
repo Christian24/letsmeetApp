@@ -17,8 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILmeetResponse;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.MeetResponse;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,7 +32,7 @@ public class CreateActivity extends AppCompatActivity {
     private static int year, month, day, hour, min, maxGuests;
     private static long unixTime;
     private static String titleString, locationString, descriptionString, categoryString;
-    private KILOnlineIntegrationServiceSoapBinding webservice;
+    private OnlineIntegrationServiceSoapBinding webservice;
     private Spinner categorySpinner;
 
     @Override
@@ -41,7 +41,7 @@ public class CreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create);
 
         //Initialize Webservice components
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        webservice = new OnlineIntegrationServiceSoapBinding();
 
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
@@ -188,19 +188,19 @@ public class CreateActivity extends AppCompatActivity {
         }
     }
 
-    class CreateMeetAsync extends AsyncTask<String, Integer, KILmeetResponse> {
+    class CreateMeetAsync extends AsyncTask<String, Integer, MeetResponse> {
 
         @Override
-        protected KILmeetResponse doInBackground(String ... strings) {
+        protected MeetResponse doInBackground(String ... strings) {
             try {
                 return webservice.createMeet(LoginActivity.session.getSessionData().getSessionID(), categoryString, descriptionString, titleString, locationString, unixTime, maxGuests);
             }
             catch (Exception e){
-                return new KILmeetResponse();
+                return new MeetResponse();
             }
         }
 
-        protected void onPostExecute(KILmeetResponse response) {
+        protected void onPostExecute(MeetResponse response) {
             if(response!=null){
                 Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                 Log.i("LOG: ", LoginActivity.session.getSessionData().getSessionID()+ " " + categoryString+ " " + descriptionString+ " " + titleString+ " " + locationString+ " " + unixTime+ " " + maxGuests);

@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILmeetResponse;
-import com.webwemser.web.KILmeetsResponse;
+import com.webwemser.web.MeetResponse;
+import com.webwemser.web.MeetsResponse;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class MeetActivity extends AppCompatActivity {
     public static final String USERNAME = "USERNAME", COMMENT = "COMMENT";
     private int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
-    private KILOnlineIntegrationServiceSoapBinding webservice;
+    private OnlineIntegrationServiceSoapBinding webservice;
     private String participants;
     private int meetID;
 
@@ -42,7 +42,7 @@ public class MeetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meet);
 
         //Initialize webservice
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        webservice = new OnlineIntegrationServiceSoapBinding();
 
         //Get Meet ID
         meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
@@ -150,19 +150,19 @@ public class MeetActivity extends AppCompatActivity {
 
     }
 
-    class JoinAsync extends AsyncTask<String, String, KILmeetResponse> {
+    class JoinAsync extends AsyncTask<String, String, MeetResponse> {
 
         @Override
-        protected KILmeetResponse doInBackground(String ... strings) {
+        protected MeetResponse doInBackground(String ... strings) {
             try {
                 return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
             }
             catch (Exception e){
-                return new KILmeetResponse();
+                return new MeetResponse();
             }
         }
 
-        protected void onPostExecute(KILmeetResponse response) {
+        protected void onPostExecute(MeetResponse response) {
             if(response!=null){
                 MeetActivity.this.finish();
             }
@@ -172,19 +172,19 @@ public class MeetActivity extends AppCompatActivity {
         }
     }
 
-    class LeaveAsync extends AsyncTask<String, Integer, KILmeetResponse> {
+    class LeaveAsync extends AsyncTask<String, Integer, MeetResponse> {
 
         @Override
-        protected KILmeetResponse doInBackground(String ... strings) {
+        protected MeetResponse doInBackground(String ... strings) {
             try {
                 return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
             }
             catch (Exception e){
-                return new KILmeetResponse();
+                return new MeetResponse();
             }
         }
 
-        protected void onPostExecute(KILmeetResponse response) {
+        protected void onPostExecute(MeetResponse response) {
             if(response!=null){
                 MeetActivity.this.finish();
             }

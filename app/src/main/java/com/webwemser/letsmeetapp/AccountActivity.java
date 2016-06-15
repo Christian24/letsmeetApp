@@ -11,14 +11,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
 public class AccountActivity extends AppCompatActivity {
 
     private TextView username, label;
     private EditText description, password;
     private String pw, desc = "";
-    private KILOnlineIntegrationServiceSoapBinding webservice;
+    private OnlineIntegrationServiceSoapBinding webservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         //Initialize Webservice
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
+        webservice = new OnlineIntegrationServiceSoapBinding();
 
         //Initialize Views
         username = (TextView)findViewById(R.id.accounnt_name);

@@ -16,10 +16,10 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
-import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.KILmeetData;
-import com.webwemser.web.KILmeetsResponse;
-import com.webwemser.web.KILreturnCodeResponse;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.MeetData;
+import com.webwemser.web.MeetsResponse;
+import com.webwemser.web.ReturnCodeResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private FABToolbarLayout fab_toolbar;
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;
-    private KILOnlineIntegrationServiceSoapBinding webservice;
-    public static KILmeetsResponse meets;
+    private OnlineIntegrationServiceSoapBinding webservice;
+    public static MeetsResponse meets;
     private String category;
 
     @Override
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initialize Webservice components
-        webservice = new KILOnlineIntegrationServiceSoapBinding();
-        meets = new KILmeetsResponse();
+        webservice = new OnlineIntegrationServiceSoapBinding();
+        meets = new MeetsResponse();
         category = getString(R.string.all_categories);
         new CategoryAsync().execute();
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Displays Meets
-    private void showMeets(ArrayList<KILmeetData> meets){
+    private void showMeets(ArrayList<MeetData> meets){
         Log.i(TAG, "showMeets is called");
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
         for(int i = 0; i < meets.size(); i++){
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
     //Called by onPostCreate method
     class LoadMeetsAsync extends AsyncTask<String, Integer, String> {
 
-        private KILmeetsResponse temp;
+        private MeetsResponse temp;
 
         @Override
         protected String doInBackground(String ... strings) {
@@ -236,19 +236,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Called on logout
-    class LogoutAsync extends AsyncTask<String, Integer, KILreturnCodeResponse> {
+    class LogoutAsync extends AsyncTask<String, Integer, ReturnCodeResponse> {
 
         @Override
-        protected KILreturnCodeResponse doInBackground(String ... strings) {
+        protected ReturnCodeResponse doInBackground(String ... strings) {
             try {
                 return webservice.logout(LoginActivity.session.getSessionData().getSessionID());
             }
             catch (Exception e){
-                return new KILreturnCodeResponse();
+                return new ReturnCodeResponse();
             }
         }
 
-        protected void onPostExecute(KILreturnCodeResponse response) {
+        protected void onPostExecute(ReturnCodeResponse response) {
             Log.i(TAG, ""+response.getReturnCode());
             if(response.getReturnCode()==200){
                 Log.i(TAG, "Logout successful");
@@ -294,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
     //Called by searchByCategory()
     class SearchByCategoryAsync extends AsyncTask<String, Integer, String> {
 
-        private KILmeetsResponse temp;
+        private MeetsResponse temp;
 
         @Override
         protected String doInBackground(String ... strings) {
@@ -336,7 +336,7 @@ public class MainActivity extends AppCompatActivity {
     //Called to load user meets
     class SearchByUserAsync extends AsyncTask<String, Integer, String> {
 
-        private KILmeetsResponse temp;
+        private MeetsResponse temp;
 
         @Override
         protected String doInBackground(String ... strings) {
