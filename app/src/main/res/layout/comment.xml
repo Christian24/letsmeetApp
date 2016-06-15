@@ -6,12 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:id="@+id/username_comment"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:id="@+id/username_comment"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -19,5 +26,5 @@
         android:textColor="@color/black"
         android:textSize="18dp"
         android:id="@+id/comment"/>
-    
+
 </LinearLayout>

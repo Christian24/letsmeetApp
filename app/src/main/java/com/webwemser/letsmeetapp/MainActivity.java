@@ -195,8 +195,11 @@ public class MainActivity extends AppCompatActivity {
     //Called by onPostCreate method
     class LoadMeetsAsync extends AsyncTask<String, Integer, String> {
 
+        private KILmeetsResponse temp;
+
         @Override
         protected String doInBackground(String ... strings) {
+            temp = meets;
             Log.i(TAG, "LoadMeets: "+category);
             if(category.equals(getString(R.string.all_categories))){
                 try {
@@ -225,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                    meets = temp;
                 }
             }
             swipeContainer.setRefreshing(false);
@@ -290,9 +294,12 @@ public class MainActivity extends AppCompatActivity {
     //Called by searchByCategory()
     class SearchByCategoryAsync extends AsyncTask<String, Integer, String> {
 
+        private KILmeetsResponse temp;
+
         @Override
         protected String doInBackground(String ... strings) {
             Log.i(TAG, "SearchByCategory: "+category);
+            temp = meets;
             if(category.equals(getString(R.string.all_categories))){
                 runOnUiThread (new Thread(new Runnable() {
                     public void run(){
@@ -319,6 +326,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                    meets = temp;
                 }
             }
             swipeContainer.setRefreshing(false);
@@ -328,8 +336,11 @@ public class MainActivity extends AppCompatActivity {
     //Called to load user meets
     class SearchByUserAsync extends AsyncTask<String, Integer, String> {
 
+        private KILmeetsResponse temp;
+
         @Override
         protected String doInBackground(String ... strings) {
+            temp = meets;
             try {
                 meets = webservice.getMeetsByUser(LoginActivity.session.getSessionData().getSessionID());
             }
@@ -345,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                meets = temp;
             }
             swipeContainer.setRefreshing(false);
         }

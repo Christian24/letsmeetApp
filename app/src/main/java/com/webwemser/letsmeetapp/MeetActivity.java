@@ -99,6 +99,7 @@ public class MeetActivity extends AppCompatActivity {
         }
     }
 
+    //Displays comments
     private void setComments(HashMap<String, String> comments){
 
         ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
