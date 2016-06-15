@@ -796,7 +796,7 @@ public class OnlineIntegrationServiceSoapBinding
             @Override
             public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
                 ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "updateUserPassword");
+                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "login");
                 __envelope.setOutputSoapObject(__soapReq);
 
                 PropertyInfo __info=null;
