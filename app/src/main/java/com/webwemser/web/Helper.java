@@ -143,15 +143,15 @@ public class Helper
 
     public static SimpleDateFormat getDateTimeFormat()
     {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.GERMANY);
+        format.setTimeZone(TimeZone.getTimeZone("GMT"));
         return format;
     }
 
     public static SimpleDateFormat getDateFormat()
     {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY);
+        format.setTimeZone(TimeZone.getTimeZone("GMT"));
         return format;
     }
     
