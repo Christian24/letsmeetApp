@@ -167,4 +167,8 @@ public class KILconversationData extends KILuserContentData implements KvmSerial
     {
     }
 
+    public ArrayList<KILreplyData> getReplies(){
+        return replies;
+    }
+
 }

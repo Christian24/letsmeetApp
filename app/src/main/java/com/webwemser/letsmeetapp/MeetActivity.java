@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.webwemser.web.KILOnlineIntegrationServiceSoapBinding;
@@ -17,12 +19,17 @@ import com.webwemser.web.KILmeetResponse;
 import com.webwemser.web.KILmeetsResponse;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class MeetActivity extends AppCompatActivity {
 
     private TextView title, author, descripton, date, max_guests, category;
+    private ListView list;
+    private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT";
     private int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private KILOnlineIntegrationServiceSoapBinding webservice;
@@ -48,6 +55,7 @@ public class MeetActivity extends AppCompatActivity {
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         setButtons();
+        setComments(new HashMap<String, String>());
 
         //Set values to Textviews
         long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
@@ -91,6 +99,20 @@ public class MeetActivity extends AppCompatActivity {
         }
     }
 
+    private void setComments(HashMap<String, String> comments){
+
+        ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
+        for(int i = 0; i < 10; i++){
+            HashMap<String, String> map = new HashMap<String, String>();
+            map.put(USERNAME, "USER");
+            map.put(COMMENT, "Comment");
+            commentList.add(map);
+        }
+        list = (ListView)findViewById(R.id.comment_list);
+        adapter = new MyCommentAdapter(this, commentList);
+        list.setAdapter(adapter);
+    }
+
     public void showParticipants(View v){
         TextView txt = new TextView(getApplicationContext());
         txt.setText(participants);
@@ -132,7 +154,7 @@ public class MeetActivity extends AppCompatActivity {
         @Override
         protected KILmeetResponse doInBackground(String ... strings) {
             try {
-                return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
+                return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
             }
             catch (Exception e){
                 return new KILmeetResponse();
@@ -154,7 +176,7 @@ public class MeetActivity extends AppCompatActivity {
         @Override
         protected KILmeetResponse doInBackground(String ... strings) {
             try {
-                return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
+                return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
             }
             catch (Exception e){
                 return new KILmeetResponse();

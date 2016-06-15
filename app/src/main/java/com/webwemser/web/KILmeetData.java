@@ -389,7 +389,7 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
         return visitors;
     }
     public int getFreeSpace() {
-        return maxGuests- visitors.size();
+        return visitors.size()+1;
     }
     public int getMaxGuests() {
         return maxGuests;
@@ -401,4 +401,7 @@ public class KILmeetData extends KILdataTransferObject implements KvmSerializabl
         return admin.equals(user) || getVisitors().contains(user);
     }
 
+    public ArrayList<KILconversationData> getConversations() {
+        return conversations;
+    }
 }

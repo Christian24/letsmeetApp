@@ -35,7 +35,7 @@ public class KILOnlineIntegrationServiceSoapBinding
         java.lang.Object ProcessResult(KILExtendedSoapSerializationEnvelope __envelope,java.lang.Object result) throws java.lang.Exception;
     }
 
-    String url="http://10.0.2.2:8080/letsmeet/OnlineIntegration";
+    String url="http://192.168.2.72:8080/letsmeet/OnlineIntegration";
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;
