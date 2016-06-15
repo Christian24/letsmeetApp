@@ -10,6 +10,8 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 import java.util.ArrayList;
@@ -18,35 +20,35 @@ import org.ksoap2.serialization.PropertyInfo;
 public class MeetData extends DataTransferObject implements KvmSerializable
 {
 
-    
-    public UserData admin;
-    
-    public String category;
-    
-    public ArrayList<ConversationData> conversations =new ArrayList<ConversationData>();
-    
-    public Long dateTime=0L;
-    
-    public String description;
-    
-    public Integer id=0;
-    
-    public String location;
-    
-    public Integer maxGuests=0;
-    
-    public String title;
-    
-    public ArrayList<UserData> visitors =new ArrayList<UserData>();
 
-    public MeetData()
+    public UserData admin;
+
+    public String category;
+
+    public ArrayList< ConversationData> conversations =new ArrayList<ConversationData >();
+
+    public java.util.Date dateTime;
+
+    public String description;
+
+    public Integer id=0;
+
+    public String location;
+
+    public Integer maxGuests=0;
+
+    public String title;
+
+    public ArrayList< UserData> visitors =new ArrayList<UserData >();
+
+    public MeetData ()
     {
     }
 
-    public MeetData(Object paramObj, ExtendedSoapSerializationEnvelope __envelope)
+    public MeetData (java.lang.Object paramObj,ExtendedSoapSerializationEnvelope __envelope)
     {
-	    super(paramObj, __envelope);
-	    if (paramObj == null)
+        super(paramObj, __envelope);
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -59,12 +61,12 @@ public class MeetData extends DataTransferObject implements KvmSerializable
             {
                 //if you have compilation error here, please use a ksoap2.jar and ExKsoap2.jar from libs folder (in the generated zip file)
                 PropertyInfo info=soapObject.getPropertyInfo(i0);
-                Object obj = info.getValue();
+                java.lang.Object obj = info.getValue();
                 if (info.name.equals("admin"))
                 {
                     if(obj!=null)
                     {
-                        Object j = obj;
+                        java.lang.Object j = obj;
                         this.admin = (UserData)__envelope.get(j,UserData.class);
                     }
                     continue;
@@ -73,7 +75,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -92,17 +94,17 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
-                    
+
+
                         if(this.conversations==null)
                         {
                             this.conversations = new ArrayList<ConversationData>();
                         }
-                        Object j =obj;
+                        java.lang.Object j =obj;
                         ConversationData j1= (ConversationData)__envelope.get(j,ConversationData.class);
                         this.conversations.add(j1);
-                   
-        
+
+
                     }
                     continue;
                 }
@@ -110,17 +112,17 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
                             if(j.toString()!=null)
                             {
-                                this.dateTime = new Long(j.toString());
+                                this.dateTime = Helper.ConvertFromWebService(j.toString());
                             }
                         }
-                        else if (obj instanceof Long){
-                            this.dateTime = (Long)obj;
+                        else if (obj instanceof java.util.Date){
+                            this.dateTime = (java.util.Date)obj;
                         }
                     }
                     continue;
@@ -129,7 +131,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -148,7 +150,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -167,7 +169,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -186,7 +188,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -205,7 +207,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -224,17 +226,17 @@ public class MeetData extends DataTransferObject implements KvmSerializable
                 {
                     if(obj!=null)
                     {
-        
-                    
+
+
                         if(this.visitors==null)
                         {
                             this.visitors = new ArrayList<UserData>();
                         }
-                        Object j =obj;
+                        java.lang.Object j =obj;
                         UserData j1= (UserData)__envelope.get(j,UserData.class);
                         this.visitors.add(j1);
-                   
-        
+
+
                     }
                     continue;
                 }
@@ -248,7 +250,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
     }
 
     @Override
-    public Object getProperty(int propertyIndex) {
+    public java.lang.Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
@@ -262,7 +264,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
         }
         if(propertyIndex==count+2)
         {
-            return dateTime;
+            return this.dateTime!=null?Helper.getDateTimeFormat().format(this.dateTime):SoapPrimitive.NullSkip;
         }
         if(propertyIndex==count+3)
         {
@@ -319,7 +321,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
         }
         if(propertyIndex==count+2)
         {
-            info.type = PropertyInfo.LONG_CLASS;
+            info.type = PropertyInfo.STRING_CLASS;
             info.name = "dateTime";
             info.namespace= "";
         }
@@ -367,9 +369,9 @@ public class MeetData extends DataTransferObject implements KvmSerializable
         }
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-    
+
     @Override
-    public void setProperty(int arg0, Object arg1)
+    public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
     public String getTitle() {
@@ -381,8 +383,8 @@ public class MeetData extends DataTransferObject implements KvmSerializable
     public String getCategory() {
         return category;
     }
-    public Long getDateTime() {
-        return dateTime;
+    public String getDateTime() {
+        return new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(dateTime);
     }
     public ArrayList<UserData> getVisitors() {
         return visitors;
