@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 public class ConversationActivity extends AppCompatActivity {
 
-    private static final int KEY_POSITION = 1;
-    private int meetPosition = 0;
+    private static final int KEY_POSITION = 0;
+    private int meetPosition = 0, conversationPosition = 0;
     private ListView list;
     private MyCommentAdapter adapter;
     private EditText comment;
@@ -23,8 +23,8 @@ public class ConversationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_conversation);
 
         //Get meet position
-        meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
-
+        meetPosition = getIntent().getIntExtra(MeetActivity.POSITION, KEY_POSITION);
+        conversationPosition = getIntent().getIntExtra(MeetActivity.CONVERSATION,conversationPosition);
         //Set comments
         setComments();
     }
@@ -33,10 +33,10 @@ public class ConversationActivity extends AppCompatActivity {
         ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
         Log.i("Conversation Size: ", MainActivity.meets.getMeets().get(meetPosition).getConversations().size()+"");
         if(MainActivity.meets.getMeets().get(meetPosition).getConversations().size()>0){
-            for(int i = 0; i<MainActivity.meets.getMeets().get(meetPosition).getConversations().size() ; i++){
+            for(int i = 0; i<MainActivity.meets.getMeets().get(meetPosition).getConversations().get(conversationPosition).getConversation().size() ; i++){
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put(MeetActivity.USERNAME, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getPoster());
-                map.put(MeetActivity.COMMENT, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getText());
+                map.put(MeetActivity.USERNAME, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(conversationPosition).getConversation().get(i).getPoster());
+                map.put(MeetActivity.COMMENT, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(conversationPosition).getConversation().get(i).getText());
                 commentList.add(map);
             }
             list = (ListView)findViewById(R.id.conversation_list);

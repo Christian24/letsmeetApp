@@ -28,7 +28,8 @@ public class MeetActivity extends AppCompatActivity {
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION";
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION";
+
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
@@ -124,6 +125,7 @@ public class MeetActivity extends AppCompatActivity {
                                             int position, long id) {
                         Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
                         intent.putExtra(POSITION, position);
+                        intent.putExtra(CONVERSATION,id);
                         startActivity(intent);
                     }
                 });
