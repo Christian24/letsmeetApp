@@ -1,5 +1,6 @@
 package com.webwemser.letsmeetapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,9 @@ public class ParticipantActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        this.finish();
+        Intent intent = new Intent(this, MeetActivity.class);
+        intent.putExtra(MainActivity.KEY_POSITION, meet.id);
+        startActivity(intent);
     }
 
     private void setParticipants(){

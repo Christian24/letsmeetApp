@@ -56,7 +56,7 @@ public class MeetActivity extends AppCompatActivity {
 
         //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews
-        meetPosition = MainActivity.meets.getMeets().get(meetPosition).getId();
+        //meetPosition = MainActivity.meets.getMeets().get(meetPosition).getId();
         new GetMeetAsync().execute();
 
 
