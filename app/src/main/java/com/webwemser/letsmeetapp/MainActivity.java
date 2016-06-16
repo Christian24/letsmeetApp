@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private MyListAdapter adapter;
     private static final String TAG = "LOGGING: ";
     public static final String KEY_POSITION = "position";
+    public static final int MEET_ID = 0;
     private FABToolbarLayout fab_toolbar;
     private Spinner searchSpinner;
     private SwipeRefreshLayout swipeContainer;

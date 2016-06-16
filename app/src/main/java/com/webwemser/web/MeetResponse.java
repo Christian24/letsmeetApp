@@ -91,5 +91,8 @@ public class MeetResponse extends SessionResponse implements KvmSerializable
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
+    public MeetData getMeet() {
+        return meet;
+    }
 
 }

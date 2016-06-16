@@ -57,8 +57,16 @@ public class MeetActivity extends AppCompatActivity {
 
         //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews
+        new GetMeetAsync().execute();
+
+
+
+
+    }
+
+    private void setup() {
         try {
-            meet = MainActivity.meets.getMeets().get(meetPosition);
+
             date.setText(meet.getDateTime());
             category.setText(meet.getCategory());
             title.setText(meet.getTitle());
@@ -74,8 +82,6 @@ public class MeetActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
-
-
     }
 
     //Sets the right FAB
@@ -167,6 +173,32 @@ public class MeetActivity extends AppCompatActivity {
             Toast.makeText(MeetActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
         }
     }
+    class GetMeetAsync extends AsyncTask<String, Integer, MeetResponse>{
+        @Override
+        protected MeetResponse doInBackground(String ... strings){
+            try {
+                return webservice.getMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
+            }
+            catch (Exception e){
+                return new MeetResponse();
+            }
+        }
+        @Override
+        protected void onPostExecute(MeetResponse response) {
+            process(response);
+        }
+    }
+
+    private void process(MeetResponse response) {
+        if(response != null ) {
+            meet = response.getMeet();
+            if(meet != null)
+            setup();
+        }
+        else {
+            Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
 
     //Called to join Meet
     class JoinAsync extends AsyncTask<String, String, MeetResponse> {
@@ -227,12 +259,16 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
+            /*
             if(response!=null){
                 MeetActivity.this.finish();
             }
             else {
+
                 Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
             }
+            */
+            process(response);
         }
     }
 }
