@@ -13,6 +13,7 @@ package com.webwemser.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import org.ksoap2.serialization.*;
@@ -22,6 +23,14 @@ public class ConversationData extends UserContentData implements KvmSerializable
 
 
     public Integer origin=0;
+
+    public ArrayList<ReplyData> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(ArrayList<ReplyData> replies) {
+        this.replies = replies;
+    }
 
     public ArrayList< ReplyData> replies =new ArrayList<ReplyData >();
 
@@ -137,11 +146,15 @@ public class ConversationData extends UserContentData implements KvmSerializable
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
-    /*
-    public Map<String,String> getConversation() {
-        HashMap<String, String> conversation = new HashMap<>();
-        conversation.put(poster.)
+
+    public List<UserContentData> getConversation() {
+        ArrayList<UserContentData> conversation = new ArrayList<>();
+        conversation.add(this);
+        for(ReplyData reply : getReplies()){
+            conversation.add(reply);
+        }
+        return conversation;
     }
-    */
+
 
 }
