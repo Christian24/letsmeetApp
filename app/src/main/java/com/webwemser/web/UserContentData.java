@@ -10,11 +10,43 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
+import java.util.Date;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
 public class UserContentData extends DataTransferObject implements KvmSerializable
 {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+    public String getPoster() {
+        return poster;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public Integer id=0;
 
     public String poster;
@@ -194,8 +226,6 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
-    public String getPoster() {
-        return poster;
-    }
+
 
 }
