@@ -32,7 +32,7 @@ public class OnlineIntegrationServiceSoapBinding
         Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object result) throws Exception;
     }
 
-    String url="http://192.168.2.72:8080/letsmeet/OnlineIntegration";
+    String url="http://10.0.2.2:8080/letsmeet/OnlineIntegration";
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;
@@ -332,16 +332,16 @@ public class OnlineIntegrationServiceSoapBinding
         });
     }
     
-    public MeetResponse createMeet(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Long arg5, final Integer arg6 ) throws Exception
+    public MeetResponse createMeet(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
         {
             @Override
             public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
-              ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
                 SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "createMeet");
                 __envelope.setOutputSoapObject(__soapReq);
-                
+
                 PropertyInfo __info=null;
                 __info = new PropertyInfo();
                 __info.namespace="";
@@ -376,8 +376,8 @@ public class OnlineIntegrationServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg5";
-                __info.type=PropertyInfo.LONG_CLASS;
-                __info.setValue(arg5);
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg5!=null?Helper.getDateTimeFormat().format(arg5):SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace="";
@@ -387,15 +387,15 @@ public class OnlineIntegrationServiceSoapBinding
                 __soapReq.addProperty(__info);
                 return __envelope;
             }
-            
+
             @Override
-            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+            public java.lang.Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
                 return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
             }
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> createMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Long arg5, final Integer arg6)
+    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> createMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6)
     {
         return executeAsync(new Functions.IFunc<MeetResponse>() {
             public MeetResponse Func() throws Exception {
@@ -677,20 +677,46 @@ public class OnlineIntegrationServiceSoapBinding
     
 
     
-    public String replyToConversation(final String arg0,final String arg1,final String arg2 ) throws Exception
+    public MeetResponse replyToConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
+        return (MeetResponse)execute(new IWcfMethod()
+        {
+            @Override
+            public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "replyToConversation");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.INTEGER_CLASS;
+                __info.setValue(arg1);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+                return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
+            }
+        },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult< String>> replyToConversationAsync(final String arg0, final String arg1, final String arg2)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return replyToConversation( arg0,arg1,arg2);
-            }
-        });
-    }
+
     
     public SessionResponse updateUserPassword(final String arg0,final String arg1 ) throws Exception
     {
@@ -724,14 +750,7 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-   /* public android.os.AsyncTask< Void, Void, OperationResult< SessionResponse>> updateUserPasswordAsync(final String arg0, final String arg1)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return updateUserPassword( arg0,arg1);
-            }
-        });
-    }*/
+
     
     public String updateMeet(final String arg0,final String arg1,final String arg2,final String arg3,final String arg4,final String arg5,final String arg6,final String arg7 ) throws Exception
     {
@@ -829,20 +848,46 @@ public class OnlineIntegrationServiceSoapBinding
     
 
     
-    public String createNewConversation(final String arg0,final String arg1,final String arg2 ) throws Exception
+    public MeetResponse createNewConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
+        return (MeetResponse)execute(new IWcfMethod()
+        {
+            @Override
+            public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "createNewConversation");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.INTEGER_CLASS;
+                __info.setValue(arg1);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+                return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
+            }
+        },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult< String>> createNewConversationAsync(final String arg0, final String arg1, final String arg2)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return createNewConversation( arg0,arg1,arg2);
-            }
-        });
-    }
+
     
     public MeetsResponse getMeetsByUser(final String arg0 ) throws Exception
     {
