@@ -332,7 +332,7 @@ public class OnlineIntegrationServiceSoapBinding
         });
     }
     
-    public MeetResponse createMeet(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Long arg5, final Integer arg6 ) throws Exception
+    public MeetResponse createMeet(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
         {
@@ -395,7 +395,7 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> createMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Long arg5, final Integer arg6)
+    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> createMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6)
     {
         return executeAsync(new Functions.IFunc<MeetResponse>() {
             public MeetResponse Func() throws Exception {

@@ -30,10 +30,11 @@ public class CreateActivity extends AppCompatActivity {
     private static TextView date, time, guests;
     private static EditText title, location, description;
     private static int year, month, day, hour, min, maxGuests;
-    private static long unixTime;
+
     private static String titleString, locationString, descriptionString, categoryString;
     private OnlineIntegrationServiceSoapBinding webservice;
     private Spinner categorySpinner;
+    private static Date selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +79,9 @@ public class CreateActivity extends AppCompatActivity {
                     c.set(Calendar.DAY_OF_MONTH, day);
                     c.set(Calendar.HOUR, hour);
                     c.set(Calendar.MINUTE, min);
-                    if((c.getTimeInMillis() / 1000L) - (System.currentTimeMillis() / 1000L) > 0){
-                        unixTime = c.getTimeInMillis() / 1000L;
+                    selectedDate = c.getTime();
+                    if(selectedDate.compareTo(new Date()) == 1){
+
                         titleString = title.getText().toString();
                         descriptionString = description.getText().toString();
                         locationString = location.getText().toString();
@@ -193,7 +195,7 @@ public class CreateActivity extends AppCompatActivity {
         @Override
         protected MeetResponse doInBackground(String ... strings) {
             try {
-                return webservice.createMeet(LoginActivity.session.getSessionData().getSessionID(), categoryString, descriptionString, titleString, locationString, unixTime, maxGuests);
+                return webservice.createMeet(LoginActivity.session.getSessionData().getSessionID(), categoryString, descriptionString, titleString, locationString,selectedDate, maxGuests);
             }
             catch (Exception e){
                 return new MeetResponse();
@@ -203,7 +205,7 @@ public class CreateActivity extends AppCompatActivity {
         protected void onPostExecute(MeetResponse response) {
             if(response!=null){
                 Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
-                Log.i("LOG: ", LoginActivity.session.getSessionData().getSessionID()+ " " + categoryString+ " " + descriptionString+ " " + titleString+ " " + locationString+ " " + unixTime+ " " + maxGuests);
+                Log.i("LOG: ", LoginActivity.session.getSessionData().getSessionID()+ " " + categoryString+ " " + descriptionString+ " " + titleString+ " " + locationString+ " " + selectedDate+ " " + maxGuests);
             }
             else {
                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_SHORT).show();
