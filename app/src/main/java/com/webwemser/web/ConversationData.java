@@ -155,6 +155,9 @@ public class ConversationData extends UserContentData implements KvmSerializable
         }
         return conversation;
     }
+    public int getReplyCount() {
+        return replies.size();
+    }
 
 
 }
