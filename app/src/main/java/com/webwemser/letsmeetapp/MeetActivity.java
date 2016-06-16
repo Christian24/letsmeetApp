@@ -33,8 +33,6 @@ public class MeetActivity extends AppCompatActivity {
     private int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
-    private String participants;
-    private int meetID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +63,6 @@ public class MeetActivity extends AppCompatActivity {
         descripton.setText(MainActivity.meets.getMeets().get(meetPosition).getDescription());
         author.setText(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName());
         max_guests.setText(MainActivity.meets.getMeets().get(meetPosition).getFreeSpace()+" / "+MainActivity.meets.getMeets().get(meetPosition).getMaxGuests());
-
-        //Initialize some variables
-        //meetID = MainActivity.meets.getMeets().get(meetPosition).getId();
-        participants = MainActivity.meets.getMeets().get(meetPosition).getAdminUserName()+ ", ";
-        for(int i = 0; i<MainActivity.meets.getMeets().get(meetPosition).getVisitors().size(); i++){
-            participants = participants + MainActivity.meets.getMeets().get(meetPosition).getVisitors().get(i).getUserName()+ ", ";
-        }
     }
 
     public void getBack(View v){
@@ -115,20 +106,9 @@ public class MeetActivity extends AppCompatActivity {
     }
 
     public void showParticipants(View v){
-        TextView txt = new TextView(getApplicationContext());
-        txt.setText(participants);
-        txt.setPadding(40, 40, 40, 40);
-        txt.setGravity(Gravity.CENTER);
-        txt.setTextColor(getResources().getColor(R.color.black));
-        new AlertDialog.Builder(MeetActivity.this)
-                .setTitle(getString(R.string.participants))
-                .setView(txt)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .show();
+        Intent intent = new Intent(this, ParticipantActivity.class);
+        intent.putExtra(MainActivity.KEY_POSITION, meetPosition);
+        startActivity(intent);
     }
 
     //Called by fab_join to join a meet

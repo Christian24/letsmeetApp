@@ -5,4 +5,12 @@
     android:layout_height="match_parent"
     tools:context="com.webwemser.letsmeetapp.ParticipantActivity">
 
+    <ListView
+        android:id="@+id/participant_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"/>
+
 </LinearLayout>

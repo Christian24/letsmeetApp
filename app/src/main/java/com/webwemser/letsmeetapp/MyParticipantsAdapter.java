@@ -42,16 +42,16 @@ public class MyParticipantsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if(convertView==null)
-            vi = inflater.inflate(R.layout.comment, null);
+            vi = inflater.inflate(R.layout.participant, null);
 
-        TextView user = (TextView)vi.findViewById(R.id.username_comment);
-        TextView comment = (TextView)vi.findViewById(R.id.comment);
+        TextView user = (TextView)vi.findViewById(R.id.username_participant);
+        TextView description = (TextView)vi.findViewById(R.id.description_participant);
         HashMap<String, String> meet;
         meet = data.get(position);
 
         // Setting all values in listview
-        user.setText(meet.get(MeetActivity.USERNAME));
-        comment.setText(meet.get(MeetActivity.COMMENT));
+        user.setText(meet.get(ParticipantActivity.USERNAME));
+        description.setText(meet.get(ParticipantActivity.DESCRIPTION));
         return vi;
     }
 }

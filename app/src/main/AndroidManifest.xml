@@ -48,7 +48,12 @@
             android:name=".RegisterActivity"
             android:label="@string/signup"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".ParticipantActivity"></activity>
+        <activity
+            android:name=".ParticipantActivity"
+            android:label="@string/participants"
+            android:parentActivityName=".MeetActivity"/>
+
+
     </application>
 
 </manifest>
