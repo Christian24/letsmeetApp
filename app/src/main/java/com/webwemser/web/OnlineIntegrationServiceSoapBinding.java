@@ -677,20 +677,46 @@ public class OnlineIntegrationServiceSoapBinding
     
 
     
-    public String replyToConversation(final String arg0,final String arg1,final String arg2 ) throws Exception
+    public MeetResponse replyToConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
+        return (MeetResponse)execute(new IWcfMethod()
+        {
+            @Override
+            public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "replyToConversation");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info=null;
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg0";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg0!=null?arg0:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg1";
+                __info.type=PropertyInfo.INTEGER_CLASS;
+                __info.setValue(arg1);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace="";
+                __info.name="arg2";
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?arg2:SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                return __envelope;
+            }
+
+            @Override
+            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+                return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
+            }
+        },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult< String>> replyToConversationAsync(final String arg0, final String arg1, final String arg2)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return replyToConversation( arg0,arg1,arg2);
-            }
-        });
-    }
+
     
     public SessionResponse updateUserPassword(final String arg0,final String arg1 ) throws Exception
     {
