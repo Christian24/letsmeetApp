@@ -31,6 +31,10 @@ public class MeetData extends DataTransferObject implements KvmSerializable
 
     public String description;
 
+    public Integer getId() {
+        return id;
+    }
+
     public Integer id=0;
 
     public String location;

@@ -57,6 +57,7 @@ public class MeetActivity extends AppCompatActivity {
 
         //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews
+        meetPosition = MainActivity.meets.getMeets().get(meetPosition).getId();
         new GetMeetAsync().execute();
 
 
@@ -177,7 +178,7 @@ public class MeetActivity extends AppCompatActivity {
         @Override
         protected MeetResponse doInBackground(String ... strings){
             try {
-                return webservice.getMeet(LoginActivity.session.getSessionData().getSessionID(), 1);
+                return webservice.getMeet(LoginActivity.session.getSessionData().getSessionID(), meetPosition);
             }
             catch (Exception e){
                 return new MeetResponse();
@@ -214,12 +215,15 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
+            /*
             if(response!=null){
                 MeetActivity.this.finish();
             }
             else {
                 Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
             }
+            */
+            process(response);
         }
     }
 
@@ -237,12 +241,15 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
+           /*
             if(response!=null){
                 MeetActivity.this.finish();
             }
             else {
                 Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
             }
+            */
+            process(response);
         }
     }
 
@@ -269,6 +276,7 @@ public class MeetActivity extends AppCompatActivity {
             }
             */
             process(response);
+            question.setText("");
         }
     }
 }
