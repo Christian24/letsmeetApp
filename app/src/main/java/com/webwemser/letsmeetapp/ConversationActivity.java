@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,6 +24,8 @@ public class ConversationActivity extends AppCompatActivity {
     private MeetData meet;
     private int meetPosition = 0, conversationPosition = 0;
     private ListView list;
+    private String commentToPost;
+    private ConversationData conversation;
     private MyCommentAdapter adapter;
     private EditText comment;
     private OnlineIntegrationServiceSoapBinding webservice;
@@ -30,7 +33,7 @@ public class ConversationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
-
+        comment = (EditText)findViewById(R.id.comment);
         //Get meet position
         meetPosition = getIntent().getIntExtra(MeetActivity.POSITION, KEY_POSITION);
         conversationPosition = getIntent().getIntExtra(MeetActivity.CONVERSATION,conversationPosition);
@@ -69,6 +72,41 @@ public class ConversationActivity extends AppCompatActivity {
             list.setAdapter(adapter);
         }
     }
+    public void putComment(View view) {
+        if(comment.getText().toString().length()>2){
+            commentToPost = comment.getText().toString();
+            new CommentAsync().execute();
+        }
+        else {
+            Toast.makeText(ConversationActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+        }
+    }
+    class CommentAsync extends AsyncTask<String, Integer, MeetResponse> {
+
+        @Override
+        protected MeetResponse doInBackground(String ... strings) {
+            try {
+                return webservice.replyToConversation(LoginActivity.session.getSessionData().getSessionID(),conversation.getId(), commentToPost);
+            }
+            catch (Exception e){
+                return new MeetResponse();
+            }
+        }
+
+        protected void onPostExecute(MeetResponse response) {
+            /*
+            if(response!=null){
+                MeetActivity.this.finish();
+            }
+            else {
+
+                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+            }
+            */
+            process(response);
+           comment.setText("");
+        }
+    }
     class GetMeetAsync extends AsyncTask<String, Integer, MeetResponse> {
         @Override
         protected MeetResponse doInBackground(String ... strings){
@@ -88,8 +126,14 @@ public class ConversationActivity extends AppCompatActivity {
     private void process(MeetResponse response) {
         if(response != null ) {
             meet = response.getMeet();
-            if(meet != null)
-              setComments();
+            if(meet != null) {
+            for(ConversationData data : meet.getConversations())
+if(data.getId() == conversationPosition) {
+
+this.conversation = data;
+    setComments();
+}
+            }
         }
         else {
             Toast.makeText(ConversationActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();

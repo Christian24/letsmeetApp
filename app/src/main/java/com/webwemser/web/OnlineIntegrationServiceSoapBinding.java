@@ -674,9 +674,9 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
+
+
     public MeetResponse replyToConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -684,7 +684,7 @@ public class OnlineIntegrationServiceSoapBinding
             @Override
             public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
                 ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "replyToConversation");
+                SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "addToConversation");
                 __envelope.setOutputSoapObject(__soapReq);
 
                 PropertyInfo __info=null;

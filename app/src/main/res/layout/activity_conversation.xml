@@ -32,6 +32,7 @@
             android:singleLine="true"
             android:lines="1"
             android:textSize="24sp"
+            android:id="@+id/comment"
             android:textColor="@color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
 
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="6"
             android:text="@string/comment"
+            android:onClick="putComment"
             android:textColor="@color/white"
             android:background="@drawable/mybutton"/>
 
