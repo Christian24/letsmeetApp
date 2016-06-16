@@ -130,8 +130,8 @@ public class MeetActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
                         Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
-                        intent.putExtra(POSITION, position);
-                        intent.putExtra(CONVERSATION,id);
+                        intent.putExtra(POSITION, meet.getId());
+                        intent.putExtra(CONVERSATION,meet.getConversations().get(position).getId());
                         startActivity(intent);
                     }
                 });
