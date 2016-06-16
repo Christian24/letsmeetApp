@@ -11,6 +11,8 @@ package com.webwemser.web;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -153,6 +155,7 @@ public class ConversationData extends UserContentData implements KvmSerializable
         for(ReplyData reply : getReplies()){
             conversation.add(reply);
         }
+       Collections.sort(conversation);
         return conversation;
     }
     public int getReplyCount() {

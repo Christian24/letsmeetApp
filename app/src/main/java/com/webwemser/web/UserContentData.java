@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
-public class UserContentData extends DataTransferObject implements KvmSerializable
+public class UserContentData extends DataTransferObject implements KvmSerializable, Comparable<UserContentData>
 {
     public Integer getId() {
         return id;
@@ -225,6 +225,10 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
     @Override
     public void setProperty(int arg0, java.lang.Object arg1)
     {
+    }
+    @Override
+    public int compareTo(UserContentData o) {
+        return getTimestamp().compareTo(o.getTimestamp());
     }
 
 
