@@ -10,25 +10,26 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
+
 import org.ksoap2.serialization.*;
 
 public class ConversationData extends UserContentData implements KvmSerializable
 {
 
-    
-    public Integer id=0;
-    
+
     public Integer origin=0;
 
-    public ConversationData()
+    public ConversationData ()
     {
     }
 
-    public ConversationData(Object paramObj, ExtendedSoapSerializationEnvelope __envelope)
+    public ConversationData (java.lang.Object paramObj,ExtendedSoapSerializationEnvelope __envelope)
     {
-	    super(paramObj, __envelope);
-	    if (paramObj == null)
+        super(paramObj, __envelope);
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -41,31 +42,12 @@ public class ConversationData extends UserContentData implements KvmSerializable
             {
                 //if you have compilation error here, please use a ksoap2.jar and ExKsoap2.jar from libs folder (in the generated zip file)
                 PropertyInfo info=soapObject.getPropertyInfo(i0);
-                Object obj = info.getValue();
-                if (info.name.equals("id"))
-                {
-                    if(obj!=null)
-                    {
-        
-                        if (obj.getClass().equals(SoapPrimitive.class))
-                        {
-                            SoapPrimitive j =(SoapPrimitive) obj;
-                            if(j.toString()!=null)
-                            {
-                                this.id = Integer.parseInt(j.toString());
-                            }
-                        }
-                        else if (obj instanceof Integer){
-                            this.id = (Integer)obj;
-                        }
-                    }
-                    continue;
-                }
+                java.lang.Object obj = info.getValue();
                 if (info.name.equals("origin"))
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -90,15 +72,11 @@ public class ConversationData extends UserContentData implements KvmSerializable
     }
 
     @Override
-    public Object getProperty(int propertyIndex) {
+    public java.lang.Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
         if(propertyIndex==count+0)
-        {
-            return id;
-        }
-        if(propertyIndex==count+1)
         {
             return origin;
         }
@@ -108,7 +86,7 @@ public class ConversationData extends UserContentData implements KvmSerializable
 
     @Override
     public int getPropertyCount() {
-        return super.getPropertyCount()+2;
+        return super.getPropertyCount()+1;
     }
 
     @Override
@@ -118,21 +96,21 @@ public class ConversationData extends UserContentData implements KvmSerializable
         if(propertyIndex==count+0)
         {
             info.type = PropertyInfo.INTEGER_CLASS;
-            info.name = "id";
-            info.namespace= "";
-        }
-        if(propertyIndex==count+1)
-        {
-            info.type = PropertyInfo.INTEGER_CLASS;
             info.name = "origin";
             info.namespace= "";
         }
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-    
+
     @Override
-    public void setProperty(int arg0, Object arg1)
+    public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
+    /*
+    public Map<String,String> getConversation() {
+        HashMap<String, String> conversation = new HashMap<>();
+        conversation.put(poster.)
+    }
+    */
 
 }

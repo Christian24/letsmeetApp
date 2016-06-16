@@ -15,22 +15,22 @@ import org.ksoap2.serialization.*;
 
 public class UserContentData extends DataTransferObject implements KvmSerializable
 {
+    public Integer id=0;
 
-    
-    public UserPersistenceData poster;
-    
+    public String poster;
+
     public String text;
-    
-    public Long timestamp=0L;
 
-    public UserContentData()
+    public java.util.Date timestamp;
+
+    public UserContentData ()
     {
     }
 
-    public UserContentData(Object paramObj, ExtendedSoapSerializationEnvelope __envelope)
+    public UserContentData (java.lang.Object paramObj,ExtendedSoapSerializationEnvelope __envelope)
     {
-	    super(paramObj, __envelope);
-	    if (paramObj == null)
+        super(paramObj, __envelope);
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -43,13 +43,42 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
             {
                 //if you have compilation error here, please use a ksoap2.jar and ExKsoap2.jar from libs folder (in the generated zip file)
                 PropertyInfo info=soapObject.getPropertyInfo(i0);
-                Object obj = info.getValue();
+                java.lang.Object obj = info.getValue();
+                if (info.name.equals("id"))
+                {
+                    if(obj!=null)
+                    {
+
+                        if (obj.getClass().equals(SoapPrimitive.class))
+                        {
+                            SoapPrimitive j =(SoapPrimitive) obj;
+                            if(j.toString()!=null)
+                            {
+                                this.id = Integer.parseInt(j.toString());
+                            }
+                        }
+                        else if (obj instanceof Integer){
+                            this.id = (Integer)obj;
+                        }
+                    }
+                    continue;
+                }
                 if (info.name.equals("poster"))
                 {
                     if(obj!=null)
                     {
-                        Object j = obj;
-                        this.poster = (UserPersistenceData)__envelope.get(j,UserPersistenceData.class);
+
+                        if (obj.getClass().equals(SoapPrimitive.class))
+                        {
+                            SoapPrimitive j =(SoapPrimitive) obj;
+                            if(j.toString()!=null)
+                            {
+                                this.poster = j.toString();
+                            }
+                        }
+                        else if (obj instanceof String){
+                            this.poster = (String)obj;
+                        }
                     }
                     continue;
                 }
@@ -57,7 +86,7 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
@@ -76,17 +105,17 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
                 {
                     if(obj!=null)
                     {
-        
+
                         if (obj.getClass().equals(SoapPrimitive.class))
                         {
                             SoapPrimitive j =(SoapPrimitive) obj;
                             if(j.toString()!=null)
                             {
-                                this.timestamp = new Long(j.toString());
+                                this.timestamp = Helper.ConvertFromWebService(j.toString());
                             }
                         }
-                        else if (obj instanceof Long){
-                            this.timestamp = (Long)obj;
+                        else if (obj instanceof java.util.Date){
+                            this.timestamp = (java.util.Date)obj;
                         }
                     }
                     continue;
@@ -101,21 +130,25 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
     }
 
     @Override
-    public Object getProperty(int propertyIndex) {
+    public java.lang.Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
         if(propertyIndex==count+0)
         {
-            return this.poster!=null?this.poster:SoapPrimitive.NullSkip;
+            return id;
         }
         if(propertyIndex==count+1)
         {
-            return this.text!=null?this.text:SoapPrimitive.NullSkip;
+            return this.poster!=null?this.poster:SoapPrimitive.NullSkip;
         }
         if(propertyIndex==count+2)
         {
-            return timestamp;
+            return this.text!=null?this.text:SoapPrimitive.NullSkip;
+        }
+        if(propertyIndex==count+3)
+        {
+            return this.timestamp!=null?Helper.getDateTimeFormat().format(this.timestamp):SoapPrimitive.NullSkip;
         }
         return super.getProperty(propertyIndex);
     }
@@ -123,7 +156,7 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
 
     @Override
     public int getPropertyCount() {
-        return super.getPropertyCount()+3;
+        return super.getPropertyCount()+4;
     }
 
     @Override
@@ -132,28 +165,37 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
         int count = super.getPropertyCount();
         if(propertyIndex==count+0)
         {
-            info.type = UserPersistenceData.class;
-            info.name = "poster";
+            info.type = PropertyInfo.INTEGER_CLASS;
+            info.name = "id";
             info.namespace= "";
         }
         if(propertyIndex==count+1)
         {
             info.type = PropertyInfo.STRING_CLASS;
-            info.name = "text";
+            info.name = "poster";
             info.namespace= "";
         }
         if(propertyIndex==count+2)
         {
-            info.type = PropertyInfo.LONG_CLASS;
+            info.type = PropertyInfo.STRING_CLASS;
+            info.name = "text";
+            info.namespace= "";
+        }
+        if(propertyIndex==count+3)
+        {
+            info.type = PropertyInfo.STRING_CLASS;
             info.name = "timestamp";
             info.namespace= "";
         }
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-    
+
     @Override
-    public void setProperty(int arg0, Object arg1)
+    public void setProperty(int arg0, java.lang.Object arg1)
     {
+    }
+    public String getPoster() {
+        return poster;
     }
 
 }
