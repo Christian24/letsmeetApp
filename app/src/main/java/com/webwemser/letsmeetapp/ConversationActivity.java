@@ -45,10 +45,10 @@ public class ConversationActivity extends AppCompatActivity {
 
             for(ConversationData conversation : meet.getConversations()) {
                 if(conversation.getId() == conversationPosition) {
-                    HashMap<String, String> map = new HashMap<String, String>();
+
                     for(UserContentData data : conversation.getConversation()) {
 
-
+                        HashMap<String, String> map = new HashMap<String, String>();
                         map.put(MeetActivity.USERNAME, data.getPoster());
                         map.put(MeetActivity.COMMENT, data.getText());
                         commentList.add(map);
