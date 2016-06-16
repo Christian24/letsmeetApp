@@ -3,6 +3,7 @@ package com.webwemser.letsmeetapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,12 +15,17 @@ public class ConversationActivity extends AppCompatActivity {
     private int meetPosition = 0;
     private ListView list;
     private MyCommentAdapter adapter;
+    private EditText comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
+
+        //Get meet position
         meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
+
+        //Set comments
         setComments();
     }
 

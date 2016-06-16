@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.webwemser.web.ConversationData;
+import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import java.util.ArrayList;
@@ -21,13 +23,16 @@ import java.util.HashMap;
 public class MeetActivity extends AppCompatActivity {
 
     private TextView title, author, descripton, date, max_guests, category;
+    private EditText question;
     private ListView list;
+    private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
     public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION";
-    private int meetPosition;
+    private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
+    private MeetData meet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,24 +52,29 @@ public class MeetActivity extends AppCompatActivity {
         date = (TextView)findViewById(R.id.display_datetime);
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
-        setButtons();
-        setComments();
+        question = (EditText)findViewById(R.id.ask);
 
-        //long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
+        //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews
         try {
-            date.setText(MainActivity.meets.getMeets().get(meetPosition).getDateTime());
-            category.setText(MainActivity.meets.getMeets().get(meetPosition).getCategory());
-            title.setText(MainActivity.meets.getMeets().get(meetPosition).getTitle());
-            descripton.setText(MainActivity.meets.getMeets().get(meetPosition).getDescription());
-            author.setText(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName());
-            max_guests.setText(MainActivity.meets.getMeets().get(meetPosition).getFreeSpace()+" / "+MainActivity.meets.getMeets().get(meetPosition).getMaxGuests());
+            meet = MainActivity.meets.getMeets().get(meetPosition);
+            date.setText(meet.getDateTime());
+            category.setText(meet.getCategory());
+            title.setText(meet.getTitle());
+            descripton.setText(meet.getDescription());
+            author.setText(meet.getAdminUserName());
+            max_guests.setText(meet.getFreeSpace()+" / "+meet.getMaxGuests());
+            //Set right button and add commentViews
+            setButtons();
+            setComments();
         }
         catch (IndexOutOfBoundsException e){
             Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+
+
     }
 
     //Sets the right FAB
@@ -73,14 +83,14 @@ public class MeetActivity extends AppCompatActivity {
             fab_delete = (FloatingActionButton)findViewById(R.id.fab_delete);
             fab_join = (FloatingActionButton)findViewById(R.id.fab_join);
             fab_leave = (FloatingActionButton)findViewById(R.id.fab_leave);
-            if(MainActivity.meets.getMeets().get(meetPosition).getAdminUserName().equals(LoginActivity.session.getSessionData().getUserData().getUserName())){
+            if(meet.getAdminUserName().equals(LoginActivity.session.getSessionData().getUserData().getUserName())){
                 fab_delete.setVisibility(View.VISIBLE);
             }
-            else if (MainActivity.meets.getMeets().get(meetPosition).hasJoined(LoginActivity.session.getSessionData().getUserData())){
+            else if (meet.hasJoined(LoginActivity.session.getSessionData().getUserData())){
                 fab_leave.setVisibility(View.VISIBLE);
             }
             else {
-                if(MainActivity.meets.getMeets().get(meetPosition).getFreeSpace() == MainActivity.meets.getMeets().get(meetPosition).getMaxGuests()){
+                if(meet.getFreeSpace() == meet.getMaxGuests()){
                     //do nothing because maxGuests is reached
                 }
                 else {
@@ -97,12 +107,12 @@ public class MeetActivity extends AppCompatActivity {
     private void setComments() throws IndexOutOfBoundsException {
         try {
             ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
-            Log.i("Conversation Size: ", MainActivity.meets.getMeets().get(meetPosition).getConversations().size()+"");
-            if(MainActivity.meets.getMeets().get(meetPosition).getConversations().size()>0){
-                for(int i = 0; i<MainActivity.meets.getMeets().get(meetPosition).getConversations().size() ; i++){
+            Log.i("Conversation Size: ", meet.getConversations().size()+"");
+            if(meet.getConversations().size()>0){
+                for(int i = 0; i<meet.getConversations().size() ; i++){
                     HashMap<String, String> map = new HashMap<String, String>();
-                    map.put(USERNAME, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getPoster());
-                    map.put(COMMENT, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getText());
+                    map.put(USERNAME, meet.getConversations().get(i).getConversation().get(0).getPoster());
+                    map.put(COMMENT, meet.getConversations().get(i).getConversation().get(0).getText());
                     commentList.add(map);
                 }
                 list = (ListView)findViewById(R.id.comment_list);
@@ -112,7 +122,7 @@ public class MeetActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
-                        Intent intent = new Intent(MeetActivity.this, ConversationData.class);
+                        Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
                         intent.putExtra(POSITION, position);
                         startActivity(intent);
                     }
@@ -147,7 +157,13 @@ public class MeetActivity extends AppCompatActivity {
     }
 
     public void comment(View v){
-
+        if(question.getText().toString().length()>2){
+            questionToAsk = question.getText().toString();
+            new AskAsync().execute();
+        }
+        else {
+            Toast.makeText(MeetActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Called to join Meet
@@ -156,7 +172,7 @@ public class MeetActivity extends AppCompatActivity {
         @Override
         protected MeetResponse doInBackground(String ... strings) {
             try {
-                return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
+                return webservice.joinMeet(LoginActivity.session.getSessionData().getSessionID(), meet.id);
             }
             catch (Exception e){
                 return new MeetResponse();
@@ -179,7 +195,29 @@ public class MeetActivity extends AppCompatActivity {
         @Override
         protected MeetResponse doInBackground(String ... strings) {
             try {
-                return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), MainActivity.meets.getMeets().get(meetPosition).id);
+                return webservice.leaveMeet(LoginActivity.session.getSessionData().getSessionID(), meet.id);
+            }
+            catch (Exception e){
+                return new MeetResponse();
+            }
+        }
+
+        protected void onPostExecute(MeetResponse response) {
+            if(response!=null){
+                MeetActivity.this.finish();
+            }
+            else {
+                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    class AskAsync extends AsyncTask<String, Integer, MeetResponse> {
+
+        @Override
+        protected MeetResponse doInBackground(String ... strings) {
+            try {
+                return webservice.createNewConversation(LoginActivity.session.getSessionData().getSessionID(), meet.id, questionToAsk);
             }
             catch (Exception e){
                 return new MeetResponse();

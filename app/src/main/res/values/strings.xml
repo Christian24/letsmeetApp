@@ -59,4 +59,5 @@
     <string name="participants">"  Show participants  "</string>
     <string name="ask_question">Ask question</string>
     <string name="ask">Ask</string>
+    <string name="question_to_short">Question is to short</string>
 </resources>

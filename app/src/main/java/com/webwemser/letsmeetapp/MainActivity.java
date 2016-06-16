@@ -20,9 +20,12 @@ import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetsResponse;
 import com.webwemser.web.ReturnCodeResponse;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Displays Meets
-    private void showMeets(ArrayList<MeetData> meets){
+    private void showMeets(final ArrayList<MeetData> meets){
         Log.i(TAG, "showMeets is called");
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
         for(int i = 0; i < meets.size(); i++){

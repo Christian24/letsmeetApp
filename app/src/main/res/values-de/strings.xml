@@ -59,4 +59,5 @@
     <string name="participants">"  Zeige Teilnehmer  "</string>
     <string name="ask_question">Frage stellen...</string>
     <string name="ask">Fragen</string>
+    <string name="question_to_short">Die Frage ist zu kurz</string>
 </resources>

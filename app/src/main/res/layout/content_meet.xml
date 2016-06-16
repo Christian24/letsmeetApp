@@ -225,7 +225,8 @@
             android:lines="1"
             android:textSize="24sp"
             android:textColor="@color/black"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            android:id="@+id/ask"/>
 
 
         <Button
@@ -234,7 +235,8 @@
             android:layout_weight="6"
             android:text="@string/ask"
             android:textColor="@color/white"
-            android:background="@drawable/mybutton"/>
+            android:background="@drawable/mybutton"
+            android:onClick="comment"/>
 
     </LinearLayout>
 
