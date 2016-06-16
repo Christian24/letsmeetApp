@@ -213,10 +213,10 @@ public class OnlineIntegrationServiceSoapBinding
         {
             @Override
             public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
-              ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
                 SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "getMeets");
                 __envelope.setOutputSoapObject(__soapReq);
-                
+
                 PropertyInfo __info=null;
                 __info = new PropertyInfo();
                 __info.namespace="";
@@ -227,20 +227,20 @@ public class OnlineIntegrationServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg1";
-                __info.type=PropertyInfo.LONG_CLASS;
-                __info.setValue(arg1);
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg1!=null?Helper.getDateTimeFormat().format(arg1):SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg2";
-                __info.type=PropertyInfo.LONG_CLASS;
-                __info.setValue(arg2);
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg2!=null?Helper.getDateTimeFormat().format(arg2):SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 return __envelope;
             }
-            
+
             @Override
-            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+            public java.lang.Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
                 return (MeetsResponse)getResult(MeetsResponse.class,__result,"return",__envelope);
             }
         },"");

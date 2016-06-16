@@ -130,8 +130,8 @@ public class Helper
         for (String frm : formats)
         {
             try{
-                SimpleDateFormat format = new SimpleDateFormat(frm, Locale.US);
-                format.setTimeZone(TimeZone.getTimeZone("UTC"));
+                SimpleDateFormat format = new SimpleDateFormat(frm, Locale.GERMAN);
+                format.setTimeZone(TimeZone.getTimeZone("CET"));
                 return format.parse(strDate);
             }
             catch (Exception ex)
@@ -143,15 +143,15 @@ public class Helper
 
     public static SimpleDateFormat getDateTimeFormat()
     {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.GERMANY);
+        format.setTimeZone(TimeZone.getTimeZone("CET"));
         return format;
     }
 
     public static SimpleDateFormat getDateFormat()
     {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY);
+        format.setTimeZone(TimeZone.getTimeZone("CET"));
         return format;
     }
     
