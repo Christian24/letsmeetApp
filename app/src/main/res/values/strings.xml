@@ -58,4 +58,5 @@
     <string name="commen_hint">Comment...</string>
     <string name="participants">"  Show participants  "</string>
     <string name="ask_question">Ask question</string>
+    <string name="ask">Ask</string>
 </resources>

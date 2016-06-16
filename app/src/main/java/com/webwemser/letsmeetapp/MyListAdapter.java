@@ -3,7 +3,7 @@ package com.webwemser.letsmeetapp;
 /**
  * Created by Jannik W. on 26.04.2016.
  */
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import android.app.Activity;
