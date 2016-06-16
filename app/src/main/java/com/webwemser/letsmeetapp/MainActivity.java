@@ -152,8 +152,7 @@ public class MainActivity extends AppCompatActivity {
             HashMap<String, String> map = new HashMap<String, String>();
             map.put(KEY_TITLE, meets.get(i).getTitle());
             map.put(KEY_DESCRIPTION, meets.get(i).getDescription());
-            String strLong = meets.get(i).getDateTime();
-            map.put(KEY_DATE, strLong);
+            map.put(KEY_DATE, meets.get(i).getDateTime());
             meetsList.add(map);
             Log.i(TAG, meets.get(i).getTitle());
         }
