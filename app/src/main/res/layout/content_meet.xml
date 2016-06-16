@@ -219,7 +219,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="94"
-            android:hint="@string/commen_hint"
+            android:hint="@string/ask_question"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:lines="1"

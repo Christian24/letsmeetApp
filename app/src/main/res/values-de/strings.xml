@@ -57,4 +57,5 @@
     <string name="category">Kategorie</string>
     <string name="commen_hint">Kommentieren...</string>
     <string name="participants">"  Zeige Teilnehmer  "</string>
+    <string name="ask_question">Frage stellen...</string>
 </resources>

@@ -46,10 +46,6 @@ public class CreateActivity extends AppCompatActivity {
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
         time = (TextView)findViewById(R.id.timepicker);
-        SimpleDateFormat curDate = new SimpleDateFormat("dd.MM.yyyy");
-        SimpleDateFormat curTime = new SimpleDateFormat("HH:mm");
-        date.setText(curDate.format(new Date()));
-        time.setText(curTime.format(new Date()));
         year = Calendar.YEAR;
         month = Calendar.MONTH;
         day = Calendar.DAY_OF_MONTH;
@@ -141,7 +137,7 @@ public class CreateActivity extends AppCompatActivity {
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH)+1;
-
+            date.setText(day+"."+month+"."+year);
             // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
@@ -169,7 +165,7 @@ public class CreateActivity extends AppCompatActivity {
             final Calendar c = Calendar.getInstance();
             int hour = c.get(Calendar.HOUR_OF_DAY) + 1;
             int minute = c.get(Calendar.MINUTE);
-
+            time.setText(hour+":"+minute);
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,
                     DateFormat.is24HourFormat(getActivity()));

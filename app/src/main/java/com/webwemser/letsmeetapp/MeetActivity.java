@@ -10,10 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.webwemser.web.ConversationData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.MeetsResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
@@ -29,7 +32,7 @@ public class MeetActivity extends AppCompatActivity {
     private ListView list;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT";
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION";
     private int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
@@ -53,7 +56,7 @@ public class MeetActivity extends AppCompatActivity {
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         setButtons();
-        setComments(new HashMap<String, String>());
+        setComments();
 
         //Set values to Textviews
         //long x = Long.parseLong(MainActivity.meets.getMeets().get(meetPosition).getDateTime().toString());
@@ -91,18 +94,29 @@ public class MeetActivity extends AppCompatActivity {
     }
 
     //Displays comments
-    private void setComments(HashMap<String, String> comments){
-
+    private void setComments(){
         ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
-        for(int i = 0; i < 10; i++){
-            HashMap<String, String> map = new HashMap<String, String>();
-            map.put(USERNAME, "USER");
-            map.put(COMMENT, "Comment");
-            commentList.add(map);
+        Log.i("Conversation Size: ", MainActivity.meets.getMeets().get(meetPosition).getConversations().size()+"");
+        if(MainActivity.meets.getMeets().get(meetPosition).getConversations().size()>0){
+            for(int i = 0; i<MainActivity.meets.getMeets().get(meetPosition).getConversations().size() ; i++){
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put(USERNAME, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getPoster());
+                map.put(COMMENT, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(i).getConversation().get(0).getText());
+                commentList.add(map);
+            }
+            list = (ListView)findViewById(R.id.comment_list);
+            adapter = new MyCommentAdapter(this, commentList);
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view,
+                                        int position, long id) {
+                    Intent intent = new Intent(MeetActivity.this, ConversationData.class);
+                    intent.putExtra(POSITION, position);
+                    startActivity(intent);
+                }
+            });
         }
-        list = (ListView)findViewById(R.id.comment_list);
-        adapter = new MyCommentAdapter(this, commentList);
-        list.setAdapter(adapter);
     }
 
     public void showParticipants(View v){

@@ -51,9 +51,11 @@
         <activity
             android:name=".ParticipantActivity"
             android:label="@string/participants"
-            android:parentActivityName=".MeetActivity"/>
-
-
+            android:parentActivityName=".MeetActivity" />
+        <activity
+            android:name=".ConversationActivity"
+            android:label="@string/comment"
+            android:parentActivityName=".MeetActivity" />
     </application>
 
 </manifest>
