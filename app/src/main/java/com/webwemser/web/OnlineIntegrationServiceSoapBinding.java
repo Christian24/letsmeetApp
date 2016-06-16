@@ -32,7 +32,7 @@ public class OnlineIntegrationServiceSoapBinding
         Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object result) throws Exception;
     }
 
-    String url="http://192.168.2.72:8080/letsmeet/OnlineIntegration";
+    String url="http://10.0.2.2:8080/letsmeet/OnlineIntegration";
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;
@@ -338,10 +338,10 @@ public class OnlineIntegrationServiceSoapBinding
         {
             @Override
             public ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
-              ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
                 SoapObject __soapReq = new SoapObject("http://web.letsmeet/", "createMeet");
                 __envelope.setOutputSoapObject(__soapReq);
-                
+
                 PropertyInfo __info=null;
                 __info = new PropertyInfo();
                 __info.namespace="";
@@ -376,8 +376,8 @@ public class OnlineIntegrationServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="";
                 __info.name="arg5";
-                __info.type=PropertyInfo.LONG_CLASS;
-                __info.setValue(arg5);
+                __info.type=PropertyInfo.STRING_CLASS;
+                __info.setValue(arg5!=null?Helper.getDateTimeFormat().format(arg5):SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace="";
@@ -387,9 +387,9 @@ public class OnlineIntegrationServiceSoapBinding
                 __soapReq.addProperty(__info);
                 return __envelope;
             }
-            
+
             @Override
-            public Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object __result)throws Exception {
+            public java.lang.Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope,java.lang.Object __result)throws java.lang.Exception {
                 return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
             }
         },"");
