@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.webwemser.web.ConversationData;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
@@ -146,7 +145,7 @@ public class MeetActivity extends AppCompatActivity {
     //Starts ParticipantActivty
     public void showParticipants(View v){
         Intent intent = new Intent(this, ParticipantActivity.class);
-        intent.putExtra(MainActivity.KEY_POSITION, meetPosition);
+        intent.putExtra(MainActivity.KEY_POSITION, meet.id);
         startActivity(intent);
     }
 

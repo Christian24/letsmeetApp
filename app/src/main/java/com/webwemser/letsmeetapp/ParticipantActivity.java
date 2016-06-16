@@ -1,10 +1,14 @@
 package com.webwemser.letsmeetapp;
 
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.webwemser.web.MeetData;
+import com.webwemser.web.MeetResponse;
+import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +16,7 @@ import java.util.HashMap;
 public class ParticipantActivity extends AppCompatActivity {
 
     public static final String USERNAME = "USERNAME", DESCRIPTION = "DESCRIPTION";
+    private OnlineIntegrationServiceSoapBinding webservice;
     private static final int KEY_POSITION = 1;
     private int meetPosition = 0;
     private ListView list;
@@ -22,13 +27,10 @@ public class ParticipantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participant);
-
+        webservice = new OnlineIntegrationServiceSoapBinding();
         //Get meet position
         meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
-        meet = MainActivity.meets.getMeets().get(meetPosition);
-
-        //Set participants
-        setParticipants();
+       new GetMeetAsync().execute();
     }
 
     @Override
@@ -51,5 +53,31 @@ public class ParticipantActivity extends AppCompatActivity {
         list = (ListView)findViewById(R.id.participant_list);
         adapter = new MyParticipantsAdapter(this, participantList);
         list.setAdapter(adapter);
+    }
+    class GetMeetAsync extends AsyncTask<String, Integer, MeetResponse> {
+        @Override
+        protected MeetResponse doInBackground(String ... strings){
+            try {
+                return webservice.getMeet(LoginActivity.session.getSessionData().getSessionID(), meetPosition);
+            }
+            catch (Exception e){
+                return new MeetResponse();
+            }
+        }
+        @Override
+        protected void onPostExecute(MeetResponse response) {
+            process(response);
+        }
+    }
+
+    private void process(MeetResponse response) {
+        if(response != null ) {
+            meet = response.getMeet();
+            if(meet != null)
+                setParticipants();
+        }
+        else {
+            Toast.makeText(ParticipantActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
     }
 }
