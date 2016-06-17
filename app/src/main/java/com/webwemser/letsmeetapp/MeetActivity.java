@@ -59,6 +59,7 @@ public class MeetActivity extends AppCompatActivity {
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         question = (EditText)findViewById(R.id.ask);
+        title.requestFocus();
 
         //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews

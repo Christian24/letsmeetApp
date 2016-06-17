@@ -40,7 +40,7 @@
             android:name=".MeetActivity"
             android:label="@string/title_activity_meet"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustResize"/>
         <activity
             android:name=".RegisterActivity"
             android:label="@string/signup"
@@ -52,7 +52,8 @@
         <activity
             android:name=".ConversationActivity"
             android:label="@string/comment"
-            android:parentActivityName=".MeetActivity"/>
+            android:parentActivityName=".MeetActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>
