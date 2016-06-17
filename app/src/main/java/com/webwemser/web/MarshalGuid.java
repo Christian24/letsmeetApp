@@ -21,7 +21,10 @@ import org.xmlpull.v1.XmlSerializer;
 import java.io.IOException;
 import java.util.UUID;
 
-
+/**
+ * Generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class MarshalGuid implements Marshal
 {
     public Object readInstance(XmlPullParser parser, String namespace, String name,PropertyInfo expected) throws IOException, XmlPullParserException

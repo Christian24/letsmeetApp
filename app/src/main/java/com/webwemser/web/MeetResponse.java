@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * MeetResponse from the server
+ * generated using easywsdl.com
+ * @author Christian, Jannik
+ */
 public class MeetResponse extends SessionResponse implements KvmSerializable
 {
     public MeetData meet;
@@ -91,6 +96,11 @@ public class MeetResponse extends SessionResponse implements KvmSerializable
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
+
+    /**
+     * Gets the MeetData object associated with this response
+     * @return
+     */
     public MeetData getMeet() {
         return meet;
     }

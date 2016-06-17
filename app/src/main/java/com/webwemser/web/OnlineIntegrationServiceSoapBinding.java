@@ -22,7 +22,11 @@ import org.ksoap2.transport.*;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * This class sends requests to the server in the form of SOAP
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class OnlineIntegrationServiceSoapBinding
 {
     interface IWcfMethod
@@ -31,8 +35,8 @@ public class OnlineIntegrationServiceSoapBinding
 
         Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object result) throws Exception;
     }
-
     String url="http://10.60.64.31:8080/letsmeet/OnlineIntegration";
+
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;

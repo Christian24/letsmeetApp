@@ -10,7 +10,11 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
-
+/**
+ * Generated using easywsdl.com
+ * @author Jannik, Christian
+ * @param <T>
+ */
 public class OperationResult< T>
 {
     public java.lang.Exception Exception;

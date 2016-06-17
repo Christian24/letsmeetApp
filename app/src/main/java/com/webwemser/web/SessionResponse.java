@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * SessionResponse from server
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class SessionResponse extends ReturnCodeResponse implements KvmSerializable
 {
 
@@ -94,6 +99,10 @@ public class SessionResponse extends ReturnCodeResponse implements KvmSerializab
     {
     }
 
+    /**
+     * Gets the SessionData instance
+     * @return
+     */
     public SessionData getSessionData(){
         return session;
     }

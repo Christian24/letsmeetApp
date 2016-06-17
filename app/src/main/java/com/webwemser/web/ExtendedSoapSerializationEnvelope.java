@@ -26,6 +26,10 @@ import java.util.Vector;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+/**
+ * Generated using easywsdl.com
+ *@author Christian, Jannik
+ */
 public class ExtendedSoapSerializationEnvelope extends SoapSerializationEnvelope {
     static HashMap< String,Class> classNames = new HashMap< String, Class>();
     static {

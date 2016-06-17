@@ -15,6 +15,11 @@ import org.ksoap2.serialization.*;
 import java.util.ArrayList;
 import org.ksoap2.serialization.PropertyInfo;
 
+/**
+ * MeetsResponse from server
+ * generated using easywsdl.com
+ * @author Christian, Jannik
+ */
 public class MeetsResponse extends SessionResponse implements KvmSerializable
 {
 
@@ -105,6 +110,10 @@ public class MeetsResponse extends SessionResponse implements KvmSerializable
     {
     }
 
+    /**
+     * Gets all the MeetData instances of this response
+     * @return
+     */
     public ArrayList<MeetData> getMeets() {
         return meets;
     }

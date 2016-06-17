@@ -19,7 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksoap2.serialization.*;
-
+/**
+        * ConversationData from server
+        * generated with easywsdl.com
+        * @author Jannik, Christian
+        */
 public class ConversationData extends UserContentData implements KvmSerializable
 {
 

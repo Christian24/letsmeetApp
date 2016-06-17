@@ -47,6 +47,7 @@ public class MyCommentAdapter extends BaseAdapter {
         TextView user = (TextView)vi.findViewById(R.id.username_comment);
         TextView comment = (TextView)vi.findViewById(R.id.comment);
         TextView timestamp = (TextView)vi.findViewById(R.id.comment_timestamp);
+        TextView replies = (TextView)vi.findViewById(R.id.comment_replies);
         HashMap<String, String> meet;
         meet = data.get(position);
 
@@ -54,6 +55,7 @@ public class MyCommentAdapter extends BaseAdapter {
         user.setText(meet.get(MeetActivity.USERNAME));
         comment.setText(meet.get(MeetActivity.COMMENT));
         timestamp.setText(meet.get(MeetActivity.TIMESTAMP));
+        replies.setText(meet.get(MeetActivity.REPLIES));
         return vi;
     }
 }
