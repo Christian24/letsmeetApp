@@ -268,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
+                    showMeets(new ArrayList<MeetPreviewData>());
                     meets = temp;
                 }
             }
