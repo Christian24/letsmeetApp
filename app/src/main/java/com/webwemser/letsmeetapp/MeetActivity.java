@@ -35,7 +35,7 @@ public class MeetActivity extends AppCompatActivity {
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES";
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES", ID ="ID";
 
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
@@ -127,12 +127,13 @@ public class MeetActivity extends AppCompatActivity {
                     map.put(COMMENT, meet.getConversations().get(i).getConversation().get(0).getText());
                     map.put(TIMESTAMP, new SimpleDateFormat("dd.MM.yyy  HH:mm").format(meet.getConversations().get(i).getConversation().get(0).getTimestamp()));
                     map.put(REPLIES, meet.getConversations().get(i).getConversation().size()-1+" "+getString(R.string.replies));
+                    map.put(ID,meet.getConversations().get(i).getId().toString());
                     commentList.add(map);
                 }
                 Collections.sort(commentList, new Comparator<HashMap<String, String>>() {
                     @Override
                     public int compare(HashMap<String, String> stringStringHashMap, HashMap<String, String> t1) {
-                        return stringStringHashMap.get(TIMESTAMP).compareTo(t1.get(TIMESTAMP));
+                        return new Integer(stringStringHashMap.get(ID)).compareTo(new Integer(t1.get(ID)));
                     }
                 });
                 list = (ListView)findViewById(R.id.comment_list);
