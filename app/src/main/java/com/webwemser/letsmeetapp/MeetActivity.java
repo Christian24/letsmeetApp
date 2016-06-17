@@ -29,14 +29,13 @@ import java.util.HashMap;
  */
 public class MeetActivity extends AppCompatActivity {
 
-    private TextView title, author, descripton, date, max_guests, category;
+    private TextView author, descripton, date, max_guests, category;
     private EditText question;
     private ListView list;
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
     public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES";
-
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
@@ -54,14 +53,12 @@ public class MeetActivity extends AppCompatActivity {
         meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
 
         //Initialize Views;
-        title = (TextView)findViewById(R.id.display_title);
         author = (TextView)findViewById(R.id.display_author);
         descripton = (TextView)findViewById(R.id.display_description);
         date = (TextView)findViewById(R.id.display_datetime);
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         question = (EditText)findViewById(R.id.ask);
-        title.requestFocus();
 
         //long x = Long.parseLong(meet.getDateTime().toString());
         //Set values to Textviews
@@ -71,13 +68,12 @@ public class MeetActivity extends AppCompatActivity {
 
     private void setup() {
         try {
-
             date.setText(meet.getDateTime());
             category.setText(meet.getCategory());
-            title.setText(meet.getTitle());
             descripton.setText(meet.getDescription());
             author.setText(meet.getAdminUserName());
             max_guests.setText(meet.getFreeSpace()+" / "+meet.getMaxGuests());
+            this.setTitle(meet.getTitle());
             //Set right button and add commentViews
             setButtons();
             setComments();
@@ -140,8 +136,7 @@ public class MeetActivity extends AppCompatActivity {
                 list.setAdapter(adapter);
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view,
-                                            int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
                         intent.putExtra(POSITION, meet.getId());
                         intent.putExtra(CONVERSATION,meet.getConversations().get(position).getId());
