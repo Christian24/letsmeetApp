@@ -18,7 +18,10 @@ import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
+/**
+ * Displays a Meet
+ * @author Jannik, Christian
+ */
 public class MeetActivity extends AppCompatActivity {
 
     private TextView title, author, descripton, date, max_guests, category;

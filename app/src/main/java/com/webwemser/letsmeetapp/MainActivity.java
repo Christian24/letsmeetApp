@@ -24,7 +24,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-
+/**
+ * The main activity
+ * @author Jannik, Christian
+ */
 public class MainActivity extends AppCompatActivity {
 
     static final String KEY_TITLE = "title";
