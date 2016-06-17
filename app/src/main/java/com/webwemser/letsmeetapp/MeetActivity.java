@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
+import com.webwemser.web.SessionResponse;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -172,7 +174,7 @@ public class MeetActivity extends AppCompatActivity {
 
     //Called by fab_delete to delete meet by admin
     public void delete(View v){
-        new LeaveAsync().execute();
+        new DeleteAsync().execute();
     }
 
     public void comment(View v){
@@ -260,6 +262,26 @@ public class MeetActivity extends AppCompatActivity {
             }
             */
             process(response);
+        }
+    }
+
+    //Called to leave Meet
+    class DeleteAsync extends AsyncTask<String, Integer, SessionResponse> {
+
+        @Override
+        protected SessionResponse doInBackground(String ... strings) {
+            try {
+                return webservice.deleteMeet(LoginActivity.session.getSessionData().getSessionID(), meet.id);
+            }
+            catch (Exception e){
+                return new SessionResponse();
+            }
+        }
+
+        protected void onPostExecute(SessionResponse response) {
+            if(response.getReturnCode()==200){
+                MeetActivity.this.finish();
+            }
         }
     }
 
