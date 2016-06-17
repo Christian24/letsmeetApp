@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         progressBar = (ProgressBar)findViewById(R.id.progess);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Initialize Webservice components
@@ -210,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
                 // once the network request has completed successfully.;
                 category = searchSpinner.getSelectedItem().toString();
                 if(isOnline()){
+                    swipeContainer.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.VISIBLE);
                     new LoadMeetsAsync().execute();
                 }
                 else {
@@ -228,6 +230,12 @@ public class MainActivity extends AppCompatActivity {
     class LoadMeetsAsync extends AsyncTask<String, Integer, String> {
 
         private MeetsResponse temp;
+
+        @Override
+        protected void onPreExecute() {
+            swipeContainer.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
         @Override
         protected String doInBackground(String ... strings) {
@@ -331,6 +339,12 @@ public class MainActivity extends AppCompatActivity {
         private MeetsResponse temp;
 
         @Override
+        protected void onPreExecute() {
+            swipeContainer.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected String doInBackground(String ... strings) {
             Log.i(TAG, "SearchByCategory: "+category);
             temp = meets;
@@ -363,6 +377,8 @@ public class MainActivity extends AppCompatActivity {
                     meets = temp;
                 }
             }
+            progressBar.setVisibility(View.GONE);
+            swipeContainer.setVisibility(View.VISIBLE);
             swipeContainer.setRefreshing(false);
         }
     }
@@ -371,6 +387,12 @@ public class MainActivity extends AppCompatActivity {
     class SearchByUserAsync extends AsyncTask<String, Integer, String> {
 
         private MeetsResponse temp;
+
+        @Override
+        protected void onPreExecute() {
+            swipeContainer.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+        }
 
         @Override
         protected String doInBackground(String ... strings) {
@@ -392,6 +414,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, getString(R.string.no_meets), Toast.LENGTH_SHORT).show();
                 meets = temp;
             }
+            progressBar.setVisibility(View.GONE);
+            swipeContainer.setVisibility(View.VISIBLE);
             swipeContainer.setRefreshing(false);
         }
     }
