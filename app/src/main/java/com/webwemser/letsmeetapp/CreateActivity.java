@@ -30,7 +30,6 @@ public class CreateActivity extends AppCompatActivity {
     private static TextView date, time, guests;
     private static EditText title, location, description;
     private static int year, month, day, hour, min, maxGuests;
-
     private static String titleString, locationString, descriptionString, categoryString;
     private OnlineIntegrationServiceSoapBinding webservice;
     private Spinner categorySpinner;
@@ -47,11 +46,8 @@ public class CreateActivity extends AppCompatActivity {
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
         time = (TextView)findViewById(R.id.timepicker);
-        year = Calendar.YEAR;
-        month = Calendar.MONTH;
-        day = Calendar.DAY_OF_MONTH;
-        hour = Calendar.HOUR;
-        min = Calendar.MINUTE;
+        date.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+        time.setText(new SimpleDateFormat("HH:mm").format(new Date()));
 
         //Initialize Views
         guests = (TextView)findViewById(R.id.max_guests);
@@ -139,7 +135,6 @@ public class CreateActivity extends AppCompatActivity {
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH)+1;
-            date.setText(day+"."+month+"."+year);
             // Create a new instance of DatePickerDialog and return it
             return new DatePickerDialog(getActivity(), this, year, month, day);
         }
@@ -148,6 +143,7 @@ public class CreateActivity extends AppCompatActivity {
             CreateActivity.year = year;
             CreateActivity.month = month;
             CreateActivity.day = day;
+            month = month + 1;
             String m = "0";
             String d = "0";
             if (month<10)m = m + month;
@@ -165,7 +161,7 @@ public class CreateActivity extends AppCompatActivity {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current time as the default values for the picker
             final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY) + 1;
+            int hour = c.get(Calendar.HOUR_OF_DAY);
             int minute = c.get(Calendar.MINUTE);
             time.setText(hour+":"+minute);
             // Create a new instance of TimePickerDialog and return it

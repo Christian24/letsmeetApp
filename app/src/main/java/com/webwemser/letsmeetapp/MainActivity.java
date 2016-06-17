@@ -20,12 +20,10 @@ import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetsResponse;
 import com.webwemser.web.ReturnCodeResponse;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -207,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "LoadMeets: "+category);
             if(category.equals(getString(R.string.all_categories))){
                 try {
-                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), new Date(),new Date( System.currentTimeMillis() + 1000000000L));
+                    meets = webservice.getMeets(LoginActivity.session.getSessionData().getSessionID(), new Date(),new Date( System.currentTimeMillis() + 100000000000L));
                 }
                 catch (Exception e){
 
