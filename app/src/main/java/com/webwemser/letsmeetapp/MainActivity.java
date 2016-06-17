@@ -188,9 +188,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Intent intent = new Intent(MainActivity.this, MeetActivity.class);
-                intent.putExtra(KEY_POSITION, meets.get(position).getId());
-                startActivity(intent);
+                if(isOnline()){
+                    Intent intent = new Intent(MainActivity.this, MeetActivity.class);
+                    intent.putExtra(KEY_POSITION, meets.get(position).getId());
+                    startActivity(intent);
+                }
             }
         });
         swipeContainer.setRefreshing(false);
@@ -206,6 +208,9 @@ public class MainActivity extends AppCompatActivity {
                 category = searchSpinner.getSelectedItem().toString();
                 if(isOnline()){
                     new LoadMeetsAsync().execute();
+                }
+                else {
+                    swipeContainer.setRefreshing(false);
                 }
             }
         });
