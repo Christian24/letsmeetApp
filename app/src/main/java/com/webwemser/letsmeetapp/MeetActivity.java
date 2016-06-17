@@ -33,7 +33,7 @@ public class MeetActivity extends AppCompatActivity {
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP";
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES";
 
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
@@ -123,6 +123,7 @@ public class MeetActivity extends AppCompatActivity {
                     map.put(USERNAME, meet.getConversations().get(i).getConversation().get(0).getPoster());
                     map.put(COMMENT, meet.getConversations().get(i).getConversation().get(0).getText());
                     map.put(TIMESTAMP, new SimpleDateFormat("dd.MM.yyy  HH:mm").format(meet.getConversations().get(i).getConversation().get(0).getTimestamp()));
+                    map.put(REPLIES, meet.getConversations().get(i).getConversation().size()-1+" "+getString(R.string.replies));
                     commentList.add(map);
                 }
                 list = (ListView)findViewById(R.id.comment_list);

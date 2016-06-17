@@ -60,4 +60,5 @@
     <string name="ask_question">Ask question</string>
     <string name="ask">Ask</string>
     <string name="question_to_short">Question is to short</string>
+    <string name="replies">replies</string>
 </resources>

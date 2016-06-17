@@ -454,7 +454,11 @@ public class MeetData extends DataTransferObject implements KvmSerializable
      * @return boolean
      */
     public boolean hasJoined(UserData user) {
-        return admin.equals(user) || getVisitors().contains(user);
+        if (admin.getUserName().equals(user.getUserName())) return true;
+        for (int i=0; i<visitors.size(); i++){
+            if(visitors.get(i).getUserName().equals(user.getUserName()))return true;
+        }
+        return false;
     }
 
     /**
