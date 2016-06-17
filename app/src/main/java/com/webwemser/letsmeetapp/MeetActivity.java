@@ -17,6 +17,8 @@ import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -125,6 +127,12 @@ public class MeetActivity extends AppCompatActivity {
                     map.put(REPLIES, meet.getConversations().get(i).getConversation().size()-1+" "+getString(R.string.replies));
                     commentList.add(map);
                 }
+                Collections.sort(commentList, new Comparator<HashMap<String, String>>() {
+                    @Override
+                    public int compare(HashMap<String, String> stringStringHashMap, HashMap<String, String> t1) {
+                        return stringStringHashMap.get(TIMESTAMP).compareTo(t1.get(TIMESTAMP));
+                    }
+                });
                 list = (ListView)findViewById(R.id.comment_list);
                 adapter = new MyCommentAdapter(this, commentList);
                 list.setAdapter(adapter);
