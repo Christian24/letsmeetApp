@@ -21,7 +21,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-
+/**
+ * Displays a Meet
+ * @author Jannik, Christian
+ */
 public class MeetActivity extends AppCompatActivity {
 
     private TextView title, author, descripton, date, max_guests, category;

@@ -17,6 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * ConversationActivity displays a single ConversationData
+ * @author Jannik, Christian
+ */
 public class ConversationActivity extends AppCompatActivity {
 
     private static final int KEY_POSITION = 0;
