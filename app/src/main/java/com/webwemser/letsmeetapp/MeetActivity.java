@@ -145,7 +145,7 @@ public class MeetActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
                         intent.putExtra(POSITION, meet.getId());
-                        intent.putExtra(CONVERSATION,commentList.get(position).get(ID));
+                        intent.putExtra(CONVERSATION,new Integer(commentList.get(position).get(ID)));
                         startActivity(intent);
                     }
                 });
