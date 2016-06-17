@@ -16,7 +16,10 @@ import org.ksoap2.serialization.*;
 import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
-
+/**
+ * Generated using easywsdl.com
+ * @author Christian
+ */
 public class Helper
 {
     public static < T, E> T getKeyByValue(Map< T, E> map, E value) {

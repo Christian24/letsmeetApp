@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * ReplyData from server
+ * generated using easywsdl.com
+ * @author Christian
+ */
 public class ReplyData extends UserContentData implements KvmSerializable
 {
 

@@ -10,7 +10,10 @@ package com.webwemser.web;
 //---------------------------------------------------
 
 
-
+/**
+ * Generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public interface IServiceEvents
 {
     public void Starting();

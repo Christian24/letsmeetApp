@@ -12,7 +12,11 @@ package com.webwemser.web;
 
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
-
+/**
+        * DataTransferObject baseclass
+        * generated with easywsdl.com
+        * @author Jannik, Christian
+        */
 public class DataTransferObject extends AttributeContainer implements KvmSerializable
 {
 

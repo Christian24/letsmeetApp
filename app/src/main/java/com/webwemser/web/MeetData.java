@@ -17,6 +17,10 @@ import org.ksoap2.serialization.*;
 import java.util.ArrayList;
 import org.ksoap2.serialization.PropertyInfo;
 
+/**
+ * MeetData from server
+ * generated using easywsdl.com
+ */
 public class MeetData extends DataTransferObject implements KvmSerializable
 {
 
@@ -378,34 +382,85 @@ public class MeetData extends DataTransferObject implements KvmSerializable
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
+
+    /**
+     * Gets the title of the MeetData
+     * @return
+     */
     public String getTitle() {
         return title;
     }
+
+    /**
+     * Gets the description
+     * @return
+     */
     public String getDescription() {
         return description;
     }
+
+    /**
+     * Gets the category
+     * NOTE THIS IS A STRING
+     * @return String
+     */
     public String getCategory() {
         return category;
     }
+
+    /**
+     * Gets the dateTime as String
+     * @return String
+     */
     public String getDateTime() {
         return new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(dateTime);
     }
+
+    /**
+     * A list of all the visitors
+     * @return
+     */
     public ArrayList<UserData> getVisitors() {
         return visitors;
     }
+
+    /**
+     * Returns how many spaces are left in the Meet
+     * @return
+     */
     public int getFreeSpace() {
         return visitors.size()+1;
     }
+
+    /**
+     * returns the number of maximum guests
+     * @return
+     */
     public int getMaxGuests() {
         return maxGuests;
     }
+
+    /**
+     * Gets the username of the admin
+     * @return String
+     */
     public String getAdminUserName() {
         return admin.getUserName();
     }
+
+    /**
+     * Checks for the given user if he/she has joined already
+     * @param user
+     * @return boolean
+     */
     public boolean hasJoined(UserData user) {
         return admin.equals(user) || getVisitors().contains(user);
     }
 
+    /**
+     * Gets the conversations of the Meet
+     * @return
+     */
     public ArrayList<ConversationData> getConversations() {
         return conversations;
     }

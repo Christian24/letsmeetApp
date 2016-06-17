@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * UserData from server
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class UserData extends DataTransferObject implements KvmSerializable
 {
 
@@ -135,9 +140,18 @@ public class UserData extends DataTransferObject implements KvmSerializable
     {
     }
 
+    /**
+     * Get the username
+     * @return
+     */
     public String getUserName() {
     return userName;
     }
+
+    /**
+     * Get the user's description
+     * @return
+     */
     public String getDescription() {
         return description;
     }

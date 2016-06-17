@@ -9,7 +9,10 @@ package com.webwemser.web;
 //
 //---------------------------------------------------
 
-
+/**
+ * Generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class Functions
 {
     public interface IFunc< Res>

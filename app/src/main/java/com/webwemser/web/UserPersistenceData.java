@@ -13,6 +13,13 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * UserPersistenceData from server
+ * NOTE: Probably to be removed as the server no longer sends these
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
+@Deprecated
 public class UserPersistenceData extends AttributeContainer implements KvmSerializable
 {
 

@@ -15,6 +15,11 @@ import org.ksoap2.serialization.*;
 import java.util.ArrayList;
 import org.ksoap2.serialization.PropertyInfo;
 
+/**
+ * CategoriesResponse from server
+ * generated with easywsdl.com
+ * @author Jannik, Christian
+ */
 public class CategoriesResponse extends SessionResponse implements KvmSerializable
 {
 

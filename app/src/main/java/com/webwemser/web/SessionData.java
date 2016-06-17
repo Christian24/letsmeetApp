@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * SessionData from server
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class SessionData extends DataTransferObject implements KvmSerializable
 {
 
@@ -155,9 +160,19 @@ public class SessionData extends DataTransferObject implements KvmSerializable
     public void setProperty(int arg0, Object arg1)
     {
     }
+
+    /**
+     * The user of the session
+     * @return
+     */
     public UserData getUserData() {
         return user;
     }
+
+    /**
+     * The id of the session
+     * @return
+     */
     public String getSessionID() {
         return identifier;
     }

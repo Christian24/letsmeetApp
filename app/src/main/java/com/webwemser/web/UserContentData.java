@@ -14,12 +14,25 @@ import java.util.Date;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * UserContentData from server
+ * Note that this is not abstract on the client
+ * generated using easywsdl.com
+ * @author Christian
+ */
 public class UserContentData extends DataTransferObject implements KvmSerializable, Comparable<UserContentData>
 {
+    /**
+     * Gets the id
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Sets the id
+     * @param id
+     */
     public void setId(Integer id) {
         this.id = id;
     }
@@ -27,10 +40,19 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
     public void setPoster(String poster) {
         this.poster = poster;
     }
+
+    /**
+     * Gets who posted this
+     * @return
+     */
     public String getPoster() {
         return poster;
     }
 
+    /**
+     * Gets the content
+     * @return
+     */
     public String getText() {
         return text;
     }
@@ -39,9 +61,14 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
         this.text = text;
     }
 
+    /**
+     * Gets when this was posted
+     * @return
+     */
     public Date getTimestamp() {
         return timestamp;
     }
+
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
@@ -226,6 +253,12 @@ public class UserContentData extends DataTransferObject implements KvmSerializab
     public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
+
+    /**
+     * Used for sorting
+     * @param o
+     * @return
+     */
     @Override
     public int compareTo(UserContentData o) {
         return getTimestamp().compareTo(o.getTimestamp());

@@ -13,6 +13,11 @@ package com.webwemser.web;
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 
+/**
+ * A returnCodeResponse from the Server
+ * generated using easywsdl.com
+ * @author Christian
+ */
 public class ReturnCodeResponse extends DataTransferObject implements KvmSerializable
 {
 
@@ -103,6 +108,11 @@ public class ReturnCodeResponse extends DataTransferObject implements KvmSeriali
     public void setProperty(int arg0, Object arg1)
     {
     }
+
+    /**
+     * The return code of this response
+     * @return
+     */
     public int getReturnCode(){
         return returnCode;
     }

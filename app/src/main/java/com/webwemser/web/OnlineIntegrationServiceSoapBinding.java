@@ -22,7 +22,11 @@ import org.ksoap2.transport.*;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * This class sends requests to the server in the form of SOAP
+ * generated using easywsdl.com
+ * @author Jannik, Christian
+ */
 public class OnlineIntegrationServiceSoapBinding
 {
     interface IWcfMethod
