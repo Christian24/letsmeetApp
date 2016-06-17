@@ -1,6 +1,9 @@
 package com.webwemser.letsmeetapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -72,14 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        new LogoutAsync().execute();
+        if(isOnline()){
+            new LogoutAsync().execute();
+        }
     }
 
     //Updates screen after switching back to MainActivty
     @Override
     protected void onResume() {
         super.onResume();
-        new LoadMeetsAsync().execute();
+        if (isOnline()) new LoadMeetsAsync().execute();
         fab_toolbar.hide();
     }
 
@@ -116,6 +121,16 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Check for internet connection
+    public boolean isOnline() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        if(!(netInfo != null && netInfo.isConnectedOrConnecting())) {
+            Toast.makeText(MainActivity.this, getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
+        }
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
     //Shows FAB Toolbar
     public void showFABToolbar(View v){
         fab_toolbar.show();
@@ -135,14 +150,16 @@ public class MainActivity extends AppCompatActivity {
     //Called by search button to search for meets by category
     public void searchByCategory(View v){
         category = searchSpinner.getSelectedItem().toString();
-        if(category!=null){
+        if(category!=null && isOnline()){
             new SearchByCategoryAsync().execute();
         }
     }
 
     //Called by search button to search for meets by category
     public void searchByUser(View v){
-        new SearchByUserAsync().execute();
+        if(isOnline()){
+            new SearchByUserAsync().execute();
+        }
         hideFABToolbar(new View(getApplicationContext()));
     }
 
@@ -184,7 +201,9 @@ public class MainActivity extends AppCompatActivity {
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.;
                 category = searchSpinner.getSelectedItem().toString();
-                new LoadMeetsAsync().execute();
+                if(isOnline()){
+                    new LoadMeetsAsync().execute();
+                }
             }
         });
         // Configure the refreshing colors

@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.webwemser.web.ConversationData;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.UserContentData;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,11 +28,13 @@ public class ConversationActivity extends AppCompatActivity {
     private MyCommentAdapter adapter;
     private EditText comment;
     private OnlineIntegrationServiceSoapBinding webservice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
         comment = (EditText)findViewById(R.id.comment);
+
         //Get meet position
         meetPosition = getIntent().getIntExtra(MeetActivity.POSITION, KEY_POSITION);
         conversationPosition = getIntent().getIntExtra(MeetActivity.CONVERSATION,conversationPosition);
@@ -45,18 +46,15 @@ public class ConversationActivity extends AppCompatActivity {
         ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
         Log.i("Conversation Size: ", meet.getConversations().size()+"");
         if(meet.getConversations().size()>0){
-
             for(ConversationData conversation : meet.getConversations()) {
                 if(conversation.getId() == conversationPosition) {
-
                     for(UserContentData data : conversation.getConversation()) {
-
                         HashMap<String, String> map = new HashMap<String, String>();
                         map.put(MeetActivity.USERNAME, data.getPoster());
                         map.put(MeetActivity.COMMENT, data.getText());
+                        map.put(MeetActivity.TIMESTAMP, new SimpleDateFormat("dd.MM.yyy  HH:mm").format(data.getTimestamp()));
                         commentList.add(map);
                     }
-
                 }
             }
             /*
@@ -72,6 +70,7 @@ public class ConversationActivity extends AppCompatActivity {
             list.setAdapter(adapter);
         }
     }
+
     public void putComment(View view) {
         if(comment.getText().toString().length()>2){
             commentToPost = comment.getText().toString();
@@ -81,6 +80,7 @@ public class ConversationActivity extends AppCompatActivity {
             Toast.makeText(ConversationActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
         }
     }
+
     class CommentAsync extends AsyncTask<String, Integer, MeetResponse> {
 
         @Override
@@ -107,6 +107,7 @@ public class ConversationActivity extends AppCompatActivity {
            comment.setText("");
         }
     }
+
     class GetMeetAsync extends AsyncTask<String, Integer, MeetResponse> {
         @Override
         protected MeetResponse doInBackground(String ... strings){
@@ -128,11 +129,11 @@ public class ConversationActivity extends AppCompatActivity {
             meet = response.getMeet();
             if(meet != null) {
             for(ConversationData data : meet.getConversations())
-if(data.getId() == conversationPosition) {
+            if(data.getId() == conversationPosition) {
 
-this.conversation = data;
-    setComments();
-}
+            this.conversation = data;
+            setComments();
+                }
             }
         }
         else {

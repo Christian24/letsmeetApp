@@ -15,7 +15,10 @@ import android.widget.Toast;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -27,7 +30,7 @@ public class MeetActivity extends AppCompatActivity {
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION";
+    public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP";
 
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
@@ -58,10 +61,6 @@ public class MeetActivity extends AppCompatActivity {
         //Set values to Textviews
         //meetPosition = MainActivity.meets.getMeets().get(meetPosition).getId();
         new GetMeetAsync().execute();
-
-
-
-
     }
 
     private void setup() {
@@ -120,6 +119,7 @@ public class MeetActivity extends AppCompatActivity {
                     HashMap<String, String> map = new HashMap<String, String>();
                     map.put(USERNAME, meet.getConversations().get(i).getConversation().get(0).getPoster());
                     map.put(COMMENT, meet.getConversations().get(i).getConversation().get(0).getText());
+                    map.put(TIMESTAMP, new SimpleDateFormat("dd.MM.yyy  HH:mm").format(meet.getConversations().get(i).getConversation().get(0).getTimestamp()));
                     commentList.add(map);
                 }
                 list = (ListView)findViewById(R.id.comment_list);

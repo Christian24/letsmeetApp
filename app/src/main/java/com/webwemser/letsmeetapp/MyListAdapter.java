@@ -54,7 +54,6 @@ public class MyListAdapter extends BaseAdapter {
         // Setting all values in listview
         title.setText(meet.get(MainActivity.KEY_TITLE));
         description.setText(meet.get(MainActivity.KEY_DESCRIPTION));
-      //  long x = Long.parseLong(meet.get(MainActivity.KEY_DATE));
         date.setText(meet.get(MainActivity.KEY_DATE));
         return vi;
     }
