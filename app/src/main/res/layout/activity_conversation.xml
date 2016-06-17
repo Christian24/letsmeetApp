@@ -6,14 +6,6 @@
     android:orientation="vertical"
     tools:context="com.webwemser.letsmeetapp.ConversationActivity">
 
-    <ListView
-        android:id="@+id/conversation_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:divider="#b5b5b5"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_selector"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,5 +39,13 @@
             android:background="@drawable/mybutton"/>
 
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/conversation_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"/>
 
 </LinearLayout>
