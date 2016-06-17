@@ -14,6 +14,10 @@ import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Displays a meets participants
+ * @author Jannik
+ */
 public class ParticipantActivity extends AppCompatActivity {
 
     public static final String USERNAME = "USERNAME", DESCRIPTION = "DESCRIPTION";

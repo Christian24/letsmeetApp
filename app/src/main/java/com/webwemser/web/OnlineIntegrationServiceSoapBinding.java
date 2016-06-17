@@ -12,9 +12,6 @@ package com.webwemser.web;
 //
 //---------------------------------------------------
 
-
-
-
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.serialization.*;
 import org.ksoap2.transport.*;
@@ -36,7 +33,6 @@ public class OnlineIntegrationServiceSoapBinding
         Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object result) throws Exception;
     }
     String url="http://10.60.64.31:8080/letsmeet/OnlineIntegration";
-
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;
@@ -131,7 +127,6 @@ public class OnlineIntegrationServiceSoapBinding
 
        return null;
     }
-
         
     public SessionResponse deleteMeet(final String arg0, final Integer arg1 ) throws Exception
     {
@@ -166,15 +161,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<SessionResponse>> deleteMeetAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<SessionResponse>() {
-            public SessionResponse Func() throws Exception {
-                return deleteMeet( arg0,arg1);
-            }
-        });
-    }
-    
     public ReturnCodeResponse deleteUser(final String arg0 ) throws Exception
     {
         return (ReturnCodeResponse)execute(new IWcfMethod()
@@ -200,15 +186,6 @@ public class OnlineIntegrationServiceSoapBinding
                 return (ReturnCodeResponse)getResult(ReturnCodeResponse.class,__result,"return",__envelope);
             }
         },"");
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult<ReturnCodeResponse>> deleteUserAsync(final String arg0)
-    {
-        return executeAsync(new Functions.IFunc<ReturnCodeResponse>() {
-            public ReturnCodeResponse Func() throws Exception {
-                return deleteUser( arg0);
-            }
-        });
     }
     
     public MeetsResponse getMeets(final String arg0, final Date arg1, final Date arg2 ) throws Exception
@@ -249,9 +226,7 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public MeetResponse deleteReply(final String arg0, final Integer arg1 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -284,16 +259,7 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> deleteReplyAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return deleteReply( arg0,arg1);
-            }
-        });
-    }
-    
+
     public MeetResponse deleteConversation(final String arg0, final Integer arg1 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -325,15 +291,6 @@ public class OnlineIntegrationServiceSoapBinding
                 return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
             }
         },"");
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> deleteConversationAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return deleteConversation( arg0,arg1);
-            }
-        });
     }
     
     public MeetResponse createMeet(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6 ) throws Exception
@@ -399,15 +356,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> createMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final Date arg5, final Integer arg6)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return createMeet( arg0,arg1,arg2,arg3,arg4,arg5,arg6);
-            }
-        });
-    }
-    
     public MeetResponse getMeet(final String arg0, final Integer arg1 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -441,15 +389,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> getMeetAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return getMeet( arg0,arg1);
-            }
-        });
-    }
-    
     public MeetResponse leaveMeet(final String arg0, final Integer arg1 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -481,15 +420,6 @@ public class OnlineIntegrationServiceSoapBinding
                 return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
             }
         },"");
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> leaveMeetAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return leaveMeet( arg0,arg1);
-            }
-        });
     }
     
     public SessionResponse register(final String arg0, final String arg1, final String arg2 ) throws Exception
@@ -531,15 +461,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<SessionResponse>> registerAsync(final String arg0, final String arg1, final String arg2)
-    {
-        return executeAsync(new Functions.IFunc<SessionResponse>() {
-            public SessionResponse Func() throws Exception {
-                return register( arg0,arg1,arg2);
-            }
-        });
-    }
-    
     public MeetResponse joinMeet(final String arg0, final Integer arg1 ) throws Exception
     {
         return (MeetResponse)execute(new IWcfMethod()
@@ -571,15 +492,6 @@ public class OnlineIntegrationServiceSoapBinding
                 return (MeetResponse)getResult(MeetResponse.class,__result,"return",__envelope);
             }
         },"");
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult<MeetResponse>> joinMeetAsync(final String arg0, final Integer arg1)
-    {
-        return executeAsync(new Functions.IFunc<MeetResponse>() {
-            public MeetResponse Func() throws Exception {
-                return joinMeet( arg0,arg1);
-            }
-        });
     }
     
     public SessionResponse updateUserDescription(final String arg0, final String arg1 ) throws Exception
@@ -615,15 +527,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
     
-    public android.os.AsyncTask< Void, Void, OperationResult<SessionResponse>> updateUserDescriptionAsync(final String arg0, final String arg1)
-    {
-        return executeAsync(new Functions.IFunc<SessionResponse>() {
-            public SessionResponse Func() throws Exception {
-                return updateUserDescription( arg0,arg1);
-            }
-        });
-    }
-    
     public ReturnCodeResponse logout(final String arg0 ) throws Exception
     {
         return (ReturnCodeResponse)execute(new IWcfMethod()
@@ -650,9 +553,6 @@ public class OnlineIntegrationServiceSoapBinding
         },"");
     }
 
-    
-
-    
     public CategoriesResponse getCategories(final String arg0 ) throws Exception
     {
         return (CategoriesResponse) execute(new IWcfMethod()
@@ -678,8 +578,6 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-
-
 
     public MeetResponse replyToConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
@@ -719,9 +617,7 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public SessionResponse updateUserPassword(final String arg0,final String arg1 ) throws Exception
     {
         return (SessionResponse)execute(new IWcfMethod()
@@ -753,22 +649,10 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public String updateMeet(final String arg0,final String arg1,final String arg2,final String arg3,final String arg4,final String arg5,final String arg6,final String arg7 ) throws Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult< String>> updateMeetAsync(final String arg0, final String arg1, final String arg2, final String arg3, final String arg4, final String arg5, final String arg6, final String arg7)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return updateMeet( arg0,arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-            }
-        });
+        return null;
     }
     
     public MeetsResponse getMeetsByCategory(final String arg0,final String arg1 ) throws Exception
@@ -803,9 +687,7 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public SessionResponse login(final String arg0,final String arg1 ) throws Exception
     {
         return (SessionResponse)execute(new IWcfMethod()
@@ -838,19 +720,6 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-
-    public android.os.AsyncTask< Void, Void, OperationResult<SessionResponse>> loginAsync(final String arg0,final String arg1)
-    {
-        return executeAsync(new Functions.IFunc< SessionResponse>() {
-            public SessionResponse Func() throws java.lang.Exception {
-                return login( arg0,arg1);
-            }
-        });
-    }
-
-
-    
-
     
     public MeetResponse createNewConversation(final String arg0,final int arg1,final String arg2 ) throws Exception
     {
@@ -890,9 +759,7 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public MeetsResponse getMeetsByUser(final String arg0 ) throws Exception
     {
         return (MeetsResponse)execute(new IWcfMethod()
@@ -919,25 +786,12 @@ public class OnlineIntegrationServiceSoapBinding
             }
         },"");
     }
-    
 
-    
     public String getCategoriesWithMeets(final String arg0 ) throws Exception
     {
-/*This feature is available in Premium account, Check http://EasyWsdl.com/Payment/PremiumAccountDetails to see all benefits of Premium account*/
-        return null;    
-    }
-    
-    public android.os.AsyncTask< Void, Void, OperationResult< String>> getCategoriesWithMeetsAsync(final String arg0)
-    {
-        return executeAsync(new Functions.IFunc< String>() {
-            public String Func() throws Exception {
-                return getCategoriesWithMeets( arg0);
-            }
-        });
+        return null;
     }
 
-    
     protected Object execute(IWcfMethod wcfMethod, String methodName) throws Exception
     {
         Transport __httpTransport=createTransport();
@@ -967,41 +821,9 @@ public class OnlineIntegrationServiceSoapBinding
             return wcfMethod.ProcessResult(__envelope,__retObj);
         }
     }
-    
-    protected < T> android.os.AsyncTask< Void, Void, OperationResult< T>>  executeAsync(final Functions.IFunc< T> func)
-    {
-        return new android.os.AsyncTask< Void, Void, OperationResult< T>>()
-        {
-            @Override
-            protected void onPreExecute() {
-                callback.Starting();
-            };
-            @Override
-            protected OperationResult< T> doInBackground(Void... params) {
-                OperationResult< T> result = new OperationResult< T>();
-                try
-                {
-                    result.Result= func.Func();
-                }
-                catch(Exception ex)
-                {
-                    ex.printStackTrace();
-                    result.Exception=ex;
-                }
-                return result;
-            }
-            
-            @Override
-            protected void onPostExecute(OperationResult< T> result)
-            {
-                callback.Completed(result);
-            }
-        }.execute();
-    }
         
     Exception convertToException(org.ksoap2.SoapFault fault,ExtendedSoapSerializationEnvelope envelope)
     {
-
         return new Exception(fault.faultstring);
     }
 }

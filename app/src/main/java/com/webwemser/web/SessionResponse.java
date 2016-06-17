@@ -20,8 +20,6 @@ import org.ksoap2.serialization.*;
  */
 public class SessionResponse extends ReturnCodeResponse implements KvmSerializable
 {
-
-    
     public SessionData session;
 
     public SessionResponse()

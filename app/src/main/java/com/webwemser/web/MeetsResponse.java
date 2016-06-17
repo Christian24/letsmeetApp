@@ -9,7 +9,6 @@ package com.webwemser.web;
 //
 //---------------------------------------------------
 
-
 import java.util.Hashtable;
 import org.ksoap2.serialization.*;
 import java.util.ArrayList;
@@ -22,8 +21,6 @@ import org.ksoap2.serialization.PropertyInfo;
  */
 public class MeetsResponse extends SessionResponse implements KvmSerializable
 {
-
-
     public ArrayList< MeetPreviewData> meets =new ArrayList<MeetPreviewData >();
 
     public MeetsResponse ()

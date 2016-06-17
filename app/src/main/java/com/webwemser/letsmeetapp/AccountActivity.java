@@ -13,6 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
+/**
+ * This Activity displays user details
+ * the user can edit the description, password.
+ * Users can also delete their accounts
+ * @author Jannik
+ */
 public class AccountActivity extends AppCompatActivity {
 
     private TextView username, label;

@@ -25,6 +25,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * This Activity is for creating a new meet
+ * @author Jannik
+ */
 public class CreateActivity extends AppCompatActivity {
 
     private static TextView date, time, guests;

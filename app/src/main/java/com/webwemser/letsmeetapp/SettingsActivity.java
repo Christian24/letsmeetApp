@@ -9,6 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * At the moment only for displaying app version
+ * and link to github
+ * @author Jannik
+ */
 public class SettingsActivity extends AppCompatActivity {
 
     private TextView verinfo;

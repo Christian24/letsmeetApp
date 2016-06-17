@@ -15,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 
+/**
+ * For signing up to letsmeet
+ * @author Jannik
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText username, password, passwordRetype, description;

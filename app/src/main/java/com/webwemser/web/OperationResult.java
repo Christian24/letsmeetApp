@@ -9,7 +9,6 @@ package com.webwemser.web;
 //
 //---------------------------------------------------
 
-
 /**
  * Generated using easywsdl.com
  * @author Jannik, Christian

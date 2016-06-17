@@ -17,6 +17,10 @@ import android.widget.Toast;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.SessionResponse;
 
+/**
+ * This Activity is for logging in
+ * @author Jannik
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private CheckedTextView check1, check2;

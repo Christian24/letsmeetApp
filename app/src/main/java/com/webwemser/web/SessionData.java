@@ -20,8 +20,6 @@ import org.ksoap2.serialization.*;
  */
 public class SessionData extends DataTransferObject implements KvmSerializable
 {
-
-    
     public Boolean hasEnded=false;
     
     public String identifier;

@@ -20,7 +20,6 @@ import org.ksoap2.serialization.*;
  */
 public class ReplyData extends UserContentData implements KvmSerializable
 {
-
     
     public Integer parent=0;
 

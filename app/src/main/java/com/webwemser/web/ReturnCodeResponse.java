@@ -20,8 +20,6 @@ import org.ksoap2.serialization.*;
  */
 public class ReturnCodeResponse extends DataTransferObject implements KvmSerializable
 {
-
-    
     public Integer returnCode=0;
 
     public ReturnCodeResponse()

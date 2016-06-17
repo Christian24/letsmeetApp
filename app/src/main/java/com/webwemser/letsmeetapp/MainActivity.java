@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
 import com.webwemser.web.MeetPreviewData;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
-import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetsResponse;
 import com.webwemser.web.ReturnCodeResponse;
 import java.util.ArrayList;

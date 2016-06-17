@@ -13,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * This class is responsible for creating a listview
+ * for participants in ParticipantAcitivty,
+ * credits to http://www.androidhive.info/2012/02/android-custom-listview-with-image-and-text/
+ * @author Jannik
+ */
 public class MyParticipantsAdapter extends BaseAdapter {
 
     private Activity activity;

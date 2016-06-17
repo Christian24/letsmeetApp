@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+    <!-- Can later be used for profile picture-->
     <ImageView
         android:layout_width="50dp"
         android:layout_height="match_parent"
@@ -27,6 +28,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
+            <!-- Displays comment author-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,6 +38,7 @@
                 android:id="@+id/username_comment"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
 
+            <!-- Displays comment time and date-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,6 +54,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
+            <!-- Displays comment-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +63,7 @@
                 android:id="@+id/comment"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
 
+            <!-- Displays number of replies-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
