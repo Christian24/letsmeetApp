@@ -39,7 +39,7 @@ public class MeetActivity extends AppCompatActivity {
     public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES", ID ="ID";
 
 
-   
+
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
@@ -118,7 +118,7 @@ public class MeetActivity extends AppCompatActivity {
     //Displays comments
     private void setComments() throws IndexOutOfBoundsException {
         try {
-            ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
+            final ArrayList<HashMap<String, String>> commentList = new ArrayList<HashMap<String, String>>();
             Log.i("Conversation Size: ", meet.getConversations().size()+"");
             if(meet.getConversations().size()>0){
                 for(int i = 0; i<meet.getConversations().size() ; i++){
@@ -139,12 +139,13 @@ public class MeetActivity extends AppCompatActivity {
                 list = (ListView)findViewById(R.id.comment_list);
                 adapter = new MyCommentAdapter(this, commentList);
                 list.setAdapter(adapter);
+
                 list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(MeetActivity.this, ConversationActivity.class);
                         intent.putExtra(POSITION, meet.getId());
-                        intent.putExtra(CONVERSATION,meet.getConversations().get(position).getId());
+                        intent.putExtra(CONVERSATION,commentList.get(position).get(ID));
                         startActivity(intent);
                     }
                 });
