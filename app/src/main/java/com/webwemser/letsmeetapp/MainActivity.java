@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.github.fafaldo.fabtoolbar.widget.FABToolbarLayout;
+import com.webwemser.web.MeetPreviewData;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetsResponse;
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Displays Meets
-    private void showMeets(final ArrayList<MeetData> meets){
+    private void showMeets(final ArrayList<MeetPreviewData> meets){
         Log.i(TAG, "showMeets is called");
         ArrayList<HashMap<String, String>> meetsList = new ArrayList<HashMap<String, String>>();
         for(int i = 0; i < meets.size(); i++){

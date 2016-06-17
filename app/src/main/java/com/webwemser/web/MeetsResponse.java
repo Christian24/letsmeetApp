@@ -23,17 +23,17 @@ import org.ksoap2.serialization.PropertyInfo;
 public class MeetsResponse extends SessionResponse implements KvmSerializable
 {
 
-    
-    public ArrayList<MeetData> meets =new ArrayList<MeetData>();
 
-    public MeetsResponse()
+    public ArrayList< MeetPreviewData> meets =new ArrayList<MeetPreviewData >();
+
+    public MeetsResponse ()
     {
     }
 
-    public MeetsResponse(Object paramObj, ExtendedSoapSerializationEnvelope __envelope)
+    public MeetsResponse (java.lang.Object paramObj,ExtendedSoapSerializationEnvelope __envelope)
     {
-	    super(paramObj, __envelope);
-	    if (paramObj == null)
+        super(paramObj, __envelope);
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -46,22 +46,22 @@ public class MeetsResponse extends SessionResponse implements KvmSerializable
             {
                 //if you have compilation error here, please use a ksoap2.jar and ExKsoap2.jar from libs folder (in the generated zip file)
                 PropertyInfo info=soapObject.getPropertyInfo(i0);
-                Object obj = info.getValue();
+                java.lang.Object obj = info.getValue();
                 if (info.name.equals("meets"))
                 {
                     if(obj!=null)
                     {
-        
-                    
+
+
                         if(this.meets==null)
                         {
-                            this.meets = new ArrayList<MeetData>();
+                            this.meets = new ArrayList<MeetPreviewData>();
                         }
-                        Object j =obj;
-                        MeetData j1= (MeetData)__envelope.get(j,MeetData.class);
+                        java.lang.Object j =obj;
+                        MeetPreviewData j1= (MeetPreviewData)__envelope.get(j,MeetPreviewData.class);
                         this.meets.add(j1);
-                   
-        
+
+
                     }
                     continue;
                 }
@@ -75,7 +75,7 @@ public class MeetsResponse extends SessionResponse implements KvmSerializable
     }
 
     @Override
-    public Object getProperty(int propertyIndex) {
+    public java.lang.Object getProperty(int propertyIndex) {
         int count = super.getPropertyCount();
         //!!!!! If you have a compilation error here then you are using old version of ksoap2 library. Please upgrade to the latest version.
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
@@ -98,15 +98,15 @@ public class MeetsResponse extends SessionResponse implements KvmSerializable
         int count = super.getPropertyCount();
         if(propertyIndex>=count+0 && propertyIndex <= count+0+this.meets.size())
         {
-            info.type = MeetData.class;
+            info.type = MeetPreviewData.class;
             info.name = "meets";
             info.namespace= "";
         }
         super.getPropertyInfo(propertyIndex,arg1,info);
     }
-    
+
     @Override
-    public void setProperty(int arg0, Object arg1)
+    public void setProperty(int arg0, java.lang.Object arg1)
     {
     }
 
@@ -114,7 +114,7 @@ public class MeetsResponse extends SessionResponse implements KvmSerializable
      * Gets all the MeetData instances of this response
      * @return
      */
-    public ArrayList<MeetData> getMeets() {
+    public ArrayList<MeetPreviewData> getMeets() {
         return meets;
     }
 
