@@ -38,6 +38,7 @@ public class CreateActivity extends AppCompatActivity {
     private OnlineIntegrationServiceSoapBinding webservice;
     private Spinner categorySpinner;
     private static Date selectedDate;
+    private ConnectionHelper connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class CreateActivity extends AppCompatActivity {
 
         //Initialize Webservice components
         webservice = new OnlineIntegrationServiceSoapBinding();
+        connection = new ConnectionHelper();
 
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
@@ -66,42 +68,42 @@ public class CreateActivity extends AppCompatActivity {
 
     //Publishes Meet...
     public void publishMeet(View v) {
-        if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
-            if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
-                if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                    Calendar c = Calendar.getInstance();
-                    c.set(Calendar.YEAR, year);
-                    c.set(Calendar.MONTH, month);
-                    c.set(Calendar.DAY_OF_MONTH, day);
-                    c.set(Calendar.HOUR, hour);
-                    c.set(Calendar.MINUTE, min);
-                    selectedDate = c.getTime();
-                    if(selectedDate.compareTo(new Date()) == 1){
-
-                        titleString = title.getText().toString();
-                        descriptionString = description.getText().toString();
-                        locationString = location.getText().toString();
-                        maxGuests = Integer.parseInt(guests.getText().toString());
-                        categoryString = categorySpinner.getSelectedItem().toString();
-                        new CreateMeetAsync().execute();
-                        this.finish();
+        if(connection.isOnline(this)){
+            if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
+                if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
+                    if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
+                        Calendar c = Calendar.getInstance();
+                        c.set(Calendar.YEAR, year);
+                        c.set(Calendar.MONTH, month);
+                        c.set(Calendar.DAY_OF_MONTH, day);
+                        c.set(Calendar.HOUR, hour);
+                        c.set(Calendar.MINUTE, min);
+                        selectedDate = c.getTime();
+                        if(selectedDate.compareTo(new Date()) == 1){
+                            titleString = title.getText().toString();
+                            descriptionString = description.getText().toString();
+                            locationString = location.getText().toString();
+                            maxGuests = Integer.parseInt(guests.getText().toString());
+                            categoryString = categorySpinner.getSelectedItem().toString();
+                            new CreateMeetAsync().execute();
+                            this.finish();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), getString(R.string.future_meet), Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.future_meet), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.enter_description), Toast.LENGTH_SHORT).show();
                     }
                 }
-                else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.enter_description), Toast.LENGTH_SHORT).show();
+                else{
+                    Toast.makeText(getApplicationContext(), getString(R.string.enter_location), Toast.LENGTH_SHORT).show();
                 }
             }
             else{
-                Toast.makeText(getApplicationContext(), getString(R.string.enter_location), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.enter_title), Toast.LENGTH_SHORT).show();
             }
         }
-        else{
-            Toast.makeText(getApplicationContext(), getString(R.string.enter_title), Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     public void changeMaxGuests(View v){

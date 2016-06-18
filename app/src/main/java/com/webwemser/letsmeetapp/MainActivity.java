@@ -1,9 +1,6 @@
 package com.webwemser.letsmeetapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -49,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public static MeetsResponse meets;
     private String category;
     private ProgressBar progressBar;
+    private ConnectionHelper connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +57,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initialize Webservice components
+        connection = new ConnectionHelper();
         webservice = new OnlineIntegrationServiceSoapBinding();
         meets = new MeetsResponse();
         category = getString(R.string.all_categories);
         new CategoryAsync().execute();
 
-        //Initialize FAB_Toolbar
+        //Initialize FAB_Toolbar, credits to https://github.com/fafaldo/FABToolbar
         fab_toolbar = (FABToolbarLayout)findViewById(R.id.fabtoolbar);
 
         //Initialize swipe down to refresh feature
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        if(isOnline()){
+        if(connection.isOnline(this)){
             new LogoutAsync().execute();
         }
     }
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (isOnline()) new LoadMeetsAsync().execute();
+        if (connection.isOnline(this)) new LoadMeetsAsync().execute();
         fab_toolbar.hide();
     }
 
@@ -127,16 +126,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Check for internet connection
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if(!(netInfo != null && netInfo.isConnectedOrConnecting())) {
-            Toast.makeText(MainActivity.this, getString(R.string.check_connection), Toast.LENGTH_SHORT).show();
-        }
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
     //Shows FAB Toolbar
     public void showFABToolbar(View v){
         fab_toolbar.show();
@@ -156,14 +145,14 @@ public class MainActivity extends AppCompatActivity {
     //Called by search button to search for meets by category
     public void searchByCategory(View v){
         category = searchSpinner.getSelectedItem().toString();
-        if(category!=null && isOnline()){
+        if(category!=null && connection.isOnline(this)){
             new SearchByCategoryAsync().execute();
         }
     }
 
     //Called by search button to search for meets by category
     public void searchByUser(View v){
-        if(isOnline()){
+        if(connection.isOnline(this)){
             new SearchByUserAsync().execute();
         }
         hideFABToolbar(new View(getApplicationContext()));
@@ -191,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                if(isOnline()){
+                if(connection.isOnline(MainActivity.this)){
                     Intent intent = new Intent(MainActivity.this, MeetActivity.class);
                     intent.putExtra(KEY_POSITION, meets.get(position).getId());
                     startActivity(intent);
@@ -209,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.;
                 category = searchSpinner.getSelectedItem().toString();
-                if(isOnline()){
+                if(connection.isOnline(MainActivity.this)){
                     swipeContainer.setVisibility(View.GONE);
                     progressBar.setVisibility(View.VISIBLE);
                     new LoadMeetsAsync().execute();

@@ -23,7 +23,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText username, password, passwordRetype, description;
     private String userString, pwString, descriptionString;
-    private final String TAG = "Webwemser Log";
     private OnlineIntegrationServiceSoapBinding webservice;
 
     @Override

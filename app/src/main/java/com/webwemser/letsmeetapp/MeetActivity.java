@@ -35,15 +35,12 @@ public class MeetActivity extends AppCompatActivity {
     private String questionToAsk;
     private MyCommentAdapter adapter;
     private static final int KEY_POSITION = 1;
-
     public static final String USERNAME = "USERNAME", COMMENT = "COMMENT", POSITION = "POSITION",CONVERSATION = "CONVERSATION", TIMESTAMP = "TIMESTAMP", REPLIES = "REPLIES", ID ="ID";
-
-
-
     private static int meetPosition;
     private FloatingActionButton fab_join, fab_leave, fab_delete;
     private OnlineIntegrationServiceSoapBinding webservice;
     private MeetData meet;
+    private ConnectionHelper connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +49,7 @@ public class MeetActivity extends AppCompatActivity {
 
         //Initialize webservice
         webservice = new OnlineIntegrationServiceSoapBinding();
+        connection = new ConnectionHelper();
 
         //Get Meet ID
         meetPosition = getIntent().getIntExtra(MainActivity.KEY_POSITION, KEY_POSITION);
@@ -63,10 +61,6 @@ public class MeetActivity extends AppCompatActivity {
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         question = (EditText)findViewById(R.id.ask);
-
-        //long x = Long.parseLong(meet.getDateTime().toString());
-        //Set values to Textviews
-        //meetPosition = MainActivity.meets.getMeets().get(meetPosition).getId();
         new GetMeetAsync().execute();
     }
 
@@ -165,28 +159,37 @@ public class MeetActivity extends AppCompatActivity {
 
     //Called by fab_join to join a meet
     public void join(View v){
-        new JoinAsync().execute();
+        if(connection.isOnline(this)){
+            new JoinAsync().execute();
+        }
     }
 
     //Called by fab_leave to leave meet
     public void leave(View v){
-        new LeaveAsync().execute();
+        if(connection.isOnline(this)){
+            new LeaveAsync().execute();
+        }
     }
 
     //Called by fab_delete to delete meet by admin
     public void delete(View v){
-        new DeleteAsync().execute();
+        if(connection.isOnline(this)){
+            new DeleteAsync().execute();
+        }
     }
 
     public void comment(View v){
-        if(question.getText().toString().length()>2){
-            questionToAsk = question.getText().toString();
-            new AskAsync().execute();
-        }
-        else {
-            Toast.makeText(MeetActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+        if(connection.isOnline(this)){
+            if(question.getText().toString().length()>2){
+                questionToAsk = question.getText().toString();
+                new AskAsync().execute();
+            }
+            else {
+                Toast.makeText(MeetActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+            }
         }
     }
+
     class GetMeetAsync extends AsyncTask<String, Integer, MeetResponse>{
         @Override
         protected MeetResponse doInBackground(String ... strings){

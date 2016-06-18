@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private final String PASSWORD = "PASSWORD";
     private final String USERNAME = "USERNAME";
     private String userString, pwString;
+    private ConnectionHelper connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Initialize Webservice
         webservice = new OnlineIntegrationServiceSoapBinding();
+        connection = new ConnectionHelper();
 
         //Needed to use the same fonts for username and password edittext
         username = (EditText)findViewById(R.id.username_text);
@@ -96,13 +98,6 @@ public class LoginActivity extends AppCompatActivity {
         firstRun = false;
     }
 
-    //Check for internet connection
-    public boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
     //Saves preferences
     private void saveData(){
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -132,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //Login method
     public void login(View v){
-        if(isOnline()){
+        if(connection.isOnline(this)){
             userString = username.getText().toString();
             pwString = password.getText().toString();
             if(username.getText().toString().length()>3){

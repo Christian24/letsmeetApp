@@ -61,4 +61,7 @@
     <string name="ask">Ask</string>
     <string name="question_to_short">Question is to short</string>
     <string name="replies">replies</string>
+    <string name="new_meet3">New Meet</string>
+    <string name="my_meet">My Meets</string>
+    <string name="close">close</string>
 </resources>

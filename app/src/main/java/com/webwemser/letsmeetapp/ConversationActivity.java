@@ -32,12 +32,14 @@ public class ConversationActivity extends AppCompatActivity {
     private MyCommentAdapter adapter;
     private EditText comment;
     private OnlineIntegrationServiceSoapBinding webservice;
+    private ConnectionHelper connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversation);
         comment = (EditText)findViewById(R.id.comment);
+        connection = new ConnectionHelper();
 
         //Get meet position
         meetPosition = getIntent().getIntExtra(MeetActivity.POSITION, KEY_POSITION);
@@ -68,12 +70,14 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     public void putComment(View view) {
-        if(comment.getText().toString().length()>2){
-            commentToPost = comment.getText().toString();
-            new CommentAsync().execute();
-        }
-        else {
-            Toast.makeText(ConversationActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+        if(connection.isOnline(this)){
+            if(comment.getText().toString().length()>2){
+                commentToPost = comment.getText().toString();
+                new CommentAsync().execute();
+            }
+            else {
+                Toast.makeText(ConversationActivity.this, getString(R.string.question_to_short), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -90,15 +94,6 @@ public class ConversationActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
-            /*
-            if(response!=null){
-                MeetActivity.this.finish();
-            }
-            else {
-
-                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-            }
-            */
             process(response);
            comment.setText("");
         }

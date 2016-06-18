@@ -61,4 +61,7 @@
     <string name="ask">Fragen</string>
     <string name="question_to_short">Die Frage ist zu kurz</string>
     <string name="replies">Antworten</string>
+    <string name="new_meet3">Neuer Meet</string>
+    <string name="my_meet">Meine Meets</string>
+    <string name="close">Schließen</string>
 </resources>
