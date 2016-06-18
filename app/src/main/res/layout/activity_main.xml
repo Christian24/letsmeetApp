@@ -69,13 +69,31 @@
                 android:src="@drawable/ic_account_circle_white_48dp"
                 android:onClick="searchByUser"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_add_white_24dp"
-                android:onClick="showCreateActivtiy"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_add_white_24dp"
+                    android:id="@+id/FAB_ADD"
+                    android:onClick="showCreateActivtiy"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hallo"
+
+                    android:layout_toRightOf="@id/FAB_ADD"/>
+
+
+
+            </RelativeLayout>
+
+
 
             <ImageView
                 android:layout_width="0dp"

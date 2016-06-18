@@ -61,14 +61,6 @@ public class ConversationActivity extends AppCompatActivity {
                     }
                 }
             }
-            /*
-            for(int i = 0; i<meet.getConversations().get(conversationPosition).getConversation().size() ; i++){
-                HashMap<String, String> map = new HashMap<String, String>();
-                map.put(MeetActivity.USERNAME, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(conversationPosition).getConversation().get(i).getPoster());
-                map.put(MeetActivity.COMMENT, MainActivity.meets.getMeets().get(meetPosition).getConversations().get(conversationPosition).getConversation().get(i).getText());
-                commentList.add(map);
-            }
-            */
             list = (ListView)findViewById(R.id.conversation_list);
             adapter = new MyCommentAdapter(this, commentList);
             list.setAdapter(adapter);
@@ -133,10 +125,9 @@ public class ConversationActivity extends AppCompatActivity {
             meet = response.getMeet();
             if(meet != null) {
             for(ConversationData data : meet.getConversations())
-            if(data.getId() == conversationPosition) {
-
-            this.conversation = data;
-            setComments();
+                if(data.getId() == conversationPosition) {
+                this.conversation = data;
+                setComments();
                 }
             }
         }
