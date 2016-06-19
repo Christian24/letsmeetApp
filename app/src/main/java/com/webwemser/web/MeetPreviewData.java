@@ -259,7 +259,7 @@ public class MeetPreviewData extends DataTransferObject implements KvmSerializab
      * @return String
      */
     public String getDateTime() {
-        return new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(dateTime);
+        return new SimpleDateFormat("dd.MM.yyyy  HH:mm").format(dateTime);
     }
     /*
     public Date getDateTime() {
