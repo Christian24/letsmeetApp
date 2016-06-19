@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,7 +27,7 @@ import java.util.Date;
 
 public class EditActivity extends AppCompatActivity {
 
-    private static TextView date, time, guests;
+    private static TextView date, guests;
     private static EditText title, location, description;
     private static int year, month, day, hour, min, maxGuests;
     private static String titleString, locationString, descriptionString, categoryString;
@@ -53,7 +52,6 @@ public class EditActivity extends AppCompatActivity {
 
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
-        time = (TextView)findViewById(R.id.timepicker);
 
         //Initialize Views
         guests = (TextView)findViewById(R.id.max_guests);
@@ -85,13 +83,7 @@ public class EditActivity extends AppCompatActivity {
             if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
                 if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
                     if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                        Calendar c = Calendar.getInstance();
-                        c.set(Calendar.YEAR, year);
-                        c.set(Calendar.MONTH, month);
-                        c.set(Calendar.DAY_OF_MONTH, day);
-                        c.set(Calendar.HOUR, hour);
-                        c.set(Calendar.MINUTE, min);
-                        selectedDate = c.getTime();
+                        Log.i("LOG", selectedDate.toString());
                         if(selectedDate.compareTo(new Date()) == 1){
                             titleString = title.getText().toString();
                             descriptionString = description.getText().toString();
@@ -116,19 +108,6 @@ public class EditActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), getString(R.string.enter_title), Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-
-    //Starts Datepicker
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
-
-    //Starts Timepicker
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
     }
 
     public static class DatePickerFragment extends DialogFragment
@@ -160,32 +139,31 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-    public static class TimePickerFragment extends DialogFragment
-            implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-            time.setText(hour+":"+minute);
-            // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            EditActivity.hour = hourOfDay;
-            EditActivity.min = minute;
-            String hour = "0";
-            String min = "0";
-            if (hourOfDay<10)hour = hour + hourOfDay;
-            else hour = hourOfDay+"";
-            if (minute<10)min = min + minute;
-            else min = minute+"";
-            time.setText(hour+":"+min);
-        }
+    //Starts Datepicker
+    public void showDatePickerDialog(View v) {
+        Date value = new Date();
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(value);
+        new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override public void onDateSet(DatePicker view, int y, int m, int d) {
+                        cal.set(Calendar.YEAR, y);
+                        cal.set(Calendar.MONTH, m);
+                        cal.set(Calendar.DAY_OF_MONTH, d);
+                        // now show the time picker
+                        new TimePickerDialog(EditActivity.this,
+                                new TimePickerDialog.OnTimeSetListener() {
+                                    @Override public void onTimeSet(TimePicker view, int h, int min) {
+                                        cal.set(Calendar.HOUR_OF_DAY, h);
+                                        cal.set(Calendar.MINUTE, min);
+                                        date.setText(new SimpleDateFormat("dd.MM.yyyy / HH:mm").format(cal.getTime()));
+                                        selectedDate = cal.getTime();
+                                    }
+                                }, cal.get(Calendar.HOUR_OF_DAY),
+                                cal.get(Calendar.MINUTE), true).show();
+                    }
+                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     //Fetch Categories
@@ -228,8 +206,8 @@ public class EditActivity extends AppCompatActivity {
                 description.setText(response.getMeet().getDescription());
                 location.setText(response.getMeet().getLocation());
                 guests.setText(response.getMeet().getMaxGuests()+"");
-                date.setText(new SimpleDateFormat("dd.MM.yyyy").format(response.getMeet().dateTime));
-                time.setText(new SimpleDateFormat("HH:mm").format(response.getMeet().dateTime));
+                date.setText(new SimpleDateFormat("dd.MM.yyyy / HH:mm").format(response.getMeet().dateTime));
+                selectedDate = response.getMeet().dateTime;
                 meet = response.getMeet();
             }
             else {

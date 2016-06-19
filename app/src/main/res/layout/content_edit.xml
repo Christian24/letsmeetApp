@@ -22,8 +22,9 @@
         android:onClick="showDatePickerDialog">
 
         <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/ic_schedule_black_48dp"/>
 
         <TextView
@@ -35,37 +36,6 @@
             android:textColor="@color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Display4"
             android:id="@+id/datepicker"/>
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="showTimePickerDialog">
-
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:src="@drawable/event"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="time"
-            android:textSize="32sp"
-            android:textColor="@color/black"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-            android:id="@+id/timepicker"/>
 
     </RelativeLayout>
 

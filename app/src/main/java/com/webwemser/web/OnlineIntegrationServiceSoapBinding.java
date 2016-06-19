@@ -32,7 +32,7 @@ public class OnlineIntegrationServiceSoapBinding
 
         Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, Object result) throws Exception;
     }
-    String url="http://192.168.2.72:8080/letsmeet/OnlineIntegration";
+    String url="http://10.0.2.2:8080/letsmeet/OnlineIntegration";
 
     int timeOut=60000;
     public List< HeaderProperty> httpHeaders;

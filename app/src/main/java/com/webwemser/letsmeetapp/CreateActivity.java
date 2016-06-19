@@ -43,7 +43,6 @@ public class CreateActivity extends AppCompatActivity {
     private static Date selectedDate;
     private ConnectionHelper connection;
     private static Calendar c;
-    private long dateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +55,10 @@ public class CreateActivity extends AppCompatActivity {
 
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
-        time = (TextView)findViewById(R.id.timepicker);
 
         Date oldDate = new Date(); // oldDate == current time
-        Date newDate = new Date(oldDate.getTime() + TimeUnit.HOURS.toMillis(1)); // adds one hour
-        date.setText(new SimpleDateFormat("dd.MM.yyyy").format(newDate));
-        time.setText(new SimpleDateFormat("HH:mm").format(newDate));
+        Date newDate = new Date(oldDate.getTime() + TimeUnit.HOURS.toMillis(1));
+        date.setText(new SimpleDateFormat("dd.MM.yyyy / HH:mm").format(newDate));
         selectedDate = newDate;
         c = Calendar.getInstance();
 
@@ -82,12 +79,6 @@ public class CreateActivity extends AppCompatActivity {
             if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
                 if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
                     if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                        c.set(Calendar.YEAR, year);
-                        c.set(Calendar.MONTH, month);
-                        c.set(Calendar.DAY_OF_MONTH, day);
-                        c.set(Calendar.HOUR, hour);
-                        c.set(Calendar.MINUTE, min);
-                        selectedDate = c.getTime();
                         if(selectedDate.compareTo(new Date()) == 1){
                             titleString = title.getText().toString();
                             descriptionString = description.getText().toString();
@@ -130,26 +121,29 @@ public class CreateActivity extends AppCompatActivity {
 
     //Starts Datepicker
     public void showDatePickerDialog(View v) {
-        final View dialogView = View.inflate(this, R.layout.date_time_picker, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-
-        dialogView.findViewById(R.id.date_time_set).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.date_picker);
-                TimePicker timePicker = (TimePicker) dialogView.findViewById(R.id.time_picker);
-                timePicker.setIs24HourView(true);
-                timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
-                Calendar calendar = new GregorianCalendar(datePicker.getYear(),
-                        datePicker.getMonth(),
-                        datePicker.getDayOfMonth(),
-                        timePicker.getCurrentHour(),
-                        timePicker.getCurrentMinute());
-                dateTime = calendar.getTimeInMillis();
-                alertDialog.dismiss();
-            }});
-        alertDialog.setView(dialogView);
-        alertDialog.show();
+        Date value = new Date();
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(value);
+        new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override public void onDateSet(DatePicker view, int y, int m, int d) {
+                        cal.set(Calendar.YEAR, y);
+                        cal.set(Calendar.MONTH, m);
+                        cal.set(Calendar.DAY_OF_MONTH, d);
+                        // now show the time picker
+                        new TimePickerDialog(CreateActivity.this,
+                                new TimePickerDialog.OnTimeSetListener() {
+                                    @Override public void onTimeSet(TimePicker view, int h, int min) {
+                                        cal.set(Calendar.HOUR_OF_DAY, h);
+                                        cal.set(Calendar.MINUTE, min);
+                                        date.setText(new SimpleDateFormat("dd.MM.yyyy / HH:mm").format(cal.getTime()));
+                                        selectedDate = cal.getTime();
+                                    }
+                                }, cal.get(Calendar.HOUR_OF_DAY),
+                                cal.get(Calendar.MINUTE), true).show();
+                    }
+                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     class CreateMeetAsync extends AsyncTask<String, Integer, MeetResponse> {
