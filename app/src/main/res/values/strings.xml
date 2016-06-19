@@ -64,4 +64,7 @@
     <string name="new_meet3">New Meet</string>
     <string name="my_meet">My Meets</string>
     <string name="close">close</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit Meet</string>
+    <string name="min_number">Minimum number of participants reached</string>
 </resources>

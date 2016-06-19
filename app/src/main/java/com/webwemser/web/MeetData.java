@@ -469,4 +469,12 @@ public class MeetData extends DataTransferObject implements KvmSerializable
         return conversations;
     }
 
+    /**
+     * Gets location of the Meet
+     * @return
+     */
+    public String getLocation(){
+        return location;
+    }
+
 }

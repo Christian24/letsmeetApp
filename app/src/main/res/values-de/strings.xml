@@ -64,4 +64,7 @@
     <string name="new_meet3">Neuer Meet</string>
     <string name="my_meet">Meine Meets</string>
     <string name="close">Schließen</string>
+    <string name="delete">Löschen</string>
+    <string name="edit">Meet ändern</string>
+    <string name="min_number">Anzahl Besucher erhöhen</string>
 </resources>

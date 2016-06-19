@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -16,7 +18,6 @@ import com.webwemser.web.MeetData;
 import com.webwemser.web.MeetResponse;
 import com.webwemser.web.OnlineIntegrationServiceSoapBinding;
 import com.webwemser.web.SessionResponse;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ import java.util.HashMap;
  */
 public class MeetActivity extends AppCompatActivity {
 
-    private TextView author, descripton, date, max_guests, category;
+    private TextView author, descripton, date, max_guests, category, location;
     private EditText question;
     private ListView list;
     private String questionToAsk;
@@ -61,13 +62,36 @@ public class MeetActivity extends AppCompatActivity {
         max_guests = (TextView)findViewById(R.id.display_max_guests);
         category = (TextView)findViewById(R.id.display_category);
         question = (EditText)findViewById(R.id.ask);
+        location = (TextView)findViewById(R.id.display_location);
         new GetMeetAsync().execute();
+
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_meet, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //Deletes Meet
+        if (id == R.id.action_delete) {
+            new DeleteAsync().execute();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setup() {
         try {
             date.setText(meet.getDateTime());
             category.setText(meet.getCategory());
+            location.setText(meet.getLocation());
             descripton.setText(meet.getDescription());
             author.setText(meet.getAdminUserName());
             max_guests.setText(meet.getFreeSpace()+" / "+meet.getMaxGuests());
@@ -178,6 +202,13 @@ public class MeetActivity extends AppCompatActivity {
         }
     }
 
+    public void edit(View v){
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra(POSITION, meetPosition);
+        startActivity(intent);
+    }
+
+    //Called by comment button
     public void comment(View v){
         if(connection.isOnline(this)){
             if(question.getText().toString().length()>2){
@@ -231,14 +262,6 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
-            /*
-            if(response!=null){
-                MeetActivity.this.finish();
-            }
-            else {
-                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-            }
-            */
             process(response);
         }
     }
@@ -257,14 +280,6 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
-           /*
-            if(response!=null){
-                MeetActivity.this.finish();
-            }
-            else {
-                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-            }
-            */
             process(response);
         }
     }
@@ -302,15 +317,6 @@ public class MeetActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(MeetResponse response) {
-            /*
-            if(response!=null){
-                MeetActivity.this.finish();
-            }
-            else {
-
-                Toast.makeText(MeetActivity.this, getString(R.string.error), Toast.LENGTH_SHORT).show();
-            }
-            */
             process(response);
             question.setText("");
         }

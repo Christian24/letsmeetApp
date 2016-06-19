@@ -21,6 +21,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:text="@string/location_hint"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            android:id="@+id/display_location"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="@string/category"
             android:textSize="24sp"
             android:textColor="@color/black"
