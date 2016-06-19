@@ -54,8 +54,6 @@ public class EditActivity extends AppCompatActivity {
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
         time = (TextView)findViewById(R.id.timepicker);
-        date.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
-        time.setText(new SimpleDateFormat("HH:mm").format(new Date()));
 
         //Initialize Views
         guests = (TextView)findViewById(R.id.max_guests);
@@ -230,6 +228,8 @@ public class EditActivity extends AppCompatActivity {
                 description.setText(response.getMeet().getDescription());
                 location.setText(response.getMeet().getLocation());
                 guests.setText(response.getMeet().getMaxGuests()+"");
+                date.setText(new SimpleDateFormat("dd.MM.yyyy").format(response.getMeet().dateTime));
+                time.setText(new SimpleDateFormat("HH:mm").format(response.getMeet().dateTime));
                 meet = response.getMeet();
             }
             else {
