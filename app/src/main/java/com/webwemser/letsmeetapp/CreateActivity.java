@@ -1,5 +1,6 @@
 package com.webwemser.letsmeetapp;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -8,6 +9,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This Activity is for creating a new meet
@@ -39,6 +42,8 @@ public class CreateActivity extends AppCompatActivity {
     private Spinner categorySpinner;
     private static Date selectedDate;
     private ConnectionHelper connection;
+    private static Calendar c;
+    private long dateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +57,13 @@ public class CreateActivity extends AppCompatActivity {
         //To preset current date & time
         date = (TextView)findViewById(R.id.datepicker);
         time = (TextView)findViewById(R.id.timepicker);
-        date.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
-        time.setText(new SimpleDateFormat("HH:mm").format(new Date()));
+
+        Date oldDate = new Date(); // oldDate == current time
+        Date newDate = new Date(oldDate.getTime() + TimeUnit.HOURS.toMillis(1)); // adds one hour
+        date.setText(new SimpleDateFormat("dd.MM.yyyy").format(newDate));
+        time.setText(new SimpleDateFormat("HH:mm").format(newDate));
+        selectedDate = newDate;
+        c = Calendar.getInstance();
 
         //Initialize Views
         guests = (TextView)findViewById(R.id.max_guests);
@@ -72,7 +82,6 @@ public class CreateActivity extends AppCompatActivity {
             if(title.getText().toString().length()>=3 && title.getText().toString().length()<=30){
                 if(location.getText().toString().length()>=3 && location.getText().toString().length()<=45){
                     if(description.getText().toString().length()>=3 && description.getText().toString().length()<=128){
-                        Calendar c = Calendar.getInstance();
                         c.set(Calendar.YEAR, year);
                         c.set(Calendar.MONTH, month);
                         c.set(Calendar.DAY_OF_MONTH, day);
@@ -121,71 +130,26 @@ public class CreateActivity extends AppCompatActivity {
 
     //Starts Datepicker
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
-    }
+        final View dialogView = View.inflate(this, R.layout.date_time_picker, null);
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-    //Starts Timepicker
-    public void showTimePickerDialog(View v) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(getFragmentManager(), "timePicker");
-    }
-
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH)+1;
-            // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            CreateActivity.year = year;
-            CreateActivity.month = month;
-            CreateActivity.day = day;
-            month = month + 1;
-            String m = "0";
-            String d = "0";
-            if (month<10)m = m + month;
-            else m = month+"";
-            if (day<10)d = d + day;
-            else d = day+"";
-            date.setText(d+"."+m+"."+year);
-        }
-    }
-
-    public static class TimePickerFragment extends DialogFragment
-            implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-            time.setText(hour+":"+minute);
-            // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            CreateActivity.hour = hourOfDay;
-            CreateActivity.min = minute;
-            String hour = "0";
-            String min = "0";
-            if (hourOfDay<10)hour = hour + hourOfDay;
-            else hour = hourOfDay+"";
-            if (minute<10)min = min + minute;
-            else min = minute+"";
-            time.setText(hour+":"+min);
-        }
+        dialogView.findViewById(R.id.date_time_set).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.date_picker);
+                TimePicker timePicker = (TimePicker) dialogView.findViewById(R.id.time_picker);
+                timePicker.setIs24HourView(true);
+                timePicker.setCurrentHour(Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+                Calendar calendar = new GregorianCalendar(datePicker.getYear(),
+                        datePicker.getMonth(),
+                        datePicker.getDayOfMonth(),
+                        timePicker.getCurrentHour(),
+                        timePicker.getCurrentMinute());
+                dateTime = calendar.getTimeInMillis();
+                alertDialog.dismiss();
+            }});
+        alertDialog.setView(dialogView);
+        alertDialog.show();
     }
 
     class CreateMeetAsync extends AsyncTask<String, Integer, MeetResponse> {

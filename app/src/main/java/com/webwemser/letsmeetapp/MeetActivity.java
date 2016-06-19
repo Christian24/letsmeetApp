@@ -89,7 +89,7 @@ public class MeetActivity extends AppCompatActivity {
 
     private void setup() {
         try {
-            date.setText(meet.getDateTime());
+            date.setText(meet.getDateTimeString());
             category.setText(meet.getCategory());
             location.setText(meet.getLocation());
             descripton.setText(meet.getDescription());

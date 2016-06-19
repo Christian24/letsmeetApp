@@ -412,8 +412,12 @@ public class MeetData extends DataTransferObject implements KvmSerializable
      * Gets the dateTime as String
      * @return String
      */
-    public String getDateTime() {
+    public String getDateTimeString() {
         return new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(dateTime);
+    }
+
+    public Date getDateTime() {
+        return dateTime;
     }
 
     /**
