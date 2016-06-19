@@ -413,7 +413,7 @@ public class MeetData extends DataTransferObject implements KvmSerializable
      * @return String
      */
     public String getDateTime() {
-        return new SimpleDateFormat("dd.MM.yyyy  hh:mm").format(dateTime);
+        return new SimpleDateFormat("dd.MM.yyyy  HH:mm").format(dateTime);
     }
 
     /**
