@@ -23,6 +23,10 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy.force'com.android.support:support-annotations:23.3.0'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
