@@ -20,7 +20,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.*;
 public class UITest {
 
     @Rule
-    public ActivityTestRule<MainActivity> testingActivity = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<LoginActivity> testingActivity = new ActivityTestRule<>(LoginActivity.class);
 
     /**
      * Testuses should be successfull logged in.
