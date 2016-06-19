@@ -17,7 +17,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.*;
  * @author Sergei Fladung
  */
 @RunWith(AndroidJUnit4.class)
-class UITest {
+public class UITest {
 
     @Rule
     public ActivityTestRule<MainActivity> testingActivity = new ActivityTestRule<>(MainActivity.class);
