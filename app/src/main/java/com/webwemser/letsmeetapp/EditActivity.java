@@ -229,8 +229,8 @@ public class EditActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(MeetResponse response) {
             if(response!=null){
-                Log.i("Return code: ", response.getReturnCode()+"");
-                if(response.getReturnCode()==200){
+                Log.i("Return code ", response.getReturnCode()+"");
+                if(response.getReturnCode()==200 || response.getReturnCode()==401){
                     Intent intent = new Intent(EditActivity.this, MeetActivity.class);
                     intent.putExtra(MainActivity.KEY_POSITION,meet.getId());
                     startActivity(intent);
